@@ -1,0 +1,7 @@
+[
+    {"pk": 1, "model": "products.category", "fields": {"name": "animals", "friendly_name": "Animals"}},
+    {"pk": 2, "model": "products.category", "fields": {"name": "things", "friendly_name": "Things"}},
+    {"pk": 3, "model": "products.category", "fields": {"name": "places", "friendly_name": "Places"}},
+    {"pk": 4, "model": "products.category", "fields": {"name": "food", "friendly_name": "Food"}},
+    {"pk": 5, "model": "products.category", "fields": {"name": "new_arrivals", "friendly_name": "New Arrivals"}}
+]
