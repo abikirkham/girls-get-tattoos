@@ -68,6 +68,11 @@
           </div>
       {% endif %}
   </div>
+    {% block page_header %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
 
   <!-- Main Content -->
   <main class="container mt-3">
@@ -84,11 +89,15 @@
       
   </main>
 
-  <!-- Footer -->
+ <!-- Footer -->
   <footer class="container-fluid bg-dark text-light text-center py-3 mt-5">
       <p>&copy; 2024 Girls Get Tattoos.</p>
   </footer>
   
+  {% block postloadjs %}
+  {% endblock %}
+ 
+
   {% endblock %}
 </body>
 </html>
