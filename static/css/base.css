@@ -11,7 +11,7 @@ body {
     flex-direction: column;
 }
 
-/* Overlay */
+/* Overlay on background */
 body::before {
     content: '';
     position: fixed;
