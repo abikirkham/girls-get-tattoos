@@ -29,7 +29,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center mt-3">
-                <h2 class="logo-font bg-white text-black">Products</h2>
+                <h2 class="logo-font">Products</h2>
                 <hr class="w-50 mb-1">
             </div>
         </div>
@@ -41,11 +41,11 @@
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="card h-100 border-0">
                                 {% if product.image %}
-                                <a href="">
+                                <a href="{% url 'product-detail' product.id %}">
                                     <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                                 </a>
                                 {% else %}
-                                <a href="">
+                                <a href="{% url 'product-detail' product.id %}">
                                     <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                                 </a>
                                 {% endif %}
@@ -55,11 +55,11 @@
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="lead mb-0 text-left text-black font-weight-bold">£{{ product.price }}</p>
+                                            <p class="lead mb-0 text-left font-weight-bold text-black">£{{ product.price }}</p>
                                             {% if product.rating %}
                                                 <small class="text-muted text-black"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
                                             {% else %}
-                                                <small class="text-black text-muted">No Rating</small>
+                                                <small class="text-muted text-black">No Rating</small>
                                             {% endif %}
                                         </div>
                                     </div>
