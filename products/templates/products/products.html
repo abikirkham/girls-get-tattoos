@@ -26,6 +26,22 @@
 {% endblock %}
 
 {% block content %}
+<div class="container-fluid">
+    <ul class="navbar-nav w-auto mx-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sort Products ▾
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+                <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">Price: Low to High</a>
+                <a href="{% url 'products' %}?sort=price&direction=desc" class="dropdown-item">Price: High to Low</a>
+                <a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item">Rating: High to Low</a>
+                <a href="{% url 'products' %}?sort=rating&direction=asc" class="dropdown-item">Rating: Low to High</a>
+                <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
+            </div>
+        </li>
+    </ul>
+</div>
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center mt-3">
