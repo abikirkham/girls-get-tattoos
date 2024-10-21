@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
+from bag.contexts import bag_contents
 
 from .forms import OrderForm
 
