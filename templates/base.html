@@ -123,18 +123,23 @@
 <main>
   <!-- Message container (Django messages) -->
   <div class="container mt-5 pt-5">
-      {% if messages %}
-          <div class="message-container">
-              {% for message in messages %}
-                  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                      {{ message }}
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-              {% endfor %}
-          </div>
-      {% endif %}
+    {% if messages %}
+    <div class="message-container">
+        {% for message in messages %}
+            {% with message.level as level %}
+                {% if level == 40 %}
+                    {% include 'includes/toasts/toast_error.html' %}
+                {% elif level == 30 %}
+                    {% include 'includes/toasts/toast_warning.html' %}
+                {% elif level == 25 %}
+                    {% include 'includes/toasts/toast_success.html' %}
+                {% else %}
+                    {% include 'includes/toasts/toast_info.html' %}
+                {% endif %}
+            {% endwith %}
+        {% endfor %}
+    </div>
+{% endif %}
   </div>
     
     {% block content %}
@@ -164,6 +169,9 @@
   </footer>
   
   {% block postloadjs %}
+    <script type="text/javascript">
+    $('.toast').toast('show');
+    </script>
   {% endblock %}
 </body>
 </html>
