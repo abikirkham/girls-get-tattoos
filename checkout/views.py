@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib import messages
 from django.conf import settings
 from django.views.decorators.http import require_POST
@@ -48,13 +48,14 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
-            product_ids = bag.keys()
-            products = Product.objects.filter(id__in=product_ids)
-
+            order = order_form.save(commit=False)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_bag = json.dumps(bag)
+            order.save()
             for item_id, item_data in bag.items():
                 try:
-                    product = products.get(id=item_id)
+                    product = Product.objects.get(id=item_id)
                     # If item_data is an int, it means there's only one quantity.
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
@@ -63,7 +64,6 @@ def checkout(request):
                             quantity=item_data,
                         )
                         order_line_item.save()
-                    # If item_data is a dictionary (for example, with different variations like size), handle it.
                     elif isinstance(item_data, dict):
                         for quantity in item_data.values():
                             order_line_item = OrderLineItem(
