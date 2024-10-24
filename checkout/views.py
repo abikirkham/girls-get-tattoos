@@ -9,7 +9,6 @@ from products.models import Product
 from bag.contexts import bag_contents
 
 import stripe
-import env
 import json
 
 @require_POST
