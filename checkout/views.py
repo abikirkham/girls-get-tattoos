@@ -142,33 +142,42 @@ def checkout_success(request, order_number):
     """
     Handle successful checkouts
     """
-    save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
-    profile = UserProfile.objects.get(user=request.user)
-    # Attach the user's profile to the order
-    order.user_profile = profile
-    order.save()
+    # Check if user is authenticated before attempting to retrieve their profile
+    if request.user.is_authenticated:
+        # Attach the user's profile to the order, if available
+        try:
+            profile = UserProfile.objects.get(user=request.user)
+            order.user_profile = profile
+            order.save()
+            
+            # Check if 'save_info' was set and save profile information
+            save_info = request.session.get('save_info')
+            if save_info:
+                profile_data = {
+                    'default_phone_number': order.phone_number,
+                    'default_country': order.country,
+                    'default_postcode': order.postcode,
+                    'default_town_or_city': order.town_or_city,
+                    'default_street_address1': order.street_address1,
+                    'default_street_address2': order.street_address2,
+                    'default_county': order.county,
+                }
+                user_profile_form = UserProfileForm(profile_data, instance=profile)
+                if user_profile_form.is_valid():
+                    user_profile_form.save()
+        except UserProfile.DoesNotExist:
+            messages.warning(request, "No user profile found for the logged-in user.")
+    else:
+        messages.warning(request, "You are not logged in. Only authenticated users can save profile information.")
 
-    # Save the user's info
-    if save_info:
-        profile_data = {
-            'default_phone_number': order.phone_number,
-            'default_country': order.country,
-            'default_postcode': order.postcode,
-            'default_town_or_city': order.town_or_city,
-            'default_street_address1': order.street_address1,
-            'default_street_address2': order.street_address2,
-            'default_county': order.county,
-        }
-        user_profile_form = UserProfileForm(profile_data, instance=profile)
-        if user_profile_form.is_valid():
-            user_profile_form.save()
-
+    # Show a success message and render the success page
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
 
+    # Clear the bag from the session
     if 'bag' in request.session:
         del request.session['bag']
 
