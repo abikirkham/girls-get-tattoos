@@ -36,24 +36,46 @@
                     </div>
                 </div>
                 {% for item in bag_items %}
-                    <div class="row">
-                        <div class="col-2 mb-1">
-                            <a href="#">
-                                {% if item.product.image %}
-                                    <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
+                    <tr>
+                        <td class="p-3 w-25">
+                            {% if item.type == 'product' %}
+                                <img class="img-fluid rounded" src="{{ item.product.image.url }}">
+                            {% else %}
+                                <img class="img-fluid rounded" src="{{ item.consultation.image.url }}">
+                            {% endif %}
+                        </td>
+                        <td class="py-3">
+                            <p class="my-0"><strong>
+                                {% if item.type == 'product' %}
+                                    {{ item.product.name }}
                                 {% else %}
-                                    <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                    {{ item.consultation.name }}
                                 {% endif %}
-                            </a>
-                        </div>
-                        <div class="col-7">
-                            <p class="my-0 text-black"><strong>{{ item.product.name }}</strong></p>
-                            <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
-                        </div>
-                        <div class="col-3 text-right">
-                            <p class="my-0 small text-muted">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
-                        </div>
-                    </div>
+                            </strong></p>
+                            <p class="my-0 small text-muted">SKU: {% if item.type == 'product' %}{{ item.product.sku|upper }}{% else %}N/A{% endif %}</p>
+                        </td>
+                        <td class="py-3">
+                            <p class="my-0">£
+                                {% if item.type == 'product' %}
+                                    {{ item.product.price }}
+                                {% else %}
+                                    {{ item.consultation.price }}
+                                {% endif %}
+                            </p>
+                        </td>
+                        <td class="py-3 w-25">
+                            <p class="my-0">{{ item.quantity }}</p>
+                        </td>
+                        <td class="py-3">
+                            <p class="my-0">£
+                                {% if item.type == 'product' %}
+                                    {{ item.product.price | calc_subtotal:item.quantity }}
+                                {% else %}
+                                    {{ item.consultation.price | calc_subtotal:item.quantity }}
+                                {% endif %}
+                            </p>
+                        </td>
+                    </tr>
                 {% endfor %}
                 <hr class="my-0">
                 <div class="row text-black text-right">

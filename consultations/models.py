@@ -11,3 +11,23 @@ class Consultation(models.Model):
 
     def __str__(self):
         return self.name
+
+class ConsultationAvailability(models.Model):
+    consultation = models.ForeignKey(Consultation, related_name='availabilities', on_delete=models.CASCADE)
+    available_date = models.DateTimeField()
+    is_booked = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.consultation.name} - {self.available_date}"
+
+    class Meta:
+        unique_together = ('consultation', 'available_date')
+
+class ConsultationBooking(models.Model):
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    consultation = models.ForeignKey(Consultation, on_delete=models.CASCADE)
+    consultation_date = models.ForeignKey(ConsultationAvailability, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.consultation.name} - {self.consultation_date.available_date}"

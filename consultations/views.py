@@ -3,20 +3,19 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 
-from .models import Consultation
+from .models import Consultation, ConsultationAvailability
 
 # Create your views here.
 
 def all_consultations(request):
     """ A view to show all consultations, including sorting and search queries """
 
-    consultations = Consultation.objects.all()  # Initialize consultations here
+    consultations = Consultation.objects.all()
     query = None
     sort = None
     direction = None
 
     if request.GET:
-        # Sorting logic
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
@@ -31,7 +30,6 @@ def all_consultations(request):
 
             consultations = consultations.order_by(sortkey)
 
-        # Search query logic
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -51,13 +49,32 @@ def all_consultations(request):
 
     return render(request, 'consultations/consultations.html', context)
 
-def consultation_detail(request, consultation_id):
-    """ A view to show individual product details """
 
+def consultation_detail(request, consultation_id):
+    """ A view to show individual product details with booking option """
     consultation = get_object_or_404(Consultation, pk=consultation_id)
+    available_dates = ConsultationAvailability.objects.filter(consultation=consultation, is_booked=False)
+
+    if request.method == 'POST':
+        selected_date_id = request.POST.get('selected_date')
+        selected_date = get_object_or_404(ConsultationAvailability, pk=selected_date_id)
+
+        if selected_date.is_booked:
+            messages.error(request, "This date is no longer available.")
+            return redirect(request.path)
+
+        cart_item = CartItem.objects.create(
+            user=request.user,
+            consultation=consultation,
+            selected_date=selected_date,
+            quantity=request.POST.get('quantity', 1)
+        )
+        messages.success(request, "Consultation added to your cart.")
+        return redirect(reverse('cart'))
 
     context = {
         'consultation': consultation,
+        'available_dates': available_dates,
     }
 
     return render(request, 'consultations/consultation_detail.html', context)

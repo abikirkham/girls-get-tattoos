@@ -39,14 +39,30 @@
                             {% for item in bag_items %}
                                 <tr>
                                     <td class="p-3 w-25">
-                                        <img class="img-fluid rounded" src="{{ item.product.image.url }}">
+                                        {% if item.type == 'product' %}
+                                            <img class="img-fluid rounded" src="{{ item.product.image.url }}">
+                                        {% else %}
+                                            <img class="img-fluid rounded" src="{{ item.consultation.image.url }}">
+                                        {% endif %}
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                                        <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
+                                        <p class="my-0"><strong>
+                                            {% if item.type == 'product' %}
+                                                {{ item.product.name }}
+                                            {% else %}
+                                                {{ item.consultation.name }}
+                                            {% endif %}
+                                        </strong></p>
+                                        <p class="my-0 small text-muted">SKU: {% if item.type == 'product' %}{{ item.product.sku|upper }}{% else %}N/A{% endif %}</p>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">£{{ item.product.price }}</p>
+                                        <p class="my-0">£
+                                            {% if item.type == 'product' %}
+                                                {{ item.product.price }}
+                                            {% else %}
+                                                {{ item.consultation.price }}
+                                            {% endif %}
+                                        </p>
                                     </td>
                                     <td class="py-3 w-25">
                                         <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
@@ -80,10 +96,17 @@
                                         <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                                        <p class="my-0">£
+                                            {% if item.type == 'product' %}
+                                                {{ item.product.price | calc_subtotal:item.quantity }}
+                                            {% else %}
+                                                {{ item.consultation.price | calc_subtotal:item.quantity }}
+                                            {% endif %}
+                                        </p>
                                     </td>
                                 </tr>
                             {% endfor %}
+
                             <tr>
                                 <td colspan="5" class="pt-5 text-right">
                                     <h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
