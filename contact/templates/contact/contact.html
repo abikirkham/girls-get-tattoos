@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<div class="container bg-white">
+    <div class="row">
+        <div class="col p-5 text-center">
+            <h2 class="logo-font text-black">Contact Us</h2>
+                <hr class="w-50 mb-1">
+                <br>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-black rounded-0 text-uppercase mt-5" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
