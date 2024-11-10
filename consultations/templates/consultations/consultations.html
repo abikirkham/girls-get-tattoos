@@ -71,29 +71,29 @@
                             <div class="card h-100 border-0">
                                 {% if consultation.image %}
                                 <a href="{% url 'consultation-detail' consultation.id %}">
-                                    <img class="card-img-top img-fluid" src="{{ consultations.image.url }}" alt="{{ consultations.name }}">
+                                    <img class="card-img-top img-fluid" src="{{ consultation.image.url }}" alt="{{ consultation.name }}">
                                 </a>
                                 {% else %}
-                                <a href="{% url 'consultations-detail' consultations.id %}">
-                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ consultations.name }}">
+                                <a href="{% url 'consultation-detail' consultation.id %}">
+                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ consultation.name }}">
                                 </a>
                                 {% endif %}
                                 <div class="card-body pb-0">
-                                    <p class="mb-0 text-black">{{ consultations.name }}</p>
+                                    <p class="mb-0 text-black">{{ consultation.name }}</p>
                                 </div>
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="lead mb-0 text-left font-weight-bold text-black">£{{ consultations.price }}</p>
-                                            {% if consultations.rating %}
-                                                <small class="text-muted text-black"><i class="fas fa-star mr-1"></i>{{ consultations.rating }} / 5</small>
+                                            <p class="lead mb-0 text-left font-weight-bold text-black">£{{ consultation.price }}</p>
+                                            {% if consultation.rating %}
+                                                <small class="text-muted text-black"><i class="fas fa-star mr-1"></i>{{ consultation.rating }} / 5</small>
                                             {% else %}
                                                 <small class="text-muted text-black">No Rating</small>
                                             {% endif %}
                                             {% if request.user.is_superuser %}
                                                 <small class="ml-3">
-                                                    <a href="{% url 'edit_consultations' consultations.id %}">Edit</a> | 
-                                                    <a class="text-danger" href="{% url 'delete_consultations' consultations.id %}">Delete</a>
+                                                    <a href="{% url 'edit_consultation' consultation.id %}">Edit</a> | 
+                                                    <a class="text-danger" href="{% url 'delete_consultation' consultation.id %}">Delete</a>
                                                 </small>
                                             {% endif %}
                                         </div>
