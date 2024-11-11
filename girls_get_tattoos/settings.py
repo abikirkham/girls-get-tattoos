@@ -10,7 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-import os
+import os 
+import dj_database_url
 from pathlib import Path
 if os.path.isfile("env.py"):
     import env
@@ -29,7 +30,7 @@ SECRET_KEY = 'django-insecure-^tn)-o4y^uj635my4l$lrmg8=pwgp)ve80+&75ehkks1zrc&0$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-abikirkham-girlsgettatt-mmnx4jw091u.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['8000-abikirkham-girlsgettatt-mmnx4jw091u.ws.codeinstitute-ide.net', 'https://git.heroku.com/girls-get-tattoos.git', 'localhost']
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-abikirkham-girlsgettatt-mmnx4jw091u.ws.codeinstitute-ide.net']
 
@@ -126,13 +127,17 @@ WSGI_APPLICATION = 'girls_get_tattoos.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
-
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
