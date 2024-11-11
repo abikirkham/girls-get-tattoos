@@ -6,11 +6,10 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('contact:success')
+            return redirect('success') 
     else:
         form = ContactForm()
-
     return render(request, 'contact/contact.html', {'form': form})
 
 def success(request):
-    return render(request, 'contact/success.html')
+    return render(request, 'contact/contact_success.html')
