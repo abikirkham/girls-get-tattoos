@@ -29,9 +29,6 @@ def bag_contents(request):
             'item_id': item_id,
             'quantity': quantity,
             'product': product,
-            'price': product.price,
-            'image_url': product.image.url if product.image else None,
-            'subtotal': subtotal,
         })
 
         total += subtotal
