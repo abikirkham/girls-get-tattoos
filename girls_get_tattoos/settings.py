@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '(16++&w=5l#9eyoqj(_yawuwgdxpn6g#f9q3a
 # DEBUG = 'DEVELOPMENT' in os.environ
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-abikirkham-girlsgettatt-mmnx4jw091u.ws.codeinstitute-ide.net', 'https://git.heroku.com/girls-get-tattoos.git', 'localhost']
+ALLOWED_HOSTS = ['8000-abikirkham-girlsgettatt-mmnx4jw091u.ws.codeinstitute-ide.net', 'https://git.heroku.com/girls-get-tattoos.git', 'https://girls-get-tattoos-6ad59281377a.herokuapp.com/', 'localhost']
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-abikirkham-girlsgettatt-mmnx4jw091u.ws.codeinstitute-ide.net']
 
