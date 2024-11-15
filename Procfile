@@ -1,1 +1,1 @@
-web: gunicorn girls-get-tattoos.wsgi:application
+web: gunicorn girls_get_tattoos.wsgi:application
