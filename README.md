@@ -13,6 +13,7 @@ This is my e-commerce platform built using Django where customers can purchase c
 - [Agile Methodology](#agile-methodology)
 - [Custom Models](#custom-models)
 - [Custom 404 Page](#custom-404-page)
+- [Deployment](#deployment)
 - [Testing and Debugging](#testing-and-debugging)
 - [Credits](#credits)
 
@@ -140,6 +141,61 @@ I followed Agile methodologies throughout the project:
 
 ## Custom 404 Page
 A custom 404 error page has been implemented to improve user experience. The template is located in the `templates` directory as `404.html`.
+
+## Deployment
+
+### Heroku
+
+
+#### 1. Prepare Your Project
+
+Ensure your project has the necessary files for deployment:
+
+- **Procfile**: Specifies the commands that are executed by the app on startup.
+    ```makefile
+  python app.py 
+  ```
+- **requirements.txt**: Lists all the dependencies your app needs.
+    ```makefile
+  Flask==1.1.2
+  gunicorn==20.0.4
+  ```
+
+#### 2. Create a New Heroku App
+Open your terminal and log in to Heroku:
+
+```
+bash:
+heroku login
+Create a new app:
+
+bash:
+heroku create girls-get-tattoos
+```
+
+Alternatively, create an app directly from the Heroku dashboard by clicking "New" and then "Create new app".
+
+#### 3. Connect Heroku App to GitHub
+- Go to Heroku Dashboard: Navigate to the Heroku dashboard.
+- Select Your App: Click on the app you created.
+- Deploy Tab: Go to the "Deploy" tab.
+- Deployment Method: Under "Deployment method", select "GitHub".
+- Connect to GitHub: Authorise Heroku to access your - GitHub account if it's your first time. Search for the repository you want to connect and click "Connect".
+
+#### 4. Configure Environment Variables
+Set any necessary environment variables for your app:
+
+Go to the "Settings" tab.
+Click "Reveal Config Vars".
+Add your key-value pairs.
+
+#### 5. Manual Deployment
+In the "Deploy" tab:
+
+Go to the "Manual deploy" section.
+Select the branch you want to deploy.
+Click "Deploy Branch".
+
 
 ## Testing and Debugging
 - **Unit Testing**: I used Django's testing framework for unit testing models and views.
