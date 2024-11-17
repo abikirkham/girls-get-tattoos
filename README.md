@@ -144,6 +144,23 @@ A custom 404 error page has been implemented to improve user experience. The tem
 
 ## Deployment
 
+### Making a Local Clone to create project
+
+- Find the GitHub Repository.
+- Click the Code button
+- Copy the link shown.
+- In Gitpod, change the directory to the location you would like the cloned directory to be located.
+- Type git clone, and paste the link you copied in step 3.
+- Press Enter to have the local clone created.
+
+### Updating my changes
+
+git add <file> - This command was used to add the file(s) to the staging area before they are committed.
+
+git commit -m “commit message” - This command was used to commit changes to the local repository queue ready for the final step.
+
+git push - This command was used to update all committed code to the remote repository on github.
+
 ### Heroku
 
 
