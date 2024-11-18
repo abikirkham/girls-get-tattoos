@@ -78,7 +78,7 @@ def consultation_detail(request, consultation_id):
         'available_dates': available_dates,
     }
 
-    return render(request, 'consultations/edit_consultation.html', context)
+    return render(request, 'consultations/consultation.html_detail', context)
 
 
 def add_consultation(request):
