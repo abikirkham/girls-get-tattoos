@@ -4,36 +4,57 @@ from django.contrib import messages
 from products.models import Product
 
 def view_bag(request):
-    """ A view that renders the bag contents page """
+    """ Display the shopping bag contents """
+    bag = request.session.get('bag', {})
+    items = []
 
-    return render(request, 'bag/bag.html')
+    for item_id, item_data in bag.items():
+        if item_data['type'] == 'product':
+            product = get_object_or_404(Product, pk=item_id)
+            items.append({
+                'item': product,
+                'quantity': item_data['quantity'],
+                'type': 'product',
+            })
+        elif item_data['type'] == 'consultation':
+            consultation = get_object_or_404(Consultation, pk=item_id)
+            items.append({
+                'item': consultation,
+                'quantity': item_data['quantity'],
+                'type': 'consultation',
+            })
+
+    context = {
+        'items': items,
+    }
+
+    return render(request, 'bag/bag.html', context)
+
 
 def add_to_bag(request, item_id):
     """ Add a quantity of the specified item (product or consultation) to the shopping bag """
-
     try:
         product = Product.objects.get(pk=item_id)
         item_type = 'product'
+        item = product
     except Product.DoesNotExist:
-        product = None
         item_type = 'consultation'
-        consultation = get_object_or_404(Consultation, pk=item_id)  # Assuming you have a Consultation model
-    
-    quantity = int(request.POST.get('quantity'))
+        consultation = get_object_or_404(Consultation, pk=item_id)
+        item = consultation
+
+    quantity = int(request.POST.get('quantity', 1))
     redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', {})
 
-    if item_type == 'product':
-        item = product
-    else:
-        item = consultation
-
-    # Adding the item to the bag
-    if item_id in list(bag.keys()):
+    if item_id in bag:
         bag[item_id]['quantity'] += quantity
         messages.success(request, f'Updated {item.name} quantity to {bag[item_id]["quantity"]}')
     else:
-        bag[item_id] = {'quantity': quantity, 'type': item_type}
+        bag[item_id] = {
+            'quantity': quantity,
+            'type': item_type,
+            'name': item.name,  # Store name for easy access in templates
+        }
         messages.success(request, f'Added {item.name} to your bag')
 
     request.session['bag'] = bag

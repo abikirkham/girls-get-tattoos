@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 
 from .models import Consultation, ConsultationAvailability
+from .forms import ConsultationForm
 
 # Create your views here.
 
@@ -77,7 +78,7 @@ def consultation_detail(request, consultation_id):
         'available_dates': available_dates,
     }
 
-    return render(request, 'consultations/consultation_detail.html', context)
+    return render(request, 'consultations/edit_consultation.html', context)
 
 
 def add_consultation(request):
@@ -101,7 +102,7 @@ def add_consultation(request):
     return render(request, template, context)
 
 
-def edit_consultation(request, product_id):
+def edit_consultation(request, consultation_id):
     """ Edit a consultation in the store """
     consultation = get_object_or_404(Consultation, pk=consultation_id)
     if request.method == 'POST':
@@ -117,13 +118,14 @@ def edit_consultation(request, product_id):
         form = ConsultationForm(instance=consultation)
         messages.info(request, f'You are editing {consultation.name}')
 
-    template = 'consultation/edit_consultation.html'
+    template = 'consultations/edit_consultation.html'
     context = {
         'form': form,
         'consultation': consultation,
     }
 
     return render(request, template, context)
+
 
 def delete_consultation(request, consultation_id):
     """ Delete a consultation from the store """
