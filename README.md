@@ -14,7 +14,8 @@ This is my e-commerce platform built using Django where customers can purchase c
 - [Custom Models](#custom-models)
 - [Custom 404 Page](#custom-404-page)
 - [Deployment](#deployment)
-- [Testing and Debugging](#testing-and-debugging)
+- [Testing](#testing)
+- [Issues](#issues)
 - [Credits](#credits)
 
 ---
@@ -24,16 +25,15 @@ This is an e-commerce website focused on providing tattoo design services. Custo
 1. Purchase pre-designed tattoos.
 2. Request custom tattoo designs.
 3. Book consultations to discuss tattoo ideas.
-4. Manage their bookings through an interactive calendar.
+4. View their purchases bookings through an interactive calendar.
 5. Pay securely via Stripe.
+6. If a store owner, have the control over product and consultation management.
 
 ## Features
 - **Authentication**: User registration and login via email or social media.
-- **User Profiles**: Save favorite tattoo designs, view order history, and manage bookings.
-- **Gallery**: Browse and filter tattoos by size and style.
+- **User Profiles**: Save favorite tattoo designs, view order history, and bookings.
 - **Stripe Payment Integration**: Secure payments for tattoos and consultations.
 - **Consultation Booking**: Users can select dates from a calendar and manage appointments.
-- **Custom Calendar**: Real-time calendar system to show my availability.
 - **Admin Interface**: Manage orders, consultations, and calendar events.
 - **SEO & Marketing**: SEO implementation, including robots.txt, sitemap, and meta tags.
 
@@ -42,7 +42,7 @@ This is an e-commerce website focused on providing tattoo design services. Custo
    - “As a user, I want to create an account so that I can save my favorite tattoos and view my order history.”
    - “As a user, I want to log in using my email or social media account so that I can easily access my saved items.”
    
-2. **Gallery & Filtering**:
+2. **Shopping & Filtering**:
    - “As a customer, I want to filter tattoos by size and style so that I can quickly find designs that match my preferences.”
    - “As a user, I want to view a gallery of custom designs so that I can get inspired for my own tattoo.”
    
@@ -93,7 +93,7 @@ To set up the project locally, follow these steps:
    python manage.py runserver
    ```
 
-... process to gallery y management.
+... process to shopping and management.
 
 ## Technologies Used
 - **Django**: Web framework.
@@ -106,7 +106,6 @@ To set up the project locally, follow these steps:
 
 ## Stripe Payment Integration
 I have integrated Stripe to process payments for:
-- Custom tattoo designs.
 - Pre-designed tattoos.
 - Consultation bookings.
 
@@ -124,8 +123,7 @@ STRIPE_SECRET_KEY = 'your_secret_key_here'
   - Descriptive meta tags are included on all key pages.
   
 - **Marketing**:
-  - A mockup Instagram business page is created for social media marketing.
-  - A newsletter sign-up form integrated with MailChimp for lead generation.
+  - A mockup Instagram business page is created for social media marketing which can be accessed in the header.
 
 ## Agile Methodology
 I followed Agile methodologies throughout the project:
@@ -214,9 +212,117 @@ Select the branch you want to deploy.
 Click "Deploy Branch".
 
 
-## Testing and Debugging
-- **Unit Testing**: I used Django's testing framework for unit testing models and views.
-- **Error Logging**: Errors are logged using Django's in-built logging system for easy debugging.
+
+## Testing
+
+#### HTML
+
+<details>
+<summary>Click to expand.</summary>
+
+- About.html
+<img src="READMEmedia/home-validate.png">
+
+- Explain here
+
+- Dashboard.html
+<img src="READMEmedia/">
+
+- 
+
+- Login.html
+<img src="READMEmedia/">
+
+- Logout.html
+<img src="READMEmedia/">
+
+- Messages.html
+<img src="READMEmedia/">
+
+- Profile.html
+<img src="READMEmedia/">
+
+- Register.html
+<img src="READMEmedia/">
+
+- As you can see here on the register page, these errors are coming from the django modal. This does not cause any issues with the sign up however I was unable to do this with the time limits.
+
+</details>
+
+#### CSS
+
+<details>
+<summary>Click to expand.</summary>
+
+- I have included only one screenshot as all the pages are linked to the same CSS and all pages load the styles consistently as can be seen in the features.
+
+<img src="READMEmedia/css-checker.png" width="250px">
+
+</details>
+
+#### JAVASCRIPT
+
+<details>
+<summary>Click to expand.</summary>
+
+- JShint
+
+<img src="READMEmedia/jshint.png" width="250px">
+
+</details>
+
+
+### Responsiveness 
+
+<details>
+<summary>Click to expand.</summary>
+
+- .html
+
+<img src="READMEmedia/signin.png">
+
+- .html
+
+<img src="READMEmedia/signin.png">
+
+</details>
+
+### Compatibilty 
+
+The project has been tested for compatibility with the following browsers using this site. You will be able to see there are no issues with the compatability across these browsers:
+
+- Google Chrome (Version 124)
+- Edge (Version 124)
+- Firefox (Version 124)
+- Opera (Version 109)
+- macOS Sonoma (17)
+- Chrome (124)
+- iOS (<= 16 17)
+
+<img src="">
+
+### Accessibility
+
+By utilising the Wave Accessibility tool for ongoing development and final testing, used for the below:
+
+1. Ensure all forms have associated labels or appropriate aria-labels.
+2. Validate that color contrasts meet the minimum ratios outlined in WCAG 2.1 Contrast Guidelines.
+3. Verify correct heading levels to accurately convey content importance.
+4. Confirm content is organized within landmarks for ease of use with assistive technology.
+5. Provide alternative text or titles for non-textual content.
+6. Set the HTML page lang attribute.
+7. Implement Aria properties in adherence to best practices outlined in WCAG 2.1.
+8. Follow established coding best practices for WCAG 2.1.
+
+
+### Manual Testing 
+
+
+
+## Issues
+
+- 
+
 
 ## Credits
 - **Django Documentation**: For framework setup and understanding models.
