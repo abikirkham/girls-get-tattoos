@@ -119,7 +119,7 @@ STRIPE_SECRET_KEY = 'your_secret_key_here'
 ## SEO and Web Marketing
 - **SEO**: 
   - A `robots.txt` file will be added to the project to guide web crawlers.
-  - A `sitemap.xml` file will be created to help with indexing.
+  - A `sitemap.xml` file will be created to help with indexing. https://www.xml-sitemaps.com/details-girls-get-tattoos-6ad59281377a.herokuapp.com-da3b5e825.html
   - Descriptive meta tags are included on all key pages.
   
 - **Marketing**:
