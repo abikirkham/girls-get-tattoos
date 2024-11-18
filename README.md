@@ -212,7 +212,6 @@ Select the branch you want to deploy.
 Click "Deploy Branch".
 
 
-
 ## Testing
 
 #### HTML
@@ -351,8 +350,29 @@ By utilising the Wave Accessibility tool for ongoing development and final testi
 
 
 ## Credits
-- **Django Documentation**: For framework setup and understanding models.
-- **Stripe API**: For payment gateway integration.
-- **Bootstrap**: For responsive design elements.
-- **MailChimp**: For integrating newsletter functionality.
-- **Boutique Abdo**: Code institute guide.
+
+### Project Inspiration and Tutorials
+- [WireFrames](https://cacoo.com/diagrams/QXSJF7qPDCKNuzVk/B4F94?reload_rt=1718100120618_1&): Provided the initial design inspiration for our application's user interface, ensuring an intuitive and user-friendly layout.
+- [Code Institute's Boutique Ado tutorial](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+EA101+4/courseware/eb05f06e62c64ac89823cc956fcd8191/0713d55c023943438d418d83caf4171b/): The base for my project. 
+
+### Frontend Design and Styling
+- [Text over image](https://www.w3schools.com/howto/howto_css_image_text.asp): Utilised this guide to effectively overlay text on images, enhancing visual appeal and usability.
+- [Google Fonts](https://fonts.google.com/selection/embed): Selected and embedded fonts to ensure the app has a cohesive and attractive typography.
+
+### Icons and Images
+- [Favicon Generator](https://favicon.io/favicon-generator/): Created a custom favicon to enhance the branding and recognition of our web application.
+
+## Functionality and Features
+- [Stripe](https://dashboard.stripe.com/): This project uses Stripe for secure payment processing, enabling seamless and reliable transactions with industry-leading security standards.
+- [Stripe Testing](https://docs.stripe.com/testing): These test cards were a neccessity for testing my fuctionality. 
+
+### Technical Documentation and References
+- [Django Documentation](https://docs.djangoproject.com/en/5.0/topics/http/views/): Consulted extensively for understanding and implementing various Django views.
+- [Django Forms](https://docs.djangoproject.com/en/5.0/topics/forms/): Used to manage and validate forms within the app.
+- [Django Models](https://docs.djangoproject.com/en/5.0/topics/db/models/): Helped in designing and interacting with the database models.
+- [Django Authentication](https://docs.djangoproject.com/en/5.0/topics/auth/): Implemented authentication features, ensuring secure user access and management.
+- [Django File Uploads](https://docs.djangoproject.com/en/5.0/topics/http/file-uploads/): Managed user-uploaded files, including profile images.
+- [Django Admin](https://docs.djangoproject.com/en/5.1/ref/contrib/admin/): The page provides documentation for the Django Admin site, detailing its features, customisation options, and how to use it to manage application data through a web interface.
+
+### Additional Features
+
