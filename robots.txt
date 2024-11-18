@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /accounts/
+
+Sitemap: https://girls-get-tattoos-6ad59281377a.herokuapp.com/sitemap.xml
