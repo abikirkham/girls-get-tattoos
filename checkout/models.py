@@ -6,8 +6,9 @@ from django.conf import settings
 
 from django_countries.fields import CountryField
 
-from products.models import Product
+from products.models import Product, Category
 from profiles.models import UserProfile
+from consultations.models import Consultation, ConsultationAvailability, ConsultationBooking
 from decimal import Decimal
 
 
