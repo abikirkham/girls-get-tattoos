@@ -304,8 +304,8 @@ Click "Deploy Branch".
 <details>
 <summary>Click to expand.</summary>
 
-- About.html
-<img src="READMEmedia/home-validate.png">
+- home.html
+<img src="READMEmedia/html-validator.png">
 
 - Explain here
 
