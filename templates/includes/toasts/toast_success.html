@@ -16,14 +16,17 @@
         </div>
         {% if grand_total and not on_profile_page %}
             <p class="logo-font bg-white text-black py-1">Your Bag ({{ product_count }})</p>
+
+            <!-- Notification Wrapper for Products and Consultations -->
             <div class="bag-notification-wrapper">
+                <!-- Products -->
                 {% for item in bag_items %}
                     <div class="row">
                         <div class="col-3 my-1">
                             {% if item.product.image %}
-                            <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                             {% else %}
-                            <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
+                                <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
                             {% endif %}
                         </div>
                         <div class="col-9">
@@ -33,13 +36,37 @@
                         </div>
                     </div>
                 {% endfor %}
+
+                <!-- Consultations -->
+                {% for consultation_item in consultation_items %}
+                    <div class="row">
+                        <div class="col-3 my-1">
+                            {% if consultation_item.consultation.image %}
+                                <img class="w-100" src="{{ consultation_item.consultation.image.url }}" alt="{{ consultation_item.consultation.name }}">
+                            {% else %}
+                                <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ consultation_item.consultation.name }}">
+                            {% endif %}
+                        </div>
+                        <div class="col-9">
+                            <p class="my-0"><strong>{{ consultation_item.consultation.name }}</strong></p>
+                            <p class="my-0 small">Date: {{ consultation_item.selected_date.date }}</p>
+                            <p class="my-0 small">Time: {{ consultation_item.selected_date.time }}</p>
+                            <p class="my-0 small text-muted">Qty: {{ consultation_item.quantity }}</p>
+                            <p class="my-0 small text-muted">Cost: £{{ consultation_item.consultation.price|floatformat:2 }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
+
+            <!-- Total and Actions -->
             <div class="row">
                 <div class="col">
-                    <strong><p class="mt-3 mb-1 text-black">
-                        Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}: 
-                        <span class="float-right">£{{ total|floatformat:2 }}</span>
-                    </p></strong>
+                    <strong>
+                        <p class="mt-3 mb-1 text-black">
+                            Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}: 
+                            <span class="float-right">£{{ total|floatformat:2 }}</span>
+                        </p>
+                    </strong>
                     {% if free_delivery_delta > 0 %}
                         <p class="mb-0 p-2 bg-warning shadow-sm text-black text-center">
                             Spend <strong>£{{ free_delivery_delta }}</strong> more to get free next day delivery!
