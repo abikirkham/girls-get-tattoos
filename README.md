@@ -380,19 +380,19 @@ The project has been tested for compatibility with the following browsers using 
 
 - Google Chrome (Version 124)
 
-<img src="READMEmedia/chrome.png.png">
+<img src="READMEmedia/chrome.png">
 
 - Edge (Version 124)
 
-<img src="READMEmedia/edge.png.png">
+<img src="READMEmedia/edge.png">
 
 - Firefox (Version 124)
 
-<img src="READMEmedia/firefox.png.png">
+<img src="READMEmedia/firefox.png">
 
 - Safari (Version 17)
 
-<img src="READMEmedia/safari.png.png">
+<img src="READMEmedia/safari.png">
 
 - iE (11)
 
