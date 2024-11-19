@@ -369,11 +369,8 @@ Click "Deploy Branch".
 
 - .html
 
-<img src="READMEmedia/signin.png">
+<img src="READMEmedia/.png">
 
-- .html
-
-<img src="READMEmedia/signin.png">
 
 </details>
 
@@ -382,14 +379,25 @@ Click "Deploy Branch".
 The project has been tested for compatibility with the following browsers using this site. You will be able to see there are no issues with the compatability across these browsers:
 
 - Google Chrome (Version 124)
-- Edge (Version 124)
-- Firefox (Version 124)
-- Opera (Version 109)
-- macOS Sonoma (17)
-- Chrome (124)
-- iOS (<= 16 17)
 
-<img src="">
+<img src="READMEmedia/chrome.png.png">
+
+- Edge (Version 124)
+
+<img src="READMEmedia/edge.png.png">
+
+- Firefox (Version 124)
+
+<img src="READMEmedia/firefox.png.png">
+
+- Safari (Version 17)
+
+<img src="READMEmedia/safari.png.png">
+
+- iE (11)
+
+<img src="READMEmedia/explorer.png">
+
 
 ### Accessibility
 
