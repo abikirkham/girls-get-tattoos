@@ -445,7 +445,7 @@ By utilising the Wave Accessibility tool for ongoing development and final testi
 
 ## Issues
 
-<img src="READMEmedia/all-devices-black.png">
+<img src="READMEmedia/issue1.png">
 
 - 
 
