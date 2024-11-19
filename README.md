@@ -304,32 +304,37 @@ Click "Deploy Branch".
 <details>
 <summary>Click to expand.</summary>
 
-- home.html
-<img src="READMEmedia/html-validator.png">
 
-- Explain here
+- [home.html](https://girls-get-tattoos-6ad59281377a.herokuapp.com/)
+  ![HTML Validator](READMEmedia/home-validator.png)
+  
+- [signup.html](https://girls-get-tattoos-6ad59281377a.herokuapp.com/accounts/signup/)
+  ![HTML Validator](READMEmedia/signup-validator.png)
 
-- Dashboard.html
-<img src="READMEmedia/">
+- [login.html](https://girls-get-tattoos-6ad59281377a.herokuapp.com/accounts/login/)
+  ![HTML Validator](READMEmedia/login-validator.png)
 
-- 
+- [products.html](https://girls-get-tattoos-6ad59281377a.herokuapp.com/products/)
+  ![HTML Validator](READMEmedia/products-validator.png)
 
-- Login.html
-<img src="READMEmedia/">
+- [consultations.html](https://girls-get-tattoos-6ad59281377a.herokuapp.com/consultations/)
+  ![HTML Validator](READMEmedia/consultation-validator.png)
 
-- Logout.html
-<img src="READMEmedia/">
+- [contact.html](https://girls-get-tattoos-6ad59281377a.herokuapp.com/contact/)
+  ![HTML Validator](READMEmedia/contact-validator.png)
 
-- Messages.html
-<img src="READMEmedia/">
+- [bag.html](https://girls-get-tattoos-6ad59281377a.herokuapp.com/bag/)
+  ![HTML Validator](READMEmedia/bag-validator.png)
 
-- Profile.html
-<img src="READMEmedia/">
+- [reset-password.html](https://girls-get-tattoos-6ad59281377a.herokuapp.com/accounts/password/reset/)
+  ![HTML Validator](READMEmedia/reset-password-validator.png)
 
-- Register.html
-<img src="READMEmedia/">
+- [product_detail.html](https://girls-get-tattoos-6ad59281377a.herokuapp.com/products/1/)
+  ![HTML Validator](READMEmedia/product-details-validator.png)
 
-- As you can see here on the register page, these errors are coming from the django modal. This does not cause any issues with the sign up however I was unable to do this with the time limits.
+- [consultation1.html](https://girls-get-tattoos-6ad59281377a.herokuapp.com/consultations/1/)
+  ![HTML Validator](READMEmedia/consultation-details-validator.png)
+
 
 </details>
 
@@ -350,6 +355,7 @@ Click "Deploy Branch".
 <summary>Click to expand.</summary>
 
 - JShint
+- Here I included all my javascript in one jshint validator image for testing. 
 
 <img src="READMEmedia/jshint.png" width="250px">
 
