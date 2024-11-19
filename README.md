@@ -4,23 +4,6 @@
 
 This is my e-commerce platform built using Django where customers can purchase custom or pre-designed tattoos and consultations. It integrates Stripe for secure payments, provides user authentication, and enables booking consultation appointments through a calendar system. Users can view previous orders, save favorite tattoo designs, and manage their bookings. 
 
-## Table of Contents
-- [Project Overview](#project-overview)
-- [Features](#features)
-- [User Stories](#user-stories)
-- [Installation](#installation)
-- [Technologies Used](#technologies-used)
-- [Stripe Payment Integration](#stripe-payment-integration)
-- [SEO and Web Marketing](#seo-and-web-marketing)
-- [Agile Methodology](#agile-methodology)
-- [Custom Models](#custom-models)
-- [Custom 404 Page](#custom-404-page)
-- [Deployment](#deployment)
-- [Testing](#testing)
-- [Issues](#issues)
-- [Credits](#credits)
-
----
 
 ## Project Overview
 This is an e-commerce website focused on providing tattoo design services. Customers can:
@@ -105,6 +88,7 @@ To set up the project locally, follow these steps:
 - **HTML/CSS**: Front-end structure and design.
 - **Bootstrap**: Responsive design.
 - **Celery/Redis**: For handling background tasks (e.g., confirmation emails).
+- **AWS**: For user interface for static files.
 
 ## Stripe Payment Integration
 I have integrated Stripe to process payments for:
@@ -125,12 +109,13 @@ STRIPE_SECRET_KEY = 'your_secret_key_here'
   - Descriptive meta tags are included on all key pages.
   
 - **Marketing**:
-  - A mockup Instagram business page is created for social media marketing which can be accessed in the header.
+  - A mockup Instagram business page is created for social media marketing which can be accessed in the header. 
+  [Instagram Page](www.instagram.com/girls.get.tattoos)
 
 ## Agile Methodology
 I followed Agile methodologies throughout the project:
 - **User Stories**: Clearly defined user stories were created and tracked using GitHub Projects.
-- **Tasks**: Each feature was broken down into individual tasks, which were tracked in GitHub issues.
+- **Tasks**: Each feature was broken down into individual tasks, which were tracked in GitHub issues. (You will be able to view this in the closed/completed section of the issues).
 - **Iterative Development**: The project was built in iterative cycles with regular updates to features and testing.
 
 
@@ -138,6 +123,70 @@ I followed Agile methodologies throughout the project:
 1. **TattooDesign**: Stores information about tattoo designs (custom or pre-made).
 2. **Consultation**: Handles booking of consultation appointments and stores relevant info.
 3. **Order**: Stores user order history, including tattoo designs and consultations.
+
+### Consultation model
+
+#### Django E-Commerce Consultation Site
+
+This is my Django-based e-commerce site where users can browse, book, and manage consultations. Below, I explain how the various components work together to create a personalized experience for users and administrators.
+
+##### Models
+
+1. **Consultation Model**:
+   - This defines the properties of consultations like name, price, description, and image. It helps organize the consultations in the database and represents them in a human-readable format using the `__str__` method.
+
+2. **ConsultationAvailability Model**:
+   - Tracks when a consultation is available. Each consultation can have multiple availability slots, and `is_booked` indicates whether a date is already booked.
+
+3. **ConsultationBooking Model**:
+   - Links a user to a specific consultation and availability date. It tracks the booking details, including the user who made the booking and the date of the consultation.
+
+##### Views
+
+1. **`all_consultations`**:
+   - Displays all consultations with options to search and sort them by name or price.
+
+2. **`consultation_detail`**:
+   - Shows details of a consultation with available dates for booking. Users can select a date and add it to their cart.
+
+3. **`add_consultation`**:
+   - Allows administrators to add a new consultation via a form.
+
+4. **`edit_consultation`**:
+   - Lets admins edit existing consultations using a pre-filled form.
+
+5. **`delete_consultation`**:
+   - Admins can delete consultations from the database.
+
+##### Forms
+
+- **ConsultationForm**:
+   - This form is used for adding or editing consultations. It validates input and adds custom CSS for a better user experience.
+
+##### Admin
+
+- **ConsultationAdmin**:
+   - I set up the admin interface to manage consultations and their availability. It also lets me order and filter consultations easily.
+
+##### Custom Widgets
+
+- **CustomClearableFileInput**:
+   - A custom widget to handle file inputs for consultation images with user-friendly labels for removing or displaying the current image.
+
+##### How It Works
+
+1. **Creating Consultations**: Admins can add consultations using the `add_consultation` view. The form automatically saves data to the `Consultation` model.
+   
+2. **Booking Consultations**: Users view consultations, check available dates, and book them via the `consultation_detail` view. The availability is stored in the `ConsultationAvailability` model.
+
+3. **Tracking Bookings**: When a user books a consultation, a `ConsultationBooking` record is created to link the user, consultation, and selected date.
+
+4. **Admin Interface**: The Django admin lets me manage consultations, their availability, and bookings all in one place.
+
+##### Conclusion
+
+By combining these components, I’ve built a functional consultation booking system where users can view, book, and manage consultations while admins can easily manage the site.
+
 
 ## Custom 404 Page
 A custom 404 error page has been implemented to improve user experience. The template is located in the `templates` directory as `404.html`.
@@ -212,6 +261,40 @@ In the "Deploy" tab:
 Go to the "Manual deploy" section.
 Select the branch you want to deploy.
 Click "Deploy Branch".
+
+## My Gallery
+
+| ![Add to Bag](READMEmedia/add%20to%20bag.png) | ![Alert Editing](READMEmedia/alert%20editing.png) | ![Bird Search](READMEmedia/bird%20search.png) |
+|----------------------------------|-------------------------------------|-----------------------------------|
+| A screenshot of the "Add to Bag" page featuring Frog Noodles. | An alert box with the message "You are editing Flower Bug." | A product search result for "bird," showing two items: Bird Flying High and Bird in Vase. |
+
+| ![Browse Tab](READMEmedia/browse%20tab.png) | ![Checkout Page 1](READMEmedia/checkout1.png) | ![Checkout Page 2](READMEmedia/checkout2.png) |
+|----------------------------------|---------------------------------------|---------------------------------------|
+| The browse navigation tab with options for Shop, Consultation, and Contact Us. | The first part of the checkout form filled with name and email details. | The second part of the checkout form with payment details and address fields. |
+
+| ![Consultation Detail](READMEmedia/consultation%20detail.png) | ![Consultation Options](READMEmedia/consultation1.png) | ![Homepage](READMEmedia/home.png) |
+|------------------------------------------|-------------------------------------------|--------------------------------|
+| The detailed page for a large tattoo consultation, showing available dates. | Consultation packages for small, medium, and large tattoo designs. | Homepage featuring a banner for "The New Designs Are Here" with playful visuals. |
+
+| ![Consultation Options](READMEmedia/consultation2.png) | ![My Accounts Tab](READMEmedia/my%20accounts%20tab.png) | ![My Profile Page](READMEmedia/my%20profile.png) |
+|--------------------------------------------|---------------------------------------|---------------------------------------|
+| Consultation packages for small, medium, and large tattoo designs. | Navigation tab showing options for Product Management, My Profile, and Logout. | The profile page to update delivery details and view order history. |
+
+| ![Not Logged In Tab](READMEmedia/not%20logging%20in%20tab.png) | ![Product Details](READMEmedia/product%20details.png) | ![Product Management Page](READMEmedia/product%20management.png) |
+|-----------------------------------------|---------------------------------------|----------------------------------------|
+| Login options for Register and Login displayed under "My Account." | Detailed product page showing the Flower Bug tattoo design, price, and description. | Product management page for adding new items, including details like SKU, name, and description. |
+
+| ![Product Management Continued](READMEmedia/prduct%20management%202.png) | ![Products Page](READMEmedia/products.png) | ![Sign Out Page](READMEmedia/sign%20out.png) |
+|-----------------------------------------------------|-------------------------------------|-------------------------------------|
+| Continuation of the product management form, featuring fields for price, rating, and image upload. | List of available products, including Bird Flying High, Bird in Vase, Frog Noodles, and Lucky Kitty. | A confirmation dialogue for signing out. |
+
+| ![Sign In Page](READMEmedia/signin.png) | ![Success Sign In](READMEmedia/success%20signin.png) | ![Success Sign Out](READMEmedia/success%20sign%20out.png) |
+|-------------------------------------|----------------------------------------|----------------------------------------|
+| Sign-in page for returning users, with an option to retrieve forgotten passwords. | Success notification indicating a successful sign-in as "abiowner." | Success notification confirming the user has signed out. |
+
+| ![Flower Bug Product](READMEmedia/product%20details.png) |
+|-------------------------------------------|
+| The Flower Bug tattoo product featuring a detailed image, price, rating, and edit/delete options. |
 
 
 ## Testing
@@ -347,6 +430,8 @@ By utilising the Wave Accessibility tool for ongoing development and final testi
 
 
 ## Issues
+
+<img src="READMEmedia/all-devices-black.png">
 
 - 
 
