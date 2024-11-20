@@ -66,12 +66,23 @@ class OrderLineItem(models.Model):
     product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
-
+ 
     def save(self, *args, **kwargs):
         """
         Override the original save method to set the lineitem total
-        and update the order total.
+        and update the order total.        
         """
+        # ---------------------------------------------------------------
+        print(f"Product Price: {self.product.price}, Type: {type(self.product.price)}")
+        print(f"Quantity: {self.quantity}, Type: {type(self.quantity)}")
+        if isinstance(self.quantity, str):
+            try:
+                self.quantity = int(self.quantity)
+            except ValueError:
+                raise ValueError("Quantity must be an integer.")
+        # ---------------------------------------------------------------
+        
+
         self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
 
