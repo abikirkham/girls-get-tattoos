@@ -186,6 +186,92 @@ This is my Django-based e-commerce site where users can browse, book, and manage
 
 By combining these components, I’ve built a functional consultation booking system where users can view, book, and manage consultations while admins can easily manage the site.
 
+### Likes model
+
+This feature allows users to "like" products in the e-commerce store. Below, I explain how the components work together to implement the like functionality, display liked items, and update the UI dynamically.
+
+#### Models
+
+1. **Like Model**:
+   - This model links users to the products they like. It stores the user and the liked product as foreign keys, along with the timestamp of when the like occurred. The `__str__` method provides a human-readable format like "User likes Product Name."
+
+#### Views
+
+1. **`like_view`**:
+   - Handles the AJAX request to like or unlike a product. It checks if the user is authenticated, gets the product using the `product_id` from the POST request, and creates or updates a `Like` record for the user and product. It returns a JSON response indicating the success or failure of the operation.
+
+2. **`liked_items_view`**:
+   - Displays a list of all liked products for the authenticated user. It fetches liked items from the `Like` model, displaying the products that the user has liked.
+
+#### Templates
+
+1. **`liked_items.html`**:
+   - This template shows the list of products a user has liked. It loops through the liked items and provides a link to the product detail page for each liked product. The template also handles cases where the user has no liked items.
+
+#### JavaScript
+
+1. **AJAX for Like Button**:
+   - This JavaScript code enables the functionality of liking a product without refreshing the page. When a user clicks the like button, an AJAX request is sent to the server with the `product_id` and CSRF token. Based on the response, the button text changes to "Liked" or "Like," and the like count is updated dynamically.
+
+   **JavaScript Code:**
+   ```javascript
+         $(document).ready(function() {
+            $('.likeButton').click(function() {
+               var product_id = $(this).data('product-id');
+               var button = $(this);
+               $.ajax({
+                     type: 'POST',
+                     url: '/like/',
+                     data: {
+                        'product_id': product_id,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'
+                     },
+                     dataType: 'json',
+                     success: function(response) {
+                        if (response.liked) {
+                           button.text('Liked');
+                        }
+                     },
+                     error: function(response) {
+                        console.log('Error:', response);
+                     }
+               });
+            });
+         });
+```
+
+### Forms
+
+#### LikeForm (optional):
+If needed, this form would allow users to submit likes from a form view, though the AJAX solution is preferred for better user experience.
+
+#### How It Works
+
+#### Liking a Product:
+When a user clicks the like button on a product, the `like_view` handles the AJAX request, either creating or updating a `Like` record in the database.
+
+#### Displaying Liked Items:
+Users can view all products they have liked by visiting the `liked_items_view` page. The page shows a list of liked products, with links to the product details.
+
+#### Dynamic UI Update:
+The JavaScript updates the like button's text and the like count dynamically without a page reload. It uses AJAX to send the data to the server and update the UI based on the server's response.
+
+### Admin
+
+#### LikeAdmin:
+The Django admin interface is set up to manage the `Like` model. This allows admins to view and manage user likes, ensuring they can track popular products and manage user interactions.
+
+### How To Integrate
+
+#### Adding Likes:
+When users click the like button on a product page, an AJAX request is sent to the server, which then updates the `Like` model in the database.
+
+#### Viewing Liked Items:
+Users can visit their profile or the "Liked Items" page to see all the products they have liked. This data is fetched from the `Like` model in the `liked_items_view`.
+
+#### Admin Interface:
+Admins can easily manage likes through the Django admin interface, where they can view which users have liked which products.
+
 
 ## Custom 404 Page
 A custom 404 error page has been implemented to improve user experience. The template is located in the `templates` directory as `404.html`.
@@ -279,11 +365,11 @@ Click "Deploy Branch".
 |--------------------------------------------|---------------------------------------|---------------------------------------|
 | Consultation packages for small, medium, and large tattoo designs. | Navigation tab showing options for Product Management, My Profile, and Logout. | The profile page to update delivery details and view order history. |
 
-| ![Not Logged In Tab](READMEmedia/not%20logging%20in%20tab.png) | ![Product Details](READMEmedia/product%20details.png) | ![Product Management Page](READMEmedia/product%20management.png) |
+| ![Not Logged In Tab](READMEmedia/not%20logging%20in%20tab.png) | ![Product Details](READMEmedia/product_detail.png) | ![Product Management Page](READMEmedia/product%20management.png) |
 |-----------------------------------------|---------------------------------------|----------------------------------------|
 | Login options for Register and Login displayed under "My Account." | Detailed product page showing the Flower Bug tattoo design, price, and description. | Product management page for adding new items, including details like SKU, name, and description. |
 
-| ![Product Management Continued](READMEmedia/prduct%20management%202.png) | ![Products Page](READMEmedia/products.png) | ![Sign Out Page](READMEmedia/sign%20out.png) |
+| ![Product Management Continued](READMEmedia/prduct%20management%202.png) | ![Products Page](READMEmedia/product.png) | ![Sign Out Page](READMEmedia/sign%20out.png) |
 |-----------------------------------------------------|-------------------------------------|-------------------------------------|
 | Continuation of the product management form, featuring fields for price, rating, and image upload. | List of available products, including Bird Flying High, Bird in Vase, Frog Noodles, and Lucky Kitty. | A confirmation dialogue for signing out. |
 
