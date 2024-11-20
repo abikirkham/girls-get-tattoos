@@ -183,7 +183,6 @@ This is my Django-based e-commerce site where users can browse, book, and manage
 
 4. **Admin Interface**: The Django admin lets me manage consultations, their availability, and bookings all in one place.
 
-##### Conclusion
 
 By combining these components, I’ve built a functional consultation booking system where users can view, book, and manage consultations while admins can easily manage the site.
 
@@ -469,6 +468,7 @@ By utilising the Wave Accessibility tool for ongoing development and final testi
 ## Functionality and Features
 - [Stripe](https://dashboard.stripe.com/): This project uses Stripe for secure payment processing, enabling seamless and reliable transactions with industry-leading security standards.
 - [Stripe Testing](https://docs.stripe.com/testing): These test cards were a neccessity for testing my fuctionality. 
+- [Like count implementation](https://dev.to/radualexandrub/how-to-add-like-unlike-button-to-your-django-blog-5gkg): Incorporated a like/unlike feature for posts, enabling user interaction and engagement.
 
 ### Technical Documentation and References
 - [Django Documentation](https://docs.djangoproject.com/en/5.0/topics/http/views/): Consulted extensively for understanding and implementing various Django views.
