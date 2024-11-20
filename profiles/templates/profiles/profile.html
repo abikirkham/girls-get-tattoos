@@ -45,6 +45,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% if orders %}
                             {% for order in orders %}
                                 <tr>
                                     <td>
@@ -68,10 +69,19 @@
                                     <td>£{{ order.grand_total }}</td>
                                 </tr>
                             {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">No orders found.</td>
+                                </tr>
+                            {% endif %}
                         </tbody>
                     </table>
+                    <div class="row"></div>
+                    <a href="{% url 'liked_items' %}" class="btn btn-black rounded-0 text-uppercase float-right">View liked products</a>
+                </div>
                 </div>
             </div>
+            <br>
         </div>
         <br>
 {% endblock %}

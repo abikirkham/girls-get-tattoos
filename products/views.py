@@ -4,7 +4,9 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
-from .models import Product, Category
+from .models import Product, Category, Like
+from products.models import Product
+from products.models import Like
 from .forms import ProductForm
 
 # Create your views here.
@@ -135,3 +137,10 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+def like_view(request):
+    if request.method == 'POST' and request.user.is_authenticated:
+        liked_product_id = request.POST.get('product_id')
+        liked_product = get_object_or_404(Product, id=liked_product_id)
+        like, created = Like.objects.get_or_create(user=request.user, liked_product=liked_product)
+    return JsonResponse({}, status=400)

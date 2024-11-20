@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .models import UserProfile
+from products.models import Like
 from .forms import UserProfileForm
 
 from checkout.models import Order
@@ -48,3 +49,10 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
+
+def liked_items_view(request):
+    if request.user.is_authenticated:
+        liked_items = Like.objects.filter(user=request.user).select_related('liked_product')
+        return render(request, 'profiles/liked_items.html', {'liked_items': liked_items})
+    else:
+        return redirect('login')

@@ -45,6 +45,13 @@
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-details-container mb-5 mt-md-5">
                     <p class="mb-0 text-black">{{ product.name }}</p>
+                    {% if user.is_authenticated %}
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-outline-danger btn-sm btn-custom likeButton" data-post-id="{{ product.id }}">
+                                    <i class="far fa-heart text-danger"></i>
+                                </button>
+                            </div>
+                    {% endif %}
                     <p class="lead mb-0 text-left font-weight-bold text-black">£{{ product.price }}</p>
                     {% if product.rating %}
                         <small class="text-muted"><i class="fas fa-star mr-1 text-black"></i>{{ product.rating }} / 5</small>
@@ -108,5 +115,6 @@
 {% endblock %}
 {% block postloadjs %}
 {{ block.super }}
+<script src="{% static 'js/liked_products.js' %}"></script>
 {% include 'products/includes/quantity_input_script.html' %}
 {% endblock %}

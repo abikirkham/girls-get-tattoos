@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container bg-white">
+    <h1>Liked Items</h1>
+    {% if liked_items %}
+        <div class="row">
+            <div class="product-container col-10 offset-1">
+                <div class="row mt-1 mb-2"></div>
+                <div class="row">
+                    {% for like in liked_items %}
+                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card h-100 border-0">
+                                {% if like.liked_product.image %}
+                                    <a href="{% url 'product-detail' like.liked_product.id %}">
+                                        <img class="card-img-top img-fluid" src="{{ like.liked_product.image.url }}" alt="{{ like.liked_product.name }}">
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'product-detail' like.liked_product.id %}">
+                                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ like.liked_product.name }}">
+                                    </a>
+                                {% endif %}
+                                <div class="card-body pb-0">
+                                    <p class="mb-0 text-black">{{ like.liked_product.name }}</p>
+                                </div>
+                                {% if user.is_authenticated %}
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-outline-danger btn-sm btn-custom likeButton" data-post-id="{{ like.liked_product.id }}">
+                                            <i class="far fa-heart text-danger"></i>
+                                        </button>
+                                    </div>
+                                {% endif %}
+                                <div class="card-footer bg-white pt-0 border-0 text-left">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="lead mb-0 text-left font-weight-bold text-black">£{{ like.liked_product.price }}</p>
+                                            {% if like.liked_product.rating %}
+                                                <small class="text-muted text-black"><i class="fas fa-star mr-1"></i>{{ like.liked_product.rating }} / 5</small>
+                                            {% else %}
+                                                <small class="text-muted text-black">No Rating</small>
+                                            {% endif %}
+                                            {% if request.user.is_superuser %}
+                                                <small class="ml-3">
+                                                    <a href="{% url 'edit_product' like.liked_product.id %}">Edit</a> | 
+                                                    <a class="text-danger" href="{% url 'delete_product' like.liked_product.id %}">Delete</a>
+                                                </small>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% if forloop.counter|divisibleby:1 %}
+                            <div class="col-12 d-sm-none mb-5">
+                                <hr>
+                            </div>
+                        {% endif %}                        
+                        {% if forloop.counter|divisibleby:2 %}
+                            <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
+                                <hr>
+                            </div>
+                        {% endif %}
+                        {% if forloop.counter|divisibleby:3 %}
+                            <div class="col-12 d-none d-lg-block d-xl-none mb-5">
+                                <hr>
+                            </div>
+                        {% endif %}
+                        {% if forloop.counter|divisibleby:4 %}
+                            <div class="col-12 d-none d-xl-block mb-5">
+                                <hr>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p>You haven't liked any items yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -81,6 +81,13 @@
                                 <div class="card-body pb-0">
                                     <p class="mb-0 text-black">{{ product.name }}</p>
                                 </div>
+                                {% if user.is_authenticated %}
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-outline-danger btn-sm btn-custom likeButton" data-post-id="{{ product.id }}">
+                                            <i class="far fa-heart text-danger"></i>
+                                        </button>
+                                    </div>
+                                {% endif %}
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
@@ -157,5 +164,6 @@
             }
         })
     </script>
+    <script src="{% static 'js/liked_products.js' %}"></script>
 {% endblock %}
 {% endblock %}
