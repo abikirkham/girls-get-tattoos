@@ -29,11 +29,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '(16++&w=5l#9eyoqj(_yawuwgdxpn6g#f9q3a
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = 'DEVELOPMENT' in os.environ
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['.codeinstitute-ide.net', '.herokuapp.com', 'localhost']
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-abikirkham-girlsgettatt-mmnx4jw091u.ws.codeinstitute-ide.net']
+CSRF_TRUSTED_ORIGINS = ['https://8000-abikirkham-girlsgettatt-mmnx4jw091u.ws.codeinstitute-ide.net', 'https://8000-abikirkham-girlsgettatt-u836t2aelhc.ws.codeinstitute-ide.net']
 
 # Application definition
 
