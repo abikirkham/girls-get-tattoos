@@ -105,8 +105,6 @@ The website is designed with simplicity and style, aligning with the aesthetics 
 - **As a user, I want to reset my password if I forget it**, using a secure password recovery process.
 - **As an admin, I want to ensure all user data (personal information, payment details) is encrypted and securely stored** to maintain privacy.
 
-# Business Model and Persona Summary
-
 ## Business Model
 
 The platform operates as a **B2C (Business-to-Consumer) e-commerce website**, selling products directly to customers. It generates revenue through:
@@ -114,7 +112,7 @@ The platform operates as a **B2C (Business-to-Consumer) e-commerce website**, se
 - **Product Sales**: Customers purchase tattoo products, designs, or merchandise directly through the website.
 - **Optional Premium Memberships**: Users can opt for a membership that offers discounts on products or consultations.
 
-### Persona Summary
+## Persona Summary
 
 #### Customers
 - **Tattoo Enthusiasts**: These individuals are passionate about artistic designs and tattoos. They are looking for high-quality tattoo products, designs, merchandise, and accessories. They value creativity, customization, and professionalism when selecting tattoo-related services.
