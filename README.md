@@ -355,6 +355,14 @@ I followed Agile methodologies throughout the project:
 
 ---
 
+## Features
+
+
+Please refer to the [FEATURES.md](FEATURES.md) file for all test-related documentation.
+
+
+---
+
 ## Data Models
 
 This document outlines the core data models used in the application. Each model is designed to handle specific functionality and relationships, ensuring a scalable and efficient database structure.
@@ -582,114 +590,20 @@ Admins can easily manage likes through the Django admin interface, where they ca
 A custom 404 error page has been implemented to improve user experience. The template is located in the `templates` directory as `404.html`.
 
 ---
-## Deployment
-
-### Making a Local Clone to create project
-
-- Find the GitHub Repository.
-- Click the Code button
-- Copy the link shown.
-- In Gitpod, change the directory to the location you would like the cloned directory to be located.
-- Type git clone, and paste the link you copied in step 3.
-- Press Enter to have the local clone created.
-
-### Updating my changes
-
-git add <file> - This command was used to add the file(s) to the staging area before they are committed.
-
-git commit -m “commit message” - This command was used to commit changes to the local repository queue ready for the final step.
-
-git push - This command was used to update all committed code to the remote repository on github.
-
-### Heroku
 
 
-#### 1. Prepare Your Project
 
-Ensure your project has the necessary files for deployment:
+## Deployment and Payment setup
 
-- **Procfile**: Specifies the commands that are executed by the app on startup.
-    ```makefile
-  python app.py 
-  ```
-- **requirements.txt**: Lists all the dependencies your app needs.
-    ```makefile
-  Flask==1.1.2
-  gunicorn==20.0.4
-  ```
+- The app was deployed to [Heroku](https://heroku.com/).
+- The database was deployed to [AWS](https://aws.amazon.com/free/?gclid=Cj0KCQiA1p28BhCBARIsADP9HrNnWy7i6kB1OyS1rAjnm2VmYwxEpZ6reUTK5XEi6Mfo-WmadHDh-ckaAtlVEALw_wcB&trk=ce1f55b8-6da8-4aa2-af36-3f11e9a449ae&sc_channel=ps&ef_id=Cj0KCQiA1p28BhCBARIsADP9HrNnWy7i6kB1OyS1rAjnm2VmYwxEpZ6reUTK5XEi6Mfo-WmadHDh-ckaAtlVEALw_wcB:G:s&s_kwcid=AL!4422!3!645997746383!e!!g!!aws%20console!9762827897!98496538543&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all).
 
-#### 2. Create a New Heroku App
-Open your terminal and log in to Heroku:
 
-```
-bash:
-heroku login
-Create a new app:
+Please refer to the [DEPLOYMENT.md](DEPLOYMENT.md) file for all deployment and payment-related documentation.
 
-bash:
-heroku create girls-get-tattoos
-```
-
-Alternatively, create an app directly from the Heroku dashboard by clicking "New" and then "Create new app".
-
-#### 3. Connect Heroku App to GitHub
-- Go to Heroku Dashboard: Navigate to the Heroku dashboard.
-- Select Your App: Click on the app you created.
-- Deploy Tab: Go to the "Deploy" tab.
-- Deployment Method: Under "Deployment method", select "GitHub".
-- Connect to GitHub: Authorise Heroku to access your - GitHub account if it's your first time. Search for the repository you want to connect and click "Connect".
-
-#### 4. Configure Environment Variables
-Set any necessary environment variables for your app:
-
-Go to the "Settings" tab.
-Click "Reveal Config Vars".
-Add your key-value pairs.
-
-#### 5. Manual Deployment
-In the "Deploy" tab:
-
-Go to the "Manual deploy" section.
-Select the branch you want to deploy.
-Click "Deploy Branch".
 
 ---
 
-## My Gallery
-
-| ![Add to Bag](READMEmedia/add%20to%20bag.png) | ![Alert Editing](READMEmedia/alert%20editing.png) | ![Bird Search](READMEmedia/bird%20search.png) |
-|----------------------------------|-------------------------------------|-----------------------------------|
-| A screenshot of the "Add to Bag" page featuring Frog Noodles. | An alert box with the message "You are editing Flower Bug." | A product search result for "bird," showing two items: Bird Flying High and Bird in Vase. |
-
-| ![Browse Tab](READMEmedia/browse%20tab.png) | ![Checkout Page 1](READMEmedia/checkout1.png) | ![Checkout Page 2](READMEmedia/checkout2.png) |
-|----------------------------------|---------------------------------------|---------------------------------------|
-| The browse navigation tab with options for Shop, Consultation, and Contact Us. | The first part of the checkout form filled with name and email details. | The second part of the checkout form with payment details and address fields. |
-
-| ![Consultation Detail](READMEmedia/consultation%20detail.png) | ![Consultation Options](READMEmedia/consultation1.png) | ![Homepage](READMEmedia/home.png) |
-|------------------------------------------|-------------------------------------------|--------------------------------|
-| The detailed page for a large tattoo consultation, showing available dates. | Consultation packages for small, medium, and large tattoo designs. | Homepage featuring a banner for "The New Designs Are Here" with playful visuals. |
-
-| ![Consultation Options](READMEmedia/consultation2.png) | ![My Accounts Tab](READMEmedia/my%20accounts%20tab.png) | ![My Profile Page](READMEmedia/my%20profile.png) |
-|--------------------------------------------|---------------------------------------|---------------------------------------|
-| Consultation packages for small, medium, and large tattoo designs. | Navigation tab showing options for Product Management, My Profile, and Logout. | The profile page to update delivery details and view order history. |
-
-| ![Not Logged In Tab](READMEmedia/not%20logging%20in%20tab.png) | ![Product Details](READMEmedia/product_detail.png) | ![Product Management Page](READMEmedia/product%20management.png) |
-|-----------------------------------------|---------------------------------------|----------------------------------------|
-| Login options for Register and Login displayed under "My Account." | Detailed product page showing the Flower Bug tattoo design, price, and description. | Product management page for adding new items, including details like SKU, name, and description. |
-
-| ![Product Management Continued](READMEmedia/prduct%20management%202.png) | ![Products Page](READMEmedia/product.png) | ![Sign Out Page](READMEmedia/sign%20out.png) |
-|-----------------------------------------------------|-------------------------------------|-------------------------------------|
-| Continuation of the product management form, featuring fields for price, rating, and image upload. | List of available products, including Bird Flying High, Bird in Vase, Frog Noodles, and Lucky Kitty. | A confirmation dialogue for signing out. |
-
-| ![Sign In Page](READMEmedia/signin.png) | ![Success Sign In](READMEmedia/success%20signin.png) | ![Success Sign Out](READMEmedia/success%20sign%20out.png) |
-|-------------------------------------|----------------------------------------|----------------------------------------|
-| Sign-in page for returning users, with an option to retrieve forgotten passwords. | Success notification indicating a successful sign-in as "abiowner." | Success notification confirming the user has signed out. |
-
-| ![Flower Bug Product](READMEmedia/product%20details.png) |
-|-------------------------------------------|
-| The Flower Bug tattoo product featuring a detailed image, price, rating, and edit/delete options. |
-
----
 
 ## Testing 
 
