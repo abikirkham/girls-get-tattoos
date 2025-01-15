@@ -115,6 +115,15 @@ The website is designed with simplicity and style, aligning with the aesthetics 
 
 ---
 
+## Agile Methodology 
+
+GitHub Project Management was instrumental in managing the project. Without it, I wouldn't have been able to oversee the development of the application effectively. It enabled me to prioritise tasks and track my progress efficiently.
+
+<img src="READMEmedia/agile-methodology.png">
+
+---
+
+
 ## Business Model
 
 The platform operates as a **B2C (Business-to-Consumer) e-commerce website**, selling products directly to customers. It generates revenue through:
@@ -171,6 +180,32 @@ To set up the project locally, follow these steps:
    ```
 
 ... process to shopping and management.
+
+---
+
+## Future Development  
+
+### Tech Support Chat  
+A chat support feature is planned to provide customers with the highest standard of service.  
+
+As the application already uses ASGI instead of WSGI, implementing chat support in the future will be more straightforward with Django Channels and Redis channel layers.  
+
+### Third-Party Registration  
+Facebook and Twitter were not considered for future development at this stage due to their additional business requirements. Google, being the most popular third-party registration service and relatively easy to implement, was prioritised. However, it is not accessible in all countries and regions, such as China.  
+
+### Payment System  
+The integration of PayPal as a payment option is planned for the future, as it is a preferred choice for many customers. Additionally, Alipay and WeChat Pay functionality are being considered for inclusion alongside the existing Stripe payment system, as these options are widely used in Asian countries, including China and Thailand.  
+
+### Order Cancellation  
+Further research and analysis are required for the order cancellation feature, which is why it has not been implemented at this stage.  
+
+### Elastic Search  
+Elastic Search is recognised as an essential feature for future development, as it has the potential to significantly enhance search speed and improve the quality of search results.  
+
+### Deferred Features  
+The decision to defer certain features was made thoughtfully. As a developer, it is necessary to evaluate the importance of each feature, estimate the time required for their development, and plan their implementation accordingly.  
+
+Understanding the exact operational procedures of a real business is crucial. For instance, insights into product prioritisation will play a vital role in setting up recommendation functionality. Therefore, some features have been intentionally left as opportunities for future learning and development.  
 
 ---
 
