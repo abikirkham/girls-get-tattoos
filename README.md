@@ -32,16 +32,6 @@ The website is designed with simplicity and style, aligning with the aesthetics 
 
 ---
 
-## Features
-- **Authentication**: User registration and login via email or social media.
-- **User Profiles**: Save favorite tattoo designs, view order history, and bookings.
-- **Stripe Payment Integration**: Secure payments for tattoos and consultations.
-- **Consultation Booking**: Users can select dates from a calendar and manage appointments.
-- **Admin Interface**: Manage orders, consultations, and calendar events.
-- **SEO & Marketing**: SEO implementation, including robots.txt, sitemap, and meta tags.
-
----
-
 ## User Stories for Tattoo Booking and Shopping Platform
 
 ### 1. Authentication and User Profiles
@@ -138,48 +128,6 @@ The platform operates as a **B2C (Business-to-Consumer) e-commerce website**, se
 
 ### Store Personnel
 - **Admin**: The admin is responsible for overseeing website operations, managing products and inventory, and handling customer queries. They ensure the smooth functionality of the platform, ensuring that products are up to date and customer experiences are seamless.
-
-
-## Installation
-To set up the project locally, follow these steps:
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/yourusername/tattoo-ecommerce.git
-   ```
-
-2. **Navigate to the project directory**:
-   ```bash
-   cd tattoo-ecommerce
-   ```
-
-3. **Set up a virtual environment**:
-   ```bash
-   python -m venv env
-   source env/bin/activate  
-   ```
-
-4. **Install the dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-5. **Set up the database**:
-   ```bash
-   python manage.py migrate
-   ```
-
-6. **Create a superuser for accessing the admin interface**:
-   ```bash
-   python manage.py createsuperuser
-   ```
-
-7. **Run the development server**:
-   ```bash
-   python manage.py runserver
-   ```
-
-... process to shopping and management.
 
 ---
 
@@ -359,6 +307,17 @@ I followed Agile methodologies throughout the project:
 
 
 Please refer to the [FEATURES.md](FEATURES.md) file for all test-related documentation.
+
+#### Featuring:
+
+- **Authentication**: User registration and login via email or social media.
+- **User Profiles**: Save favorite tattoo designs, view order history, and bookings.
+- **Stripe Payment Integration**: Secure payments for tattoos and consultations.
+- **Consultation Booking**: Users can select dates from a calendar and manage appointments.
+- **Admin Interface**: Manage orders, consultations, and calendar events.
+- **SEO & Marketing**: SEO implementation, including robots.txt, sitemap, and meta tags.
+
+---
 
 
 ---
