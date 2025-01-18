@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Security settings
 SECRET_KEY = os.environ.get('SECRET_KEY', '(16++&w=5l#9eyoqj(_yawuwgdxpn6g#f9q3apg-r^po$65yw&')
 DEBUG = True
-ALLOWED_HOSTS = ['.codeinstitute-ide.net', '.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['.codeinstitute-ide.net', '.herokuapp.com', 'https://girls-get-tattoos-6ad59281377a.herokuapp.com/', 'localhost']
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-abikirkham-girlsgettatt-mmnx4jw091u.ws.codeinstitute-ide.net',
     'https://8000-abikirkham-girlsgettatt-u836t2aelhc.ws.codeinstitute-ide.net',
@@ -106,12 +106,17 @@ LOGIN_REDIRECT_URL = '/'
 WSGI_APPLICATION = 'girls_get_tattoos.wsgi.application'
 
 # Database configuration
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
