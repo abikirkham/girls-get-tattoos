@@ -108,6 +108,14 @@ h1 {
     margin-top: 20px; /* Space above button */
     border-radius: 8px; /* Softer corners */
     transition: background 0.3s ease, color 0.3s ease; /* Smooth hover transition */
+    font-size: 2rem; /* Increase text size */
+    padding: 2rem 3rem; /* Increase padding */
+}
+
+
+h2 {
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.74);
+    padding-bottom: 20px; /* Space below heading */
 }
 
 .btt-link,
