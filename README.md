@@ -1,18 +1,14 @@
 # Tattoo Design E-commerce Project
 
+**Deployed website: [Link to website](https://girls-get-tattoos-6ad59281377a.herokuapp.com/)**
+
 <img src="READMEmedia/all-devices-black.png">
 
-This is my e-commerce platform built using Django where customers can purchase custom or pre-designed tattoos and consultations. It integrates Stripe for secure payments, provides user authentication, and enables booking consultation appointments through a calendar system. Users can view previous orders, save favorite tattoo designs, and manage their bookings. 
+**Card number for payment testing: 4242424242424242**
 
+## About
 
-## Project Overview
-This is an e-commerce website focused on providing tattoo design services. Customers can:
-1. Purchase pre-designed tattoos.
-2. Request custom tattoo designs.
-3. Book consultations to discuss tattoo ideas.
-4. View their purchases bookings through an interactive calendar.
-5. Pay securely via Stripe.
-6. If a store owner, have the control over product and consultation management.
+This is my e-commerce platform built using Django where customers can purchase custom or pre-designed tattoos and consultations. It integrates Stripe for secure payments, provides user authentication, and enables booking consultation appointments through a calendar system. Users can view previous orders, save favorite tattoo designs, and manage their bookings and store owners have the control over product and consultation management.
 
 ---
 
@@ -23,113 +19,159 @@ The website is designed with simplicity and style, aligning with the aesthetics 
 - Contrast Visuals: High-quality images to attract customers and reflect the artistic essence of tattoos.
 - User-Focused: Features such as a wishlist, a newsletter, and a few social media accounts for marketing.
 
----
-
-## Target Audience
+### Target Audience
 - Primary Audience: Tattoo enthusiasts and individuals seeking tattoo-related products.
 - Demographics: Women aged 18-45 with a passion for tattoo sticker art and culture.
 - Goals: To make tattoo products accessible and provide a seamless shopping experience.
 
----
 
-## User Stories for Tattoo Booking and Shopping Platform
+### User Stories for Tattoo Booking and Shopping Platform
 
-### 1. Authentication and User Profiles
+**1. Authentication and User Profiles**
 
 - **As a user, I want to create an account** so that I can save my favorite tattoos and view my order history.
 - **As a user, I want to log in using my email or social media account** so that I can easily access my saved items.
 - **As a user, I want to update my profile details** (name, email, password) so that my account information is accurate.
 - **As an admin, I want to view a list of registered users** so that I can manage accounts and view their activities.
 
-### 2. Shopping & Filtering
+**2. Shopping & Filtering**
 
 - **As a customer, I want to filter tattoos by size and style** so that I can quickly find designs that match my preferences.
 - **As a customer, I want to sort tattoos by price or rating** so that I can find options within my budget or the highest-rated designs.
 - **As a user, I want to view a gallery of custom designs** so that I can get inspired for my own tattoo.
 - **As a user, I want to view detailed product information, including pricing and design descriptions** so that I can make an informed purchase.
 
-### 3. Payment and Booking
+**3. Payment and Booking**
 
 - **As a customer, I want to add products to my cart** so that I can purchase multiple items at once.
 - **As a customer, I want to securely pay for my tattoo consultation via Stripe** so that I can complete my booking without any worries.
 - **As a user, I want to book a tattoo appointment based on available slots** so that I can reserve a convenient time with an artist.
 - **As a user, I want to receive a confirmation email with my appointment details after payment** so that I know my booking is confirmed.
 
-### 4. Consultation Booking
+**4. Consultation Booking**
 
 - **As a customer, I want to browse consultation packages for small, medium, and large tattoos** so that I can choose the service that fits my needs.
 - **As a customer, I want to see available dates and times for consultations** so that I can select a slot that works for me.
 - **As a customer, I want to cancel or reschedule my consultation if my plans change**, with an easy-to-use interface.
 - **As a user, I want to view my past consultations**, including dates, artist details, and feedback, so that I can keep track of my sessions.
 
-### 5. Wishlist and Likes
+**5. Wishlist and Likes**
 
 - **As a user, I want to save my favorite tattoos to a wishlist** so that I can easily return to them later.
 - **As a user, I want to "like" products in the store** so that I can quickly access them from my profile.
 - **As a user, I want to view all the products I've liked on a dedicated page** so that I can easily browse my favorites.
 
-### 6. Order History and Tracking
+**6. Order History and Tracking**
 
 - **As a user, I want to view my order history** so that I can track my previous purchases and consultations.
 - **As a user, I want to reorder previously purchased items with a simple click** so that I can easily get a design I liked again.
 - **As a user, I want to track the status of my current orders** (pending, shipped, delivered) so that I know when to expect my tattoo or consultation.
 
-### 7. Admin Management
+**7. Admin Management**
 
 - **As an admin, I want to manage products and consultations in the system** so that I can keep the catalog up to date.
 - **As an admin, I want to track customer purchases and consultations** so that I can offer tailored services and recommendations.
 - **As an admin, I want to manage user accounts** (approve, deactivate) so that I maintain the security of the platform.
 
-### 8. SEO & Marketing
+**8. SEO & Marketing**
 
 - **As a user, I want to share tattoo designs and consultations on social media platforms like Instagram** so that I can show my choices to friends.
 - **As a marketer, I want to optimize the website's SEO** using meta tags, sitemaps, and descriptions to ensure it ranks higher on search engines.
 - **As a user, I want to subscribe to a newsletter** so that I can receive updates about new tattoo designs and promotions.
 
-### 9. Accessibility
+**9. Accessibility**
 
 - **As a visually impaired user, I want the website to be compatible with screen readers** so that I can navigate it easily.
 - **As a user, I want to have sufficient contrast in visuals** so that the website is easy to read under various lighting conditions.
 - **As a user, I want the forms to have clear labels and instructions** so that I can easily fill them out without confusion.
 
-### 10. 404 Error and Custom Pages
+**10. 404 Error and Custom Pages**
 
 - **As a user, I want to be shown a custom 404 error page** if I navigate to a non-existing page so that my experience isn't disrupted with an unfriendly error.
 - **As an admin, I want to update the content on the 404 error page** to reflect the website's branding, offering users helpful links to explore other parts of the site.
 
-### 11. Security
+**11. Security**
 
 - **As a user, I want my payment details to be securely processed via Stripe** so that I can be assured my financial information is protected.
 - **As a user, I want to reset my password if I forget it**, using a secure password recovery process.
 - **As an admin, I want to ensure all user data (personal information, payment details) is encrypted and securely stored** to maintain privacy.
 
+--- 
+
+## Business Model  
+
+The platform operates as a **B2C (Business-to-Consumer) e-commerce website**, focusing on direct sales to customers. Revenue streams include:  
+
+- **Product Sales**: Offering tattoo premade designs, custom designs, and potential graphic designs for branded merchandise/ content.  
+- **Optional Customer Service**: Providing users with newsletters that offer exclusive discounts on products, consultations, and personalised design services.  
+
+## Target Persona  
+
+### Tattoo Enthusiasts  
+Individuals passionate about tattoos and artistic expression, seeking:  
+- **Creative Designs**: Unique, professional, and customisable tattoo designs to reflect their personal style.  
+- **Branded Content**: High-quality graphic designs for merchandise or content that aligns with their vision.  
+- **Great Customer Relations**: A seamless, supportive, and responsive service experience.  
+
+**Key Values**: Creativity, customisation, professionalism, and exceptional customer service.  
+
+
+## Store Personnel  
+
+### Admin  
+The admin manages platform operations, including:  
+- Handling customer queries with a focus on relationship building and satisfaction.  
+- Overseeing the delivery of graphic design services, ensuring quality and timeliness.  
+- Managing newsletters, promotional offers, and exclusive content for users.  
+
+
+## Strategic Trade-Offs  
+
+### Competitive Landscape  
+**Competitors**: Platforms such as Pinterest and AI-generated design services.  
+**Strategic Focus**:  
+- Standing out through exceptional communication and outstanding customer relations.  
+- Offering affordable yet premium-quality graphic design services tailored to individual needs.  
+
 ---
 
-## Agile Methodology 
+## SEO and Web Marketing
+- **SEO**: 
+  - A `robots.txt` file will be added to the project to guide web crawlers.
+  - A `sitemap.xml` file will be created to help with indexing. https://www.xml-sitemaps.com/details-girls-get-tattoos-6ad59281377a.herokuapp.com-da3b5e825.html
+  - Descriptive meta tags are included on all key pages.
+  
 
-GitHub Project Management was instrumental in managing the project. Without it, I wouldn't have been able to oversee the development of the application effectively. It enabled me to prioritise tasks and track my progress efficiently.
+- **Web Marketing**:
 
-<img src="READMEmedia/agile-methodology.png">
+Newsletters were implemented in the email_notification app. The manager can create a newsletter and send it to all customers. It also handles sending newsletters about new loyalty programs with promo codes.
+
+1. News Letter
+
+To send a newsletter to all customers, the manager can create a newsletter and send it to all customers.
+I have used Django EmailMultiAlternatives to send the newsletter.
+
+![NewsLetter](link)
+
+2. Facebook
+
+Facebook is essential for the store to be able to reach customers. According to the statistics, the store has a good reach among people who prefer to use Facebook. Facebook has excellent coverage worldwide among people who can purchase products online.
+
+"GGT" Facebook page is for marketing purposes to post adverts and exciting content and engage users.
+
+[GGT Facebook Page](link)
+
+3. Instagram
+
+Instagram attracts people of younger ages and is essential for the store to reach this demographic. According to a 2023 report by DataReportal, approximately 70% of Instagram’s global advertising audience is under 34 years old [See Report](https://datareportal.com/essential-instagram-stats?utm_source=chatgpt.com).
+
+"GGT" Instagram page is for marketing purposes to post adverts, interesting content, and engage users.
+
+[GGT Instagram Page](www.instagram.com/girls.get.tattoos)
+
 
 ---
 
-
-## Business Model
-
-The platform operates as a **B2C (Business-to-Consumer) e-commerce website**, selling products directly to customers. It generates revenue through:
-
-- **Product Sales**: Customers purchase tattoo products, designs, or merchandise directly through the website.
-- **Optional Premium Memberships**: Users can opt for a membership that offers discounts on products or consultations.
-
-## Persona Summary
-
-#### Customers
-- **Tattoo Enthusiasts**: These individuals are passionate about artistic designs and tattoos. They are looking for high-quality tattoo products, designs, merchandise, and accessories. They value creativity, customization, and professionalism when selecting tattoo-related services.
-
-### Store Personnel
-- **Admin**: The admin is responsible for overseeing website operations, managing products and inventory, and handling customer queries. They ensure the smooth functionality of the platform, ensuring that products are up to date and customer experiences are seamless.
-
----
 
 ## Future Development  
 
@@ -227,12 +269,27 @@ Understanding the exact operational procedures of a real business is crucial. Fo
 
 ---
 
-## Design Philosophy
-The website embraces a minimalistic, black-and-white theme to echo the artistic nature of tattoos and ensure the designs remain the primary focus. By stripping away all distractions, this monochrome palette provides a clean, timeless aesthetic that enhances the browsing experience for both customers and tattoo enthusiasts.
+## Features
+
+
+Please refer to the [FEATURES.md](FEATURES.md) file for all test-related documentation.
+
+#### Featuring:
+
+- **Authentication**: User registration and login via email or social media.
+- **User Profiles**: Save favorite tattoo designs, view order history, and bookings.
+- **Stripe Payment Integration**: Secure payments for tattoos and consultations.
+- **Consultation Booking**: Users can select dates from a calendar and manage appointments.
+- **Admin Interface**: Manage orders, consultations, and calendar events.
+- **SEO & Marketing**: SEO implementation, including robots.txt, sitemap, and meta tags.
 
 ---
 
-## Colour Scheme
+## Design Philosophy
+The website embraces a minimalistic, black-and-white theme to echo the artistic nature of tattoos and ensure the designs remain the primary focus. By stripping away all distractions, this monochrome palette provides a clean, timeless aesthetic that enhances the browsing experience for both customers and tattoo enthusiasts.
+
+
+### Colour Scheme
 The site exclusively uses black and white as the foundational colours:
 
 - **Background:** White (`#FFFFFF`) to create a clean and spacious environment.
@@ -251,13 +308,17 @@ The website uses the font **Montserrat**, chosen for its modern and versatile ae
 ## Whitespace
 Ample whitespace is implemented throughout the design, offering a breathable and uncluttered layout. This ensures users can focus entirely on the intricate tattoo designs while navigating effortlessly through the website.
 
----
-
 The result is a bold and refined aesthetic that ensures a seamless and impactful user experience, perfectly complementing the artistic nature of tattoo designs.
 
 ---
 
+## Wireframes
+
+---
+
 ## Agile Methodology
+
+<img src="READMEmedia/agile-methodology.png">
 
 ### GitHub Project Management
 GitHub Project Management was used to manage the project. Without GitHub Project Management, it would have been difficult to effectively oversee the development of the application. It provided the tools necessary to:
@@ -270,54 +331,7 @@ This methodology ensured the project stayed on track and that all aspects of dev
 
 ---
 
-## Stripe Payment Integration
-I have integrated Stripe to process payments for:
-- Pre-designed tattoos.
-- Consultation bookings.
-
-I will set up my Stripe API keys in my Django settings:
-
-```python
-STRIPE_PUBLIC_KEY = 'your_public_key_here'
-STRIPE_SECRET_KEY = 'your_secret_key_here'
-```
----
-
-## SEO and Web Marketing
-- **SEO**: 
-  - A `robots.txt` file will be added to the project to guide web crawlers.
-  - A `sitemap.xml` file will be created to help with indexing. https://www.xml-sitemaps.com/details-girls-get-tattoos-6ad59281377a.herokuapp.com-da3b5e825.html
-  - Descriptive meta tags are included on all key pages.
-  
-- **Marketing**:
-  - A mockup Instagram business page is created for social media marketing which can be accessed in the header. 
-  [Instagram Page](www.instagram.com/girls.get.tattoos)
-
----
-
-## Agile Methodology
-I followed Agile methodologies throughout the project:
-- **User Stories**: Clearly defined user stories were created and tracked using GitHub Projects.
-- **Tasks**: Each feature was broken down into individual tasks, which were tracked in GitHub issues. (You will be able to view this in the closed/completed section of the issues).
-- **Iterative Development**: The project was built in iterative cycles with regular updates to features and testing.
-
----
-
-## Features
-
-
-Please refer to the [FEATURES.md](FEATURES.md) file for all test-related documentation.
-
-#### Featuring:
-
-- **Authentication**: User registration and login via email or social media.
-- **User Profiles**: Save favorite tattoo designs, view order history, and bookings.
-- **Stripe Payment Integration**: Secure payments for tattoos and consultations.
-- **Consultation Booking**: Users can select dates from a calendar and manage appointments.
-- **Admin Interface**: Manage orders, consultations, and calendar events.
-- **SEO & Marketing**: SEO implementation, including robots.txt, sitemap, and meta tags.
-
----
+## Flowchats
 
 
 ---
@@ -561,6 +575,18 @@ A custom 404 error page has been implemented to improve user experience. The tem
 Please refer to the [DEPLOYMENT.md](DEPLOYMENT.md) file for all deployment and payment-related documentation.
 
 
+## Stripe Payment Integration
+I have integrated Stripe to process payments for:
+- Pre-designed tattoos.
+- Consultation bookings.
+
+I will set up my Stripe API keys in my Django settings:
+
+```python
+STRIPE_PUBLIC_KEY = 'your_public_key_here'
+STRIPE_SECRET_KEY = 'your_secret_key_here'
+```
+
 ---
 
 
@@ -598,6 +624,5 @@ Please refer to the [TESTING.md](TESTING.md) file for all test-related documenta
 - [Django Booking](https://pypi.org/project/django-booking/): Used to initially implement the booking system for my customised consultation. 
 - [Django Contact Form](https://mailtrap.io/blog/django-contact-form/): Used to create the booking form/ contact page, for these messages to be displayed on admin for superusers.
 
-### Additional Features
-
-
+### Acknowledgments
+- [Julia Krowkaw](https://github.com/IuliiaKonovalova/e-commerce): Provided valuable insights and understanding on the implementation of models.
