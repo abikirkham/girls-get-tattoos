@@ -288,6 +288,7 @@ Please refer to the [FEATURES.md](FEATURES.md) file for all test-related documen
 ## Design Philosophy
 The website embraces a minimalistic, black-and-white theme to echo the artistic nature of tattoos and ensure the designs remain the primary focus. By stripping away all distractions, this monochrome palette provides a clean, timeless aesthetic that enhances the browsing experience for both customers and tattoo enthusiasts.
 
+<img src="READMEmedia/home.png">
 
 ### Colour Scheme
 The site exclusively uses black and white as the foundational colours:
@@ -295,6 +296,8 @@ The site exclusively uses black and white as the foundational colours:
 - **Background:** White (`#FFFFFF`) to create a clean and spacious environment.
 - **Text and Elements:** Black (`#000000`) for strong contrast and optimal readability.
 - **Interactive Elements (e.g., buttons, hover states):** Subtle gradients or bold black borders to differentiate interactions without straying from the monochrome theme.
+
+<img src="READMEmedia/product_detail.png">
 
 This stark contrast ensures that every tattoo design and visual element stands out while maintaining an understated, professional look.
 
@@ -305,14 +308,25 @@ The website uses the font **Montserrat**, chosen for its modern and versatile ae
 - **Body Text:** Font-weight set to **400**, providing a clean, smooth reading experience without overwhelming the viewer.
 - **Buttons and Calls to Action:** Font-weight set to **700**, striking a balance between emphasis and consistency, encouraging user engagement.
 
-## Whitespace
-Ample whitespace is implemented throughout the design, offering a breathable and uncluttered layout. This ensures users can focus entirely on the intricate tattoo designs while navigating effortlessly through the website.
+## Imagery
+
+- All imagery was sticking to my professional development in grapic design, all drawn by myself.
+
+<img src="READMEmedia/luckycherry.png"><img src="READMEmedia/flower-bug.png">
 
 The result is a bold and refined aesthetic that ensures a seamless and impactful user experience, perfectly complementing the artistic nature of tattoo designs.
 
 ---
 
 ## Wireframes
+
+I have designed multiple wireframes to visually represent the layout and functionality of the application. These wireframes were created using [Canva](https://www.canva.com/) , a versatile and user-friendly design tool.
+
+You can view the wireframes through the following link:
+
+  [GGT Wireframes](READMEmedia/wireframe-profile-phone-merged.pdf)
+
+These wireframes provide a detailed overview of the interface design, ensuring that the structure and user experience align with the project’s goals. They serve as a foundational step in the development process, helping to guide further discussions and decisions.
 
 ---
 
