@@ -312,7 +312,7 @@ The website uses the font **Montserrat**, chosen for its modern and versatile ae
 
 - All imagery was sticking to my professional development in grapic design, all drawn by myself.
 
-<img src="READMEmedia/luckycherry.png"><img src="READMEmedia/flower-bug.png">
+<img src="READMEmedia/luckycherry.png" alt="imagery of black and white product" width="200"><img src="READMEmedia/flower-bug.png" alt="imagery of black and white product" width="200">
 
 The result is a bold and refined aesthetic that ensures a seamless and impactful user experience, perfectly complementing the artistic nature of tattoo designs.
 
