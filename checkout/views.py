@@ -57,26 +57,30 @@ def checkout(request):
             for item_id, item_data in bag.items():
                 try:
                     product = Product.objects.get(id=item_id)
-                    # If item_data is an int, it means there's only one quantity.
+                    
+                    # Ensure item_data is either an int or a dictionary with valid quantities
                     if isinstance(item_data, int):
-                        order_line_item = OrderLineItem(
-                            order=order,
-                            product=product,
-                            quantity=item_data,
-                        )
-                        order_line_item.save()
+                        quantity = item_data
                     elif isinstance(item_data, dict):
-                        for quantity in item_data.values():
-                            order_line_item = OrderLineItem(
-                                order=order,
-                                product=product,
-                                quantity=quantity,
-                            )
-                            order_line_item.save()
+                        # Assuming item_data is a dictionary of quantities
+                        quantity = list(item_data.values())[0] if item_data else 0
                     else:
                         messages.error(request, "Unexpected data format in the cart.")
                         order.delete()
                         return redirect(reverse('view_bag'))
+                    
+                    if quantity <= 0:
+                        messages.error(request, "Quantity must be a positive number.")
+                        order.delete()
+                        return redirect(reverse('view_bag'))
+
+                    order_line_item = OrderLineItem(
+                        order=order,
+                        product=product,
+                        quantity=quantity,
+                    )
+                    order_line_item.save()
+
                 except Product.DoesNotExist:
                     messages.error(request, (
                         "One of the products in your bag wasn't found in our database. "
