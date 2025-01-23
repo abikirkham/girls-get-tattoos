@@ -188,7 +188,6 @@ else:
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
 # Google Cloud Console settings
-
 GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
 GOOGLE_PROJECT_ID = os.getenv("GOOGLE_PROJECT_ID")
 GOOGLE_AUTH_URI = os.getenv("GOOGLE_AUTH_URI")
@@ -196,4 +195,3 @@ GOOGLE_TOKEN_URI = os.getenv("GOOGLE_TOKEN_URI")
 GOOGLE_AUTH_PROVIDER_CERT_URL = os.getenv("GOOGLE_AUTH_PROVIDER_CERT_URL")
 GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
 GOOGLE_REDIRECT_URI = os.getenv("GOOGLE_REDIRECT_URI")
-GOOGLE_CLIENT_CONFIG_FILE = os.path.join(BASE_DIR, 'consultations/config/calender.json')
