@@ -147,21 +147,24 @@
         <!-- Consultation Section -->
         <!-- Login Section -->
       {% endblock %}
-    </main>
-
-    {% block footer %}
+      {% block footer %}
       <footer class="bg-white text-center" style="position: fixed; bottom: 0; width: 100%; background-color: white;"><br>
         <p>&copy; 2024 Girls Get Tattoos.</p>
       <!-- Instagram Link -->
         <p><i class="fa-brands fa-instagram"></i>
-            <a href="https://www.instagram.com/girls.get.tattoos" target="_blank" class="text-dark" rel="noopener noreferrer">
-                 Follow us on Instagram
-            </a>|<a href="https://www.facebook.com/groups/1338768260480770" target="_blank" class="text-dark" rel="noopener noreferrer">
-                Follow us on Facebook
-           </a>
+            <a href="https://www.instagram.com/girls.get.tattoos" target="_blank" class="text-dark" rel="noopener noreferrer" aria-label="Join our Insta">
+            </a>Join our Insta
+            |
+            <i class="fa-brands fa-facebook"></i>
+            <a href="https://www.facebook.com/groups/1338768260480770" target="_blank" class="text-dark" rel="noopener noreferrer" aria-label="Join our Facebook">
+           </a>Facebook
+           |
+           <i class="fa-brands fa-mailchimp"></i>
+           Sign up to our NewsLetter
         </p>
     </footer>
     {% endblock %}
+    </main>
 
     {% block postloadjs %}
       <script>
