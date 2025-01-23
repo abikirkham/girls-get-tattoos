@@ -5,6 +5,7 @@ import dj_database_url
 if os.path.isfile("env.py"):
     import env
 
+
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -173,13 +174,6 @@ STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 
-# Calendar booking settings
-GOOGLE_REDIRECT_URI = 'https://girls-get-tattoos-6ad59281377a.herokuapp.com/oauth2callback'
-GOOGLE_CLIENT_CONFIG_FILE = 'consultations/config/calender.json'
-GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID")
-GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET")
-
-
 # Email settings
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -192,3 +186,14 @@ else:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+
+# Google Cloud Console settings
+
+GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
+GOOGLE_PROJECT_ID = os.getenv("GOOGLE_PROJECT_ID")
+GOOGLE_AUTH_URI = os.getenv("GOOGLE_AUTH_URI")
+GOOGLE_TOKEN_URI = os.getenv("GOOGLE_TOKEN_URI")
+GOOGLE_AUTH_PROVIDER_CERT_URL = os.getenv("GOOGLE_AUTH_PROVIDER_CERT_URL")
+GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
+GOOGLE_REDIRECT_URI = os.getenv("GOOGLE_REDIRECT_URI")
+GOOGLE_CLIENT_CONFIG_FILE = os.path.join(BASE_DIR, 'consultations/config/calender.json')
