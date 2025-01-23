@@ -65,7 +65,7 @@ The website is designed with simplicity and style, aligning with the aesthetics 
 
 - **As a user, I want to view my order history** so that I can track my previous purchases and consultations.
 - **As a user, I want to reorder previously purchased items with a simple click** so that I can easily get a design I liked again.
-- **As a user, I want to track the status of my current orders** (pending, shipped, delivered) so that I know when to expect my tattoo or consultation.
+- **As a user, I want to track the status of my current orders** (booked) so that I know when to expect my tattoo consultation.
 
 **7. Admin Management**
 
@@ -159,7 +159,7 @@ Facebook is essential for the store to be able to reach customers. According to 
 
 "GGT" Facebook page is for marketing purposes to post adverts and exciting content and engage users.
 
-[GGT Facebook Page](link)
+[GGT Facebook Page](https://www.facebook.com/groups/1338768260480770)
 
 3. Instagram
 
@@ -354,46 +354,9 @@ This methodology ensured the project stayed on track and that all aspects of dev
 
 This document outlines the core data models used in the application. Each model is designed to handle specific functionality and relationships, ensuring a scalable and efficient database structure.
 
-### Consultation Model
-
-The `Consultation` model stores information about consultations offered. This includes details like name, description, price, and images.
-
-| Name         | Database Key    | Field Type     | Validation                                      |
-|--------------|-----------------|----------------|-------------------------------------------------|
-| SKU          | sku             | CharField      | `max_length=254, null=True, blank=True`         |
-| Name         | name            | CharField      | `max_length=254, null=False, blank=False`       |
-| Description  | description     | TextField      | `blank=False, null=False`                       |
-| Price        | price           | DecimalField   | `max_digits=6, decimal_places=2, null=False, blank=False` |
-| Rating       | rating          | DecimalField   | `max_digits=6, decimal_places=2, null=True, blank=True` |
-| Image URL    | image_url       | URLField       | `max_length=1024, null=True, blank=True`        |
-| Image        | image           | ImageField     | `null=True, blank=True`                         |
-
-### Consultation Availability Model
-
-The `ConsultationAvailability` model tracks available slots for consultations. Each slot is linked to a specific consultation and has an `is_booked` flag to track its status.
-
-| Name            | Database Key       | Field Type      | Validation                                         |
-|-----------------|--------------------|-----------------|----------------------------------------------------|
-| Consultation    | consultation       | ForeignKey      | `Consultation, related_name='availabilities', on_delete=models.CASCADE` |
-| Available Date  | available_date     | DateTimeField   | `null=False, blank=False`                          |
-| Is Booked       | is_booked          | BooleanField    | `default=False`                                    |
-
-**Note**: Each consultation and available date combination must be unique.
-
-### Consultation Booking Model
-
-The `ConsultationBooking` model links users to consultations and their availability. It captures booking details like the user, the consultation, and the selected date.
-
-| Name               | Database Key      | Field Type      | Validation                                      |
-|--------------------|-------------------|-----------------|-------------------------------------------------|
-| User               | user              | ForeignKey      | `User, on_delete=models.CASCADE`                |
-| Consultation      | consultation      | ForeignKey      | `Consultation, on_delete=models.CASCADE`        |
-| Consultation Date | consultation_date | ForeignKey      | `ConsultationAvailability, on_delete=models.CASCADE` |
-| Created At        | created_at        | DateTimeField   | `auto_now_add=True`                              |
-
 ### Order Model
 
-The `Order` model handles user orders, including delivery details and pricing. It ensures accurate calculation of order totals and includes a unique order number.
+The `Order` model handles user orders, including bookings and pricing. It ensures accurate calculation of order totals and includes a unique order number.
 
 | Name              | Database Key      | Field Type      | Validation                                      |
 |-------------------|-------------------|-----------------|-------------------------------------------------|
@@ -409,7 +372,6 @@ The `Order` model handles user orders, including delivery details and pricing. I
 | Street Address 2  | street_address2   | CharField       | `max_length=80, null=True, blank=True`          |
 | County            | county            | CharField       | `max_length=80, null=True, blank=True`          |
 | Date              | date              | DateTimeField   | `auto_now_add=True`                              |
-| Delivery Cost     | delivery_cost     | DecimalField    | `max_digits=6, decimal_places=2, default=0`     |
 | Order Total       | order_total       | DecimalField    | `max_digits=10, decimal_places=2, default=0`    |
 | Grand Total       | grand_total       | DecimalField    | `max_digits=10, decimal_places=2, default=0`    |
 
@@ -462,28 +424,12 @@ The `Product` model stores details about items available for purchase, including
 
 ---
 
-##### Admin
-
-- **ConsultationAdmin**:
-   - I set up the admin interface to manage consultations and their availability. It also lets me order and filter consultations easily.
-
 ##### Custom Widgets
 
 - **CustomClearableFileInput**:
    - A custom widget to handle file inputs for consultation images with user-friendly labels for removing or displaying the current image.
 
-##### How It Works
-
-1. **Creating Consultations**: Admins can add consultations using the `add_consultation` view. The form automatically saves data to the `Consultation` model.
-   
-2. **Booking Consultations**: Users view consultations, check available dates, and book them via the `consultation_detail` view. The availability is stored in the `ConsultationAvailability` model.
-
-3. **Tracking Bookings**: When a user books a consultation, a `ConsultationBooking` record is created to link the user, consultation, and selected date.
-
-4. **Admin Interface**: The Django admin lets me manage consultations, their availability, and bookings all in one place.
-
-
-By combining these components, I’ve built a functional consultation booking system where users can view, book, and manage consultations while admins can easily manage the site.
+---
 
 ### Likes model
 
@@ -577,6 +523,7 @@ Admins can easily manage likes through the Django admin interface, where they ca
 A custom 404 error page has been implemented to improve user experience. The template is located in the `templates` directory as `404.html`.
 
 ---
+## Consultation booking platform with Google Cloud Console
 
 
 
@@ -634,8 +581,7 @@ Please refer to the [TESTING.md](TESTING.md) file for all test-related documenta
 - [Django Models](https://docs.djangoproject.com/en/5.0/topics/db/models/): Helped in designing and interacting with the database models.
 - [Django Authentication](https://docs.djangoproject.com/en/5.0/topics/auth/): Implemented authentication features, ensuring secure user access and management.
 - [Django File Uploads](https://docs.djangoproject.com/en/5.0/topics/http/file-uploads/): Managed user-uploaded files, including profile images.
-- [Django Admin](https://docs.djangoproject.com/en/5.1/ref/contrib/admin/): The page provides documentation for the Django Admin site, detailing its features, customisation options, and how to use it to manage application data through a web interface.
-- [Django Booking](https://pypi.org/project/django-booking/): Used to initially implement the booking system for my customised consultation. 
+- [Django Admin](https://docs.djangoproject.com/en/5.1/ref/contrib/admin/): The page provides documentation for the Django Admin site, detailing its features, customisation options, and how to use it to manage application data through a web interface. 
 - [Django Contact Form](https://mailtrap.io/blog/django-contact-form/): Used to create the booking form/ contact page, for these messages to be displayed on admin for superusers.
 
 ### Acknowledgments
