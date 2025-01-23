@@ -176,6 +176,8 @@ STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 # Calendar booking settings
 GOOGLE_REDIRECT_URI = 'https://girls-get-tattoos-6ad59281377a.herokuapp.com/oauth2callback'
 GOOGLE_CLIENT_CONFIG_FILE = 'consultations/config/calender.json'
+GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID")
+GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET")
 
 
 # Email settings
