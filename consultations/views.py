@@ -1,135 +1,65 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.contrib import messages
-from django.db.models import Q
-from django.db.models.functions import Lower
+from django.shortcuts import redirect
+from django.conf import settings
+from google_auth_oauthlib.flow import Flow
+from django.shortcuts import redirect
+from django.conf import settings
+from google.oauth2.credentials import Credentials
+from google.auth.transport.requests import Request
+from django.shortcuts import redirect
+from django.conf import settings
 
-from .models import Consultation, ConsultationAvailability
-from .forms import ConsultationForm
+def oauth2callback(request):
+    state = request.session.pop("state", None)
+    flow = Flow.from_client_secrets_file(
+        settings.GOOGLE_CLIENT_CONFIG_FILE,
+        scopes=["https://www.googleapis.com/auth/calendar.events"],
+        state=state
+    )
+    flow.redirect_uri = settings.GOOGLE_REDIRECT_URI
 
-# Create your views here.
+    # Fetch the token using the authorization response
+    authorization_response = request.build_absolute_uri()
+    flow.fetch_token(authorization_response=authorization_response)
 
-def all_consultations(request):
-    """ A view to show all consultations, including sorting and search queries """
+    # Store the credentials in session
+    credentials = flow.credentials
+    request.session['credentials'] = credentials_to_dict(credentials)
 
-    consultations = Consultation.objects.all()
-    query = None
-    sort = None
-    direction = None
+    return redirect('consultations')  # Redirect to the consultations page after successful login
 
-    if request.GET:
-        if 'sort' in request.GET:
-            sortkey = request.GET['sort']
-            sort = sortkey
-            if sortkey == 'name':
-                sortkey = 'lower_name'
-                consultations = consultations.annotate(lower_name=Lower('name'))
-
-            if 'direction' in request.GET:
-                direction = request.GET['direction']
-                if direction == 'desc':
-                    sortkey = f'-{sortkey}'
-
-            consultations = consultations.order_by(sortkey)
-
-        if 'q' in request.GET:
-            query = request.GET['q']
-            if not query:
-                messages.error(request, "You didn't enter any search criteria!")
-                return redirect(reverse('consultations'))
-
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
-            consultations = consultations.filter(queries)
-
-    current_sorting = f'{sort}_{direction}' if sort and direction else None
-
-    context = {
-        'consultations': consultations,
-        'search_term': query,
-        'current_sorting': current_sorting,
+def credentials_to_dict(credentials):
+    return {
+        'token': credentials.token,
+        'refresh_token': credentials.refresh_token,
+        'token_uri': credentials.token_uri,
+        'client_id': credentials.client_id,
+        'client_secret': credentials.client_secret,
+        'scopes': credentials.scopes
     }
 
-    return render(request, 'consultations/consultations.html', context)
+def google_login(request):
+    # Create the OAuth flow object from the client secret file
+    flow = Flow.from_client_secrets_file(
+        settings.GOOGLE_CLIENT_CONFIG_FILE,
+        scopes=["https://www.googleapis.com/auth/calendar.events"]
+    )
+    flow.redirect_uri = settings.GOOGLE_REDIRECT_URI
 
+    # Generate the authorization URL
+    authorization_url, state = flow.authorization_url(
+        access_type="offline", include_granted_scopes="true"
+    )
 
-def consultation_detail(request, consultation_id):
-    """ A view to show individual product details with booking option """
-    consultation = get_object_or_404(Consultation, pk=consultation_id)
-    available_dates = ConsultationAvailability.objects.filter(consultation=consultation, is_booked=False)
+    # Save the state in session to prevent CSRF attacks
+    request.session["state"] = state
 
-    if request.method == 'POST':
-        selected_date_id = request.POST.get('selected_date')
-        selected_date = get_object_or_404(ConsultationAvailability, pk=selected_date_id)
+    return redirect(authorization_url)
 
-        if selected_date.is_booked:
-            messages.error(request, "This date is no longer available.")
-            return redirect(request.path)
-
-        cart_item = CartItem.objects.create(
-            user=request.user,
-            consultation=consultation,
-            selected_date=selected_date,
-            quantity=request.POST.get('quantity', 1)
-        )
-        messages.success(request, "Consultation added to your cart.")
-        return redirect(reverse('cart'))
-
-    context = {
-        'consultation': consultation,
-        'available_dates': available_dates,
-    }
-
-    return render(request, 'consultations/consultation_detail.html', context)
-
-
-def add_consultation(request):
-    """ Add a consultation to the store """
-    if request.method == 'POST':
-        form = ConsultationForm(request.POST, request.FILES)
-        if form.is_valid():
-            consultation = form.save()
-            messages.success(request, 'Successfully added consultation!')
-            return redirect(reverse('consultation_detail', args=[consultation.id]))
-        else:
-            messages.error(request, 'Failed to add consultation. Please ensure the form is valid.')
-    else:
-        form = ConsultationForm()
-        
-    template = 'consultations/add_consultation.html'
-    context = {
-        'form': form,
-    }
-
-    return render(request, template, context)
-
-
-def edit_consultation(request, consultation_id):
-    """ Edit a consultation in the store """
-    consultation = get_object_or_404(Consultation, pk=consultation_id)
-    if request.method == 'POST':
-        form = ConsultationForm(request.POST, request.FILES, instance=consultation)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Successfully updated consultation!')
-            return redirect(reverse('consultation-detail', args=[consultation.id]))
-
-        else:
-            messages.error(request, 'Failed to update consultation. Please ensure the form is valid.')
-    else:
-        form = ConsultationForm(instance=consultation)
-        messages.info(request, f'You are editing {consultation.name}')
-
-    template = 'consultations/edit_consultation.html'
-    context = {
-        'form': form,
-        'consultation': consultation,
-    }
-
-    return render(request, template, context)
-
-
-def delete_consultation(request, consultation_id):
-    """ Delete a consultation from the store """
-    consultation = get_object_or_404(Consultation, pk=consultation_id)
-    consultation.delete()
-    messages.success(request, 'Consultation deleted!')
-    return redirect(reverse('consultation'))
+# View to handle redirect to the Google Calendar booking page
+def consultations(request):
+    # Check if the user has already authenticated with Google
+    if 'credentials' not in request.session:
+        return redirect('google_login')  # Redirect to Google login page if credentials are not available
+    
+    # Redirect to the Google Calendar's OAuth2 callback (the booking page)
+    return redirect(settings.GOOGLE_REDIRECT_URI)

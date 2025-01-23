@@ -173,6 +173,11 @@ STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 
+# Calendar booking settings
+GOOGLE_REDIRECT_URI = 'https://girls-get-tattoos-6ad59281377a.herokuapp.com/oauth2callback'
+GOOGLE_CLIENT_CONFIG_FILE = 'consultations/config/calender.json'
+
+
 # Email settings
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

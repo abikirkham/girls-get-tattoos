@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extracss %}
+    <style>
+        body {
+            background: none !important;
+        }
+
+        body::before {
+            background: none !important;
+        }
+
+        body {
+            background-color: #fff !important;
+        }
+    </style>
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col text-center mt-3">
+                <h2 class="logo-font text-black">Book a Consultation</h2>
+                <hr class="w-50 mb-1">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <p class="text-muted">To book a consultation, please click the button below to access our Google Calendar and choose a date.</p>
+                <a href="{% url 'consultations' %}" class="btn btn-primary">Book a Consultation</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
