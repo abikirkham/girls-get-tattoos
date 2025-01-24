@@ -484,47 +484,98 @@ This feature allows users to "like" products in the e-commerce store. Below, I e
             });
          });
 
-
-
-### Forms
-
-#### LikeForm (optional):
-If needed, this form would allow users to submit likes from a form view, though the AJAX solution is preferred for better user experience.
-
-#### How It Works
-
-#### Liking a Product:
-When a user clicks the like button on a product, the `like_view` handles the AJAX request, either creating or updating a `Like` record in the database.
-
-#### Displaying Liked Items:
-Users can view all products they have liked by visiting the `liked_items_view` page. The page shows a list of liked products, with links to the product details.
-
 #### Dynamic UI Update:
 The JavaScript updates the like button's text and the like count dynamically without a page reload. It uses AJAX to send the data to the server and update the UI based on the server's response.
 
-### Admin
-
-#### LikeAdmin:
-The Django admin interface is set up to manage the `Like` model. This allows admins to view and manage user likes, ensuring they can track popular products and manage user interactions.
-
-### How To Integrate
-
-#### Adding Likes:
-When users click the like button on a product page, an AJAX request is sent to the server, which then updates the `Like` model in the database.
-
-#### Viewing Liked Items:
-Users can visit their profile or the "Liked Items" page to see all the products they have liked. This data is fetched from the `Like` model in the `liked_items_view`.
-
-#### Admin Interface:
-Admins can easily manage likes through the Django admin interface, where they can view which users have liked which products.
-
+---
 
 ## Custom 404 Page
 A custom 404 error page has been implemented to improve user experience. The template is located in the `templates` directory as `404.html`.
 
 ---
-## Consultation booking platform with Google Cloud Console
+## Google Calendar Integration Setup
 
+This section explains how Google Calendar is integrated into the project and how users can use it to book consultations.
+
+### Overview
+Users can visit the consultations page to book a 30-minute video chat session to discuss graphic designs for their tattoo designs. This functionality is powered by Google Calendar API and ensures seamless scheduling.
+
+### Integration Setup
+1. **Environment Variables**:
+   - Add the following environment variables to your `.env` file:
+     ```env
+     GOOGLE_CLIENT_ID=. ...
+     GOOGLE_CLIENT_CONFIG_FILE=consultations/config/calendar.json
+     GOOGLE_PROJECT_ID=girls-get-tattoos
+     GOOGLE_AUTH_URI=https://accounts.google.com/o/oauth2/auth
+     GOOGLE_TOKEN_URI=https://oauth2.googleapis.com/token
+     GOOGLE_AUTH_PROVIDER_CERT_URL=https://www.googleapis.com/oauth2/v1/certs
+     GOOGLE_CLIENT_SECRET= ...
+     GOOGLE_REDIRECT_URI=https://girls-get-tattoos-6ad59281377a.herokuapp.com/oauth2callback
+     ```
+
+2. **Google Cloud Console Configuration**:
+   - In the [Google Cloud Console](https://console.cloud.google.com/), ensure the following:
+     - OAuth 2.0 credentials are set up.
+     - The redirect URI matches: `https://girls-get-tattoos-6ad59281377a.herokuapp.com/oauth2callback`.
+     - Scopes include `https://www.googleapis.com/auth/calendar`.
+
+3. **Calendar JSON Configuration**:
+   - Update `consultations/config/calendar.json`:
+     ```json
+     {
+       "web": {
+         "client_id": "client_id_here",
+         "project_id": "girls-get-tattoos",
+         "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+         "token_uri": "https://oauth2.googleapis.com/token",
+         "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+         "client_secret": "secret_key_here",
+         "redirect_uris": [
+           "https://girls-get-tattoos-6ad59281377a.herokuapp.com/oauth2callback"
+         ]
+       }
+     }
+     ```
+
+4. **Dependencies**:
+   - Install the following libraries in your `requirements.txt`:
+     ```plaintext
+     google-auth==2.17.0
+     google-auth-oauthlib==1.0.0
+     google-api-python-client==2.70.0
+     ```
+
+5. **Session Storage**:
+   - Ensure credentials are securely stored in session or database. Avoid hardcoding sensitive data.
+
+6. **Django Views and URLs**:
+   - Users access the consultations page (`/consultations`) to:
+     - Authenticate via Google.
+     - Book a session via Google Calendar.
+   - The key views and URLs are defined in `consultations/views.py` and `consultations/urls.py`.
+
+### User Workflow
+1. **Access**:
+   - Users navigate to the `/consultations` page.
+
+2. **Login**:
+   - If users are not authenticated with Google, they are redirected to log in.
+
+3. **Booking**:
+   - Once logged in, users can book a 30-minute session, which is added to their Google Calendar.
+
+4. **Confirmation**:
+   - A confirmation message is displayed, and the event is saved in both the user’s and your Google Calendar.
+
+### Error Handling and Security
+- **Error Handling**:
+  - Ensure proper validation for tokens, state parameters, and session expiration.
+- **Security**:
+  - Use encrypted storage for sensitive credentials.
+  - Never expose sensitive data in version control.
+
+By following these steps, users can easily book video chat sessions through Google Calendar, streamlining the consultation process for tattoo design discussions.
 
 
 ## Deployment and Payment setup
@@ -583,6 +634,7 @@ Please refer to the [TESTING.md](TESTING.md) file for all test-related documenta
 - [Django File Uploads](https://docs.djangoproject.com/en/5.0/topics/http/file-uploads/): Managed user-uploaded files, including profile images.
 - [Django Admin](https://docs.djangoproject.com/en/5.1/ref/contrib/admin/): The page provides documentation for the Django Admin site, detailing its features, customisation options, and how to use it to manage application data through a web interface. 
 - [Django Contact Form](https://mailtrap.io/blog/django-contact-form/): Used to create the booking form/ contact page, for these messages to be displayed on admin for superusers.
+- [Google Calendar API](https://dev.to/karanjot_s/connect-google-calendar-to-django-application-3787)
 
 ### Acknowledgments
 - [Julia Krowkaw](https://github.com/IuliiaKonovalova/e-commerce): Provided valuable insights and understanding on the implementation of models.
