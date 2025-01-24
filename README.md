@@ -347,6 +347,15 @@ This methodology ensured the project stayed on track and that all aspects of dev
 
 ## Flowchats
 
+To understand some concepts, I created a couple flowchart diagrams.
+
+1. The purchasing flow chart will show what steps are required to successfully complete a purchase.
+
+<img src="READMEmedia/purchasing-flowchart.png">
+
+2. The consultation flow chart wil show what a user needs to do in order to book a consultation.
+
+<img src="READMEmedia/consulting-flowchart.png">
 
 ---
 
