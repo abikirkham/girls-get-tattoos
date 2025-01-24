@@ -161,6 +161,9 @@ Facebook is essential for the store to be able to reach customers. According to 
 
 [GGT Facebook Page](https://www.facebook.com/groups/1338768260480770)
 
+<img src="READMEmedia/fbhome.png" alt="Facebook home page for GGT" width="400">
+<img src="READMEmedia/fbfeed.png" alt="GGT facebook feed" width="400">
+
 3. Instagram
 
 Instagram attracts people of younger ages and is essential for the store to reach this demographic. According to a 2023 report by DataReportal, approximately 70% of Instagram’s global advertising audience is under 34 years old [See Report](https://datareportal.com/essential-instagram-stats?utm_source=chatgpt.com).
@@ -168,6 +171,8 @@ Instagram attracts people of younger ages and is essential for the store to reac
 "GGT" Instagram page is for marketing purposes to post adverts, interesting content, and engage users.
 
 [GGT Instagram Page](www.instagram.com/girls.get.tattoos)
+
+<img src="READMEmedia/insta.png" alt="GGT instagram feed" width="400">
 
 
 ---
