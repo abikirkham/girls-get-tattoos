@@ -77,11 +77,8 @@ def google_login(request):
 
     return redirect(authorization_url)
 
-# View to handle redirect to the Google Calendar booking page
 def consultations(request):
-    # Check if the user has already authenticated with Google
     if 'credentials' not in request.session:
-        return redirect('google_login')  # Redirect to Google login page if credentials are not available
+        return redirect('google_login')
     
-    # Redirect to the Google Calendar's OAuth2 callback (the booking page)
     return redirect(settings.GOOGLE_REDIRECT_URI)
