@@ -136,41 +136,34 @@ The admin manages platform operations, including:
 ---
 
 ## SEO and Web Marketing
-- **SEO**: 
+### SEO: 
   - A `robots.txt` file will be added to the project to guide web crawlers.
   - A `sitemap.xml` file will be created to help with indexing. https://www.xml-sitemaps.com/details-girls-get-tattoos-6ad59281377a.herokuapp.com-da3b5e825.html
   - Descriptive meta tags are included on all key pages.
   
 
-- **Web Marketing**:
+### Web Marketing:
 
 Newsletters were implemented in the email_notification app. The manager can create a newsletter and send it to all customers. It also handles sending newsletters about new loyalty programs with promo codes.
 
-1. News Letter
+1. **News Letter**
 
 To send a newsletter to all customers, the manager can create a newsletter and send it to all customers.
 I have used Django EmailMultiAlternatives to send the newsletter.
 
 ![NewsLetter](link)
 
-2. Facebook
+2. **Facebook**
 
-Facebook is essential for the store to be able to reach customers. According to the statistics, the store has a good reach among people who prefer to use Facebook. Facebook has excellent coverage worldwide among people who can purchase products online.
-
-"GGT" Facebook page is for marketing purposes to post adverts and exciting content and engage users.
-
-[GGT Facebook Page](https://www.facebook.com/groups/1338768260480770)
+[GGT Facebook Page](https://www.facebook.com/groups/1338768260480770) | Facebook is essential for the store to be able to reach customers. According to the statistics, the store has a good reach among people who prefer to use Facebook. Facebook has excellent coverage worldwide among people who can purchase products online. "GGT" Facebook page is for marketing purposes to post adverts and exciting content and engage users.
 
 <img src="READMEmedia/fbhome.png" alt="Facebook home page for GGT" width="400">
+
 <img src="READMEmedia/fbfeed.png" alt="GGT facebook feed" width="400">
 
-3. Instagram
+3. **Instagram**
 
-Instagram attracts people of younger ages and is essential for the store to reach this demographic. According to a 2023 report by DataReportal, approximately 70% of Instagram’s global advertising audience is under 34 years old [See Report](https://datareportal.com/essential-instagram-stats?utm_source=chatgpt.com).
-
-"GGT" Instagram page is for marketing purposes to post adverts, interesting content, and engage users.
-
-[GGT Instagram Page](www.instagram.com/girls.get.tattoos)
+[GGT Instagram Page](www.instagram.com/girls.get.tattoos) | Instagram attracts people of younger ages and is essential for the store to reach this demographic. According to a 2023 report by DataReportal, approximately 70% of Instagram’s global advertising audience is under 34 years old [See Report](https://datareportal.com/essential-instagram-stats?utm_source=chatgpt.com). "GGT" Instagram page is for marketing purposes to post adverts, interesting content, and engage users.
 
 <img src="READMEmedia/insta.png" alt="GGT instagram feed" width="400">
 
