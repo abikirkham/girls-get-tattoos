@@ -66,9 +66,13 @@
             <div class="product-container col-10 offset-1">
                 <div class="row mt-1 mb-2"></div>
                 <div class="row">
+                    
                     {% for product in products %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="card h-100 border-0">
+                                <div class="card-body pb-0">
+                                    <h4 class="mb-0 text-black">{{ product.name }}</h4>
+                                </div>
                                 {% if product.image %}
                                 <a href="{% url 'product-detail' product.id %}">
                                     <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -77,16 +81,6 @@
                                 <a href="{% url 'product-detail' product.id %}">
                                     <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                                 </a>
-                                {% endif %}
-                                <div class="card-body pb-0">
-                                    <p class="mb-0 text-black">{{ product.name }}</p>
-                                </div>
-                                {% if user.is_authenticated %}
-                                    <div class="col-md-2">
-                                        <button type="button" class="btn btn-outline-danger btn-sm btn-custom likeButton" data-post-id="{{ product.id }}">
-                                            <i class="far fa-heart text-danger"></i>
-                                        </button>
-                                    </div>
                                 {% endif %}
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
@@ -97,12 +91,30 @@
                                             {% else %}
                                                 <small class="text-muted text-black">No Rating</small>
                                             {% endif %}
-                                            {% if request.user.is_superuser %}
-                                                <small class="ml-3">
-                                                    <a href="{% url 'edit_product' product.id %}">Edit</a> | 
-                                                    <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-                                                </small>
-                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        {% if user.is_authenticated %}
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-outline-danger btn-sm btn-custom likeButton" data-post-id="{{ product.id }}">
+                                                    <i class="far fa-heart text-danger"></i>
+                                                </button>
+                                            </div>
+                                        {% endif %}
+                                        </div>
+                                        <div class="row mt-2">
+                                        <div class="col">
+                                            <!-- Add to Bag Form -->
+                                            <form class="form-inline" action="{% url 'add_to_bag' product.id %}" method="POST">
+                                                {% csrf_token %}
+                                                <div class="form-group mr-2">
+                                                    <label for="id_qty_{{ product.id }}" class="sr-only">Quantity</label>
+                                                    <input type="number" name="quantity" class="form-control qty_input" id="id_qty_{{ product.id }}" 
+                                                        value="1" min="1" max="99">
+                                                </div>
+                                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                                <button type="submit" class="btn btn-black btn-sm text-uppercase">Quick Add</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -133,6 +145,7 @@
             </div>
         </div>
     </div>
+    <br><br><br><br><br>
     {% block postloadjs %}
     {{ block.super }}
     <script>
@@ -164,5 +177,7 @@
         })
     </script>
     <script src="{% static 'products/js/liked_products.js' %}"></script>
+
+    <br><br><br><br><br><br><br><br><br>
 {% endblock %}
 {% endblock %}
