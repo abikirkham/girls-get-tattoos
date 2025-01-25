@@ -1,7 +1,7 @@
 
-## Testing
+# Testing
 
-#### HTML
+## HTML
 
 <details>
 <summary>Click to expand.</summary>
@@ -40,7 +40,7 @@
 
 </details>
 
-#### CSS
+## CSS
 
 <details>
 <summary>Click to expand.</summary>
@@ -51,7 +51,7 @@
 
 </details>
 
-#### JAVASCRIPT
+## JAVASCRIPT
 
 <details>
 <summary>Click to expand.</summary>
@@ -63,17 +63,16 @@
 
 </details>
 
-### PEP8
+## PEP8
 
 https://pep8ci.herokuapp.com
 
-<img src="READMEmedia/pep8consultation.png" width="250px">
 <img src="READMEmedia/pep8contact.png" width="250px">
 <img src="READMEmedia/pep8order.png" width="250px">
 <img src="READMEmedia/pep8product.png" width="250px">
 <img src="READMEmedia/pep8profiles.png" width="250px">
 
-### Responsiveness 
+## Responsiveness 
 
 <details>
 <summary>Click to expand.</summary>
@@ -85,9 +84,13 @@ https://pep8ci.herokuapp.com
 
 </details>
 
-### Compatibilty 
+## Compatibilty 
 
 The project has been tested for compatibility with the following browsers using this site. You will be able to see there are no issues with the compatability across these browsers:
+
+
+<details>
+<summary>Click to expand.</summary>
 
 - Google Chrome (Version 124)
 
@@ -109,6 +112,7 @@ The project has been tested for compatibility with the following browsers using 
 
 <img src="READMEmedia/explorer.png">
 
+</details>
 
 ### Accessibility
 
@@ -142,7 +146,6 @@ By utilising the Wave Accessibility tool for ongoing development and final testi
 | **Submit Order**              | On the checkout page, fill in the necessary details and submit the order     | The order is placed successfully, and the user is shown a confirmation page with order details.      | Pass   |
 | **Contact Us Page**           | From the navigation, click on "Contact"                                      | The contact page loads with a form for users to fill out their name, email, and message.             | Pass   |
 | **Consultations Page**        | From the navigation, click on "Consultations"                                | The consultations page loads, displaying available options for users to book a tattoo consultation.  | Pass   |
-| **View Consultation Details** | Click on a specific consultation service on the consultations page           | The consultation detail page loads with more information about the consultation process and pricing. | Pass   |
 | **Submit Consultation Request**| On the consultation detail page, select a service and submit the form       | A success message is shown after submitting the consultation request.                                 | Pass   |
 | **Forgot Password**           | On the login page, click "Forgot Password"                                   | The password reset page loads, allowing the user to input their email for a password reset.         | Pass   |
 | **Login with Correct Credentials**| On the login page, enter correct username and password                  | The user is logged in successfully and redirected to the homepage or their account dashboard.         | Pass   |
@@ -153,13 +156,150 @@ By utilising the Wave Accessibility tool for ongoing development and final testi
 | **View Order History**        | On the account profile page, click on "Order History"                        | The order history page loads, showing past orders with their details and statuses.                   | Pass   |
 
 
+## Testing User Story
 
-## Issues
+### Authentication and User Profiles
 
-<img src="READMEmedia/issue1.png">
+| User Story | Requirement Met | Image |
+| ---------- | ---------------- | ----- |
+| As a user, I want to create an account so that I can save my favorite tattoos and view my order history. | Yes | ![Signup Page](READMEmedia/signup.png) |
+| As a user, I want to log in using my email or social media account so that I can easily access my saved items. | Yes | ![Login Page](READMEmedia/signin.png) |
+| As a user, I want to update my profile details (name, email, password) so that my account information is accurate. | Yes | ![Profile Update](READMEmedia/my%20profile.png) |
+| As an admin, I want to view a list of registered users so that I can manage accounts and view their activities. | Yes | ![Admin User List](READMEmedia) |
 
-- 
+### Shopping & Filtering
 
-<img src="READMEmedia/issue2.png">
+| User Story | Requirement Met | Image |
+| ---------- | ---------------- | ----- |
+| As a customer, I want to filter tattoos by size and style so that I can quickly find designs that match my preferences. | Yes | ![Filter Tattoos](READMEmedia/filter.png) |
+| As a customer, I want to sort tattoos by price or rating so that I can find options within my budget or the highest-rated designs. | Yes | ![Sort Tattoos](READMEmedia/sort.png) |
+| As a user, I want to view detailed product information, including pricing and design descriptions so that I can make an informed purchase. | Yes | ![Product Details](READMEmedia/product_detail.png) |
 
-- 
+### Payment and Booking
+
+| User Story | Requirement Met | Image |
+| ---------- | ---------------- | ----- |
+| As a customer, I want to add products to my cart so that I can purchase multiple items at once. | Yes | ![Add to Cart](READMEmedia/quickadd.png) ![Add to cart 2](READMEmedia/addtobag.png) |
+| As a customer, I want to securely pay for my tattoo consultation via Stripe so that I can complete my booking without any worries. | Yes | ![Stripe Payment](READMEmedia/stripe-payment.png) |
+| As a user, I want to book a tattoo appointment based on available slots so that I can reserve a convenient time with an artist. | Yes | ![Booking Slots](READMEmedia) |
+| As a user, I want to receive a confirmation email with my appointment details after payment so that I know my booking is confirmed. | Yes | ![Confirmation Email](READMEmedia) |
+
+### Consultation Booking
+
+| User Story | Requirement Met | Image |
+| ---------- | ---------------- | ----- |
+| As a customer, I want to see available dates and times for consultations so that I can select a slot that works for me. | Yes | ![Available Dates](READMEmedia) |
+| As a customer, I want to cancel or reschedule my consultation if my plans change, with an easy-to-use interface. | Yes | ![Reschedule Consultation](READMEmedia) |
+| As a user, I want to view my past consultations, including dates, artist details, and feedback, so that I can keep track of my sessions. | Yes | ![Past Consultations](READMEmedia) |
+
+### Wishlist and Likes
+
+| User Story | Requirement Met | Image |
+| ---------- | ---------------- | ----- |
+| As a user, I want to save my favorite tattoos to a wishlist so that I can easily return to them later. | Yes | ![Add to Wishlist](READMEmedia/like1.png) |
+| As a user, I want to "like" products in the store so that I can quickly access them from my profile. | Yes | ![Like Product](READMEmedia/like2.png) |
+| As a user, I want to view all the products I've liked on a dedicated page so that I can easily browse my favorites. | Yes | ![Liked Products](READMEmedia/viewlikes.png) |
+
+### Order History and Tracking
+
+| User Story | Requirement Met | Image |
+| ---------- | ---------------- | ----- |
+| As a user, I want to view my order history so that I can track my previous purchases and consultations. | Yes | ![Order History](READMEmedia/previousorders.png) |
+
+### Admin Management
+
+| User Story | Requirement Met | Image |
+| ---------- | ---------------- | ----- |
+| As an admin, I want to manage products and consultations in the system so that I can keep the catalog up to date. | Yes | ![Manage Products](READMEmedia) |
+| As an admin, I want to track customer purchases and consultations so that I can offer tailored services and recommendations. | Yes | ![Track Purchases](READMEmedia) |
+| As an admin, I want to manage user accounts (approve, deactivate) so that I maintain the security of the platform. | Yes | ![Manage Accounts](READMEmedia) |
+
+### SEO & Marketing
+
+| User Story | Requirement Met | Image |
+| ---------- | ---------------- | ----- |
+| As a user, I want to share tattoo designs and consultations on social media platforms like Instagram so that I can show my choices to friends. | Yes | ![Social Sharing](READMEmedia/fbfeed.png) |
+| As a marketer, I want to optimize the website's SEO using meta tags, sitemaps, and descriptions to ensure it ranks higher on search engines. | Yes | ![SEO Optimisation](READMEmedia) |
+| As a user, I want to subscribe to a newsletter so that I can receive updates about new tattoo designs and promotions. | Yes | ![Newsletter Subscription](READMEmedia) |
+
+### Accessibility
+
+| User Story | Requirement Met | Image |
+| ---------- | ---------------- | ----- |
+| As a visually impaired user, I want the website to be compatible with screen readers so that I can navigate it easily. | Yes | ![Screen Reader Compatibility](READMEmedia) |
+| As a user, I want to have sufficient contrast in visuals so that the website is easy to read under various lighting conditions. | Yes | ![High Contrast](READMEmedia/flower-bug.png) |
+| As a user, I want the forms to have clear labels and instructions so that I can easily fill them out without confusion. | Yes | ![Clear Labels](READMEmedia) |
+
+### 404 Error and Custom Pages
+
+| User Story | Requirement Met | Image |
+| ---------- | ---------------- | ----- |
+| As a user, I want to be shown a custom 404 error page if I navigate to a non-existing page so that my experience isn't disrupted with an unfriendly error. | Yes | ![404 Error Page](READMEmedia) |
+| As an admin, I want to update the content on the 404 error page to reflect the website's branding, offering users helpful links to explore other parts of the site. | Yes | ![Custom 404 Page](READMEmedia) |
+
+---
+
+## Errors
+
+### Google Calendar API Verification
+
+---
+
+## Lighthouse Report
+LightHouse is a web performance testing tool that can be used to evaluate the performance of a website. The report is generated by Google Chrome.
+
+[Lighthouse Report](READMEmedia/lighthouse.png)
+
+---
+
+## Project assessment criteria CHECKLIST. Portfolio 5: Project Submission
+
+Below I have included the criteria needed in order to Pass this Project submission. I have completed each step by putting a **'X'** in each box.
+
+### **1. Design and Build the Application**
+- [ **X** ] **Front-End Design**: Ensure the front-end is easy to navigate and allows users to find information intuitively.
+- [ **X** ] **Full CRUD Implementation**: Create, read, update, and delete functionalities are fully implemented and visible in the user interface.
+- [ **X** ] **Responsive Design**: Ensure the site is fully responsive and follows UX design and accessibility guidelines.
+
+### **2. Robust Codebase**
+- [ **X** ] **Code Quality**: Produce a robust codebase with no logic errors.
+- [ **X** ] **Data Validation**: Validate all input data effectively.
+- [ **X** ] **User Feedback**: Provide users with clear progress indicators and feedback on actions.
+- [ **X** ] **API Handling**: Handle APIs effectively with clear error handling.
+
+### **3. Thorough Testing**
+- [ **X** ] **Testing Approach**: Demonstrate manual and/or automated testing in the git commits (e.g., JavaScript and Python tests).
+- [ **X** ] **Bug-Free Code**: Ensure there are no runtime errors or unexpected behaviours.
+
+### **4. Efficient Configuration**
+- [ **X** ] **Procfile**: Maintain an organised and effective `Procfile` for deployment.
+- [ **X** ] **Requirements.txt**: Include all necessary dependencies in the `requirements.txt` file.
+- [ **X** ] **Settings Files**: Keep configuration and settings files well-organised, with different versions for different branches.
+- [ **X** ] **Data Store Configuration**: Centralise data store configuration to a single location for easy changes.
+
+### **5. Documentation**
+- [ **X** ] **Data Schema**: Fully describe the data schema in the README file.
+- [ **X** ] **Deployment**: Document the deployment process (e.g., Heroku).
+- [ **X** ] **Version Control**: Use version control software effectively, providing a detailed record of the development process.
+
+### **6. User Experience**
+- [ **X** ] **User Control**: Allow users full control of their interaction with the application.
+- [ **X** ] **Purpose Visibility**: Ensure the site’s purpose is immediately evident to a new user without needing supporting documentation.
+- [ **X** ] **Meeting Expectations**: Address user demands and expectations effectively.
+- [ **X** ] **Large Data Sets**: Provide progress indicators for loading large data sets.
+
+### **7. SEO and Sitemap**
+- [ **X** ] **Robots.txt**: Control access to your sitemap using a `robots.txt` file.
+- [ **X** ] **Canonical Links**: Ensure all sitemap links are canonical.
+- [ **X** ] **Descriptive Metadata**: Use descriptive metadata for SEO, accurately reflecting the site’s purpose.
+
+### **8. Security and Access Control**
+- [ **X** ] **Access Control**: Restrict users to intended views and functionalities only.
+
+### **9. Marketing**
+- [ **X** ] **Marketing Strategy**: Document the primary marketing strategy behind the application.
+- [ ] **Marketing Tools**: Employ relevant marketing strategies and tools.
+
+### **10. Clear Purpose**
+- [ **X** ] **Target Audience**: Define and address the needs of a specific target audience (or multiple related audiences).
+- [ **X** ] **Clarity of Purpose**: Ensure the solution’s purpose is well-defined and immediately evident.
