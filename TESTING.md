@@ -63,6 +63,8 @@
 
 </details>
 
+--- 
+
 ## PEP8
 
 https://pep8ci.herokuapp.com
@@ -71,6 +73,8 @@ https://pep8ci.herokuapp.com
 <img src="READMEmedia/pep8order.png" width="250px">
 <img src="READMEmedia/pep8product.png" width="250px">
 <img src="READMEmedia/pep8profiles.png" width="250px">
+
+---
 
 ## Responsiveness 
 
@@ -83,6 +87,8 @@ https://pep8ci.herokuapp.com
 
 
 </details>
+
+---
 
 ## Compatibilty 
 
@@ -114,7 +120,9 @@ The project has been tested for compatibility with the following browsers using 
 
 </details>
 
-### Accessibility
+---
+
+## Accessibility
 
 By utilising the Wave Accessibility tool for ongoing development and final testing, used for the below:
 
@@ -127,8 +135,9 @@ By utilising the Wave Accessibility tool for ongoing development and final testi
 7. Implement Aria properties in adherence to best practices outlined in WCAG 2.1.
 8. Follow established coding best practices for WCAG 2.1.
 
+---
 
-### Manual Testing 
+## Manual Testing 
 
 
 | Function                      | User Action                                                                 | Outcome                                                                                               | Result |
@@ -155,6 +164,8 @@ By utilising the Wave Accessibility tool for ongoing development and final testi
 | **Update Account Details**    | On the profile page, update personal details and save                       | The updated details are saved successfully and displayed on the profile page.                        | Pass   |
 | **View Order History**        | On the account profile page, click on "Order History"                        | The order history page loads, showing past orders with their details and statuses.                   | Pass   |
 
+
+---
 
 ## Testing User Story
 
@@ -243,6 +254,14 @@ By utilising the Wave Accessibility tool for ongoing development and final testi
 
 ### Google Calendar API Verification
 
+I have set up the Google Cloud Calendar API; however, an error occurs after logging in to Google and clicking the "Book a Consultation" link. The error states that the site has not been verified. 
+
+The verification process for Google Cloud is lengthy, as outlined in [Google's Help Documentation](https://support.google.com/cloud/answer/7454865?hl=en). Unfortunately, due to time constraints during the course, I was unable to complete the verification process.
+
+Despite this, I have tested the functionality by proceeding through the "unsafe" option. While I was able to successfully log in:
+<img src="READMEmedia/googlelogin.png" width="300px">
+I was ultimately unable to proceed further because the site is not verified and cannot be fully trusted by Google. This remains a known issue in the current project implementation.
+
 ---
 
 ## Lighthouse Report
@@ -298,7 +317,7 @@ Below I have included the criteria needed in order to Pass this Project submissi
 
 ### **9. Marketing**
 - [ **X** ] **Marketing Strategy**: Document the primary marketing strategy behind the application.
-- [ ] **Marketing Tools**: Employ relevant marketing strategies and tools.
+- [ **X** ] **Marketing Tools**: Employ relevant marketing strategies and tools.
 
 ### **10. Clear Purpose**
 - [ **X** ] **Target Audience**: Define and address the needs of a specific target audience (or multiple related audiences).
