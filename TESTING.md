@@ -221,9 +221,9 @@ By utilising the Wave Accessibility tool for ongoing development and final testi
 
 | User Story | Requirement Met | Image |
 | ---------- | ---------------- | ----- |
-| As an admin, I want to manage products and consultations in the system so that I can keep the catalog up to date. | Yes | ![Manage Products](READMEmedia) |
-| As an admin, I want to track customer purchases and consultations so that I can offer tailored services and recommendations. | Yes | ![Track Purchases](READMEmedia) |
-| As an admin, I want to manage user accounts (approve, deactivate) so that I maintain the security of the platform. | Yes | ![Manage Accounts](READMEmedia) |
+| As an admin, I want to manage products and consultations in the system so that I can keep the catalog up to date. | Yes | ![Manage Products](READMEmedia/adminproducts.png) |
+| As an admin, I want to track customer purchases and consultations so that I can offer tailored services and recommendations. | Yes | ![Track Purchases](READMEmedia/adminorders.png) |
+| As an admin, I want to manage user accounts (approve, deactivate) so that I maintain the security of the platform. | Yes | ![Manage Accounts](READMEmedia/admin1.png) |
 
 ### SEO & Marketing
 
