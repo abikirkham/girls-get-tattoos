@@ -16,31 +16,22 @@ def view_bag(request):
                 'quantity': item_data['quantity'],
                 'type': 'product',
             })
-        elif item_data['type'] == 'consultation':
-            consultation = get_object_or_404(Consultation, pk=item_id)
-            items.append({
-                'item': consultation,
-                'quantity': item_data['quantity'],
-                'type': 'consultation',
-            })
-
+    
     context = {
         'items': items,
     }
 
     return render(request, 'bag/bag.html', context)
 
-
 def add_to_bag(request, item_id):
-    """ Add a quantity of the specified item (product or consultation) to the shopping bag """
+    """ Add a quantity of the specified item (product) to the shopping bag """
     try:
         product = Product.objects.get(pk=item_id)
         item_type = 'product'
         item = product
+
     except Product.DoesNotExist:
-        item_type = 'consultation'
-        consultation = get_object_or_404(Consultation, pk=item_id)
-        item = consultation
+        return HttpResponse(status=404)
 
     quantity = int(request.POST.get('quantity', 1))
     redirect_url = request.POST.get('redirect_url')
@@ -53,7 +44,7 @@ def add_to_bag(request, item_id):
         bag[item_id] = {
             'quantity': quantity,
             'type': item_type,
-            'name': item.name,  # Store name for easy access in templates
+            'name': item.name,
         }
         messages.success(request, f'Added {item.name} to your bag')
 
@@ -62,7 +53,7 @@ def add_to_bag(request, item_id):
 
 
 def adjust_bag(request, item_id):
-    """Adjust the quantity of the specified item (product or consultation) in the bag"""
+    """Adjust the quantity of the specified item (product) in the bag"""
 
     bag = request.session.get('bag', {})
     item_type = bag.get(item_id, {}).get('type')
@@ -70,7 +61,7 @@ def adjust_bag(request, item_id):
     if item_type == 'product':
         item = Product.objects.get(pk=item_id)
     else:
-        item = get_object_or_404(Consultation, pk=item_id)
+        return HttpResponse(status=404)
 
     quantity = int(request.POST.get('quantity'))
 
