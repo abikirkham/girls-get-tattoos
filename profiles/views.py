@@ -50,8 +50,6 @@ def order_history(request, order_number):
 
     return render(request, template, context)
 
-from django.shortcuts import render
-
 @login_required
 def liked_items_view(request):
         liked_items = Like.objects.filter(user=request.user).select_related('liked_product')
