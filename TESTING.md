@@ -192,16 +192,16 @@ By utilising the Wave Accessibility tool for ongoing development and final testi
 | ---------- | ---------------- | ----- |
 | As a customer, I want to add products to my cart so that I can purchase multiple items at once. | Yes | ![Add to Cart](READMEmedia/quickadd.png) ![Add to cart 2](READMEmedia/addtobag.png) |
 | As a customer, I want to securely pay for my tattoo consultation via Stripe so that I can complete my booking without any worries. | Yes | ![Stripe Payment](READMEmedia/stripe-payment.png) |
-| As a user, I want to book a tattoo appointment based on available slots so that I can reserve a convenient time with an artist. | Yes | ![Booking Slots](READMEmedia) |
-| As a user, I want to receive a confirmation email with my appointment details after payment so that I know my booking is confirmed. | Yes | ![Confirmation Email](READMEmedia) |
+| As a user, I want to book a tattoo appointment based on available slots so that I can reserve a convenient time with an artist. | Yes | Please see the [error](#errors) explained for this. |
+| As a user, I want to receive a confirmation email with my appointment details after payment so that I know my booking is confirmed. | Yes | Please see the [error](#errors) explained for this. |
 
 ### Consultation Booking
 
 | User Story | Requirement Met | Image |
 | ---------- | ---------------- | ----- |
-| As a customer, I want to see available dates and times for consultations so that I can select a slot that works for me. | Yes | ![Available Dates](READMEmedia) |
-| As a customer, I want to cancel or reschedule my consultation if my plans change, with an easy-to-use interface. | Yes | ![Reschedule Consultation](READMEmedia) |
-| As a user, I want to view my past consultations, including dates, artist details, and feedback, so that I can keep track of my sessions. | Yes | ![Past Consultations](READMEmedia) |
+| As a customer, I want to see available dates and times for consultations so that I can select a slot that works for me. | Yes | Please see the [error](#errors) explained for this. |
+| As a customer, I want to cancel or reschedule my consultation if my plans change, with an easy-to-use interface. | Yes | Please see the [error](#errors) explained for this. |
+| As a user, I want to view my past consultations, including dates, artist details, and feedback, so that I can keep track of my sessions. | Yes | Please see the [error](#errors) explained for this. |
 
 ### Wishlist and Likes
 
@@ -230,16 +230,17 @@ By utilising the Wave Accessibility tool for ongoing development and final testi
 | User Story | Requirement Met | Image |
 | ---------- | ---------------- | ----- |
 | As a user, I want to share tattoo designs and consultations on social media platforms like Instagram so that I can show my choices to friends. | Yes | ![Social Sharing](READMEmedia/fbfeed.png) |
-| As a marketer, I want to optimize the website's SEO using meta tags, sitemaps, and descriptions to ensure it ranks higher on search engines. | Yes | ![SEO Optimisation](READMEmedia) |
-| As a user, I want to subscribe to a newsletter so that I can receive updates about new tattoo designs and promotions. | Yes | ![Newsletter Subscription](READMEmedia) |
+| As a marketer, I want to optimize the website's SEO using meta tags, sitemaps, and descriptions to ensure it ranks higher on search engines. | Yes | ![SEO Optimisation](READMEmedia/sitemap.png) |
+| As a user, I want to subscribe to a newsletter so that I can receive updates about new tattoo designs and promotions. | Yes | ![Newsletter Subscription](READMEmedia/footer-subscribe.png) |
 
 ### Accessibility
 
 | User Story | Requirement Met | Image |
 | ---------- | ---------------- | ----- |
-| As a visually impaired user, I want the website to be compatible with screen readers so that I can navigate it easily. | Yes | ![Screen Reader Compatibility](READMEmedia) |
 | As a user, I want to have sufficient contrast in visuals so that the website is easy to read under various lighting conditions. | Yes | ![High Contrast](READMEmedia/flower-bug.png) |
-| As a user, I want the forms to have clear labels and instructions so that I can easily fill them out without confusion. | Yes | ![Clear Labels](READMEmedia) |
+| As a user, I want the forms to have clear labels and instructions so that I can easily fill them out without confusion. | Yes | ![Clear Labels](READMEmedia/labels.png) |
+| As a user, I want to receive clear error messages when I make mistakes while filling out forms. |	Yes	| Error messages are displayed near the relevant field with sufficient information on how to resolve the error. |
+| As a user with visual impairments, I want to have all images described with alternative text, so I can understand their content. |	Yes	| All images have descriptive alt attributes, following the WCAG 2.1 guidelines for text alternatives.
 
 ### 404 Error and Custom Pages
 
