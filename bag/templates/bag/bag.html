@@ -41,16 +41,12 @@
                                     <td class="p-3 w-25">
                                         {% if item.type == 'product' %}
                                             <img class="img-fluid rounded" src="{{ item.product.image.url }}">
-                                        {% else %}
-                                            <img class="img-fluid rounded" src="{{ item.consultation.image.url }}">
                                         {% endif %}
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0"><strong>
                                             {% if item.type == 'product' %}
                                                 {{ item.product.name }}
-                                            {% else %}
-                                                {{ item.consultation.name }}
                                             {% endif %}
                                         </strong></p>
                                         <p class="my-0 small text-muted">SKU: {% if item.type == 'product' %}{{ item.product.sku|upper }}{% else %}N/A{% endif %}</p>
@@ -59,8 +55,6 @@
                                         <p class="my-0">£
                                             {% if item.type == 'product' %}
                                                 {{ item.product.price }}
-                                            {% else %}
-                                                {{ item.consultation.price }}
                                             {% endif %}
                                         </p>
                                     </td>
@@ -99,8 +93,6 @@
                                         <p class="my-0">£
                                             {% if item.type == 'product' %}
                                                 {{ item.product.price | calc_subtotal:item.quantity }}
-                                            {% else %}
-                                                {{ item.consultation.price | calc_subtotal:item.quantity }}
                                             {% endif %}
                                         </p>
                                     </td>
