@@ -35,10 +35,17 @@ body {
   #mc-embedded-subscribe:hover {
     background-color: #fff;
     color: #343a40;
-    border: #343a40, 1px;
+    border: none;
     border-radius: 3px;
     padding: 8px 16px;
   }
+  
+  .vertical-hr {
+    border-left: 1px solid #ABB0B2;
+    height: 100px; /* Adjust height as needed */
+    margin: 0 10px;
+  }
+
   
 /* Overlay on background */
 body::before {
@@ -125,12 +132,8 @@ main {
 }
 
 footer .row {
-    display: flex;
-    flex-wrap: wrap; /* Ensures proper wrapping on smaller screens */
-    align-items: center; /* Vertically aligns content */
     padding: 10px 0;
-}
-  
+  }
 footer i {
     font-size: 1.2em;
     margin-right: 5px;

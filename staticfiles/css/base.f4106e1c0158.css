@@ -40,6 +40,13 @@ body {
     padding: 8px 16px;
   }
   
+  .vertical-hr {
+    border-left: 1px solid #ABB0B2;
+    height: 100px;
+    margin: 0 5px;
+  }
+
+  
 /* Overlay on background */
 body::before {
     content: '';
@@ -125,12 +132,8 @@ main {
 }
 
 footer .row {
-    display: flex;
-    flex-wrap: wrap; /* Ensures proper wrapping on smaller screens */
-    align-items: center; /* Vertically aligns content */
     padding: 10px 0;
-}
-  
+  }
 footer i {
     font-size: 1.2em;
     margin-right: 5px;

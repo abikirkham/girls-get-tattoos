@@ -10,36 +10,17 @@ body {
     display: flex;
     flex-direction: column;
 }
-    
+
 /* MailChimp signup form */
 #mc_embed_signup {
     background:#fff;
     clear: left;
     font:14px Monserrat; 
-    width: 450px; 
+    width: 600px; 
     position: center;
 }
+      
 
-#mc_embed_signup input {
-    border: 1px solid #ABB0B2;
-    border-radius: 3px;
-    padding: 10px;
-  }
-  #mc-embedded-subscribe {
-    background-color: #343a40;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    padding: 8px 16px;
-  }
-  #mc-embedded-subscribe:hover {
-    background-color: #fff;
-    color: #343a40;
-    border: #343a40, 1px;
-    border-radius: 3px;
-    padding: 8px 16px;
-  }
-  
 /* Overlay on background */
 body::before {
     content: '';
@@ -124,21 +105,9 @@ main {
     border: 1px solid black !important;
 }
 
-footer .row {
-    display: flex;
-    flex-wrap: wrap; /* Ensures proper wrapping on smaller screens */
-    align-items: center; /* Vertically aligns content */
-    padding: 10px 0;
+footer {
+    margin-top: auto;
 }
-  
-footer i {
-    font-size: 1.2em;
-    margin-right: 5px;
-  }
-footer a {
-    text-decoration: none;
-}
-  
 
 h1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -307,13 +276,3 @@ h2 {
           height: calc(100vh - 116px);
       }
   }
-
-  @media (max-width: 576px) {
-    footer .row {
-      text-align: center;
-    }
-    #mc_embed_signup {
-      margin: 0 auto;
-    }
-  }
-  
