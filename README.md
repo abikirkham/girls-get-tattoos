@@ -146,12 +146,33 @@ The admin manages platform operations, including:
 
 Newsletters were implemented in the email_notification app. The manager can create a newsletter and send it to all customers. It also handles sending newsletters about new loyalty programs with promo codes.
 
-1. **News Letter**
+1. **Newsletter Functionality**
 
-To send a newsletter to all customers, the manager can create a newsletter and send it to all customers.
-I have used Django EmailMultiAlternatives to send the newsletter.
+The newsletter feature allows the manager to create and send updates to all subscribed customers effortlessly. Using Mailchimp, emails are sent with professionally designed templates to ensure compatibility across email clients
 
-![NewsLetter](link)
+---
+
+#### **Sign-up Process**
+Customers can easily subscribe to the newsletter using the form located in the footer of the website. 
+
+Here’s how it looks:
+- **Subscription Form**:  
+  ![Newsletter Subscription Form](READMEmedia/footer-subscribe.png)  
+
+- **Successful Subscription Confirmation**:  
+  ![Subscription Success Message](READMEmedia/subscribed.png)  
+
+#### **Subscription Management**
+Proof of customer subscription is visible in the MailChimp dashboard, where the audience list is managed effectively:  
+- **Audience Overview**:  
+  ![Newsletter Audience Management](READMEmedia/audience.png)  
+
+#### **Sending Newsletters**
+The admin has full control over when newsletters are sent to users. A dedicated email creation template is provided to craft engaging and professional newsletters. 
+
+- **Newsletter Email Template**:  
+  ![Admin Newsletter Email Template](READMEmedia/emailtemplate.png)  
+
 
 2. **Facebook**
 
