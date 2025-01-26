@@ -39,35 +39,30 @@
 
 ## My Gallery
 
-| ![Add to Bag](READMEmedia/add%20to%20bag.png) | ![Alert Editing](READMEmedia/alert%20editing.png) | ![Bird Search](READMEmedia/bird%20search.png) |
-|----------------------------------|-------------------------------------|-----------------------------------|
-| A screenshot of the "Add to Bag" page featuring Frog Noodles. | An alert box with the message "You are editing Flower Bug." | A product search result for "bird," showing two items: Bird Flying High and Bird in Vase. |
-
-| ![Browse Tab](READMEmedia/browse%20tab.png) | ![Checkout Page 1](READMEmedia/checkout1.png) | ![Checkout Page 2](READMEmedia/checkout2.png) |
-|----------------------------------|---------------------------------------|---------------------------------------|
-| The browse navigation tab with options for Shop, Consultation, and Contact Us. | The first part of the checkout form filled with name and email details. | The second part of the checkout form with payment details and address fields. |
-
-| ![Consultation Detail](READMEmedia/consultation%20detail.png) | ![Consultation Options](READMEmedia/consultation1.png) | ![Homepage](READMEmedia/home.png) |
-|------------------------------------------|-------------------------------------------|--------------------------------|
-| The detailed page for a large tattoo consultation, showing available dates. | Consultation packages for small, medium, and large tattoo designs. | Homepage featuring a banner for "The New Designs Are Here" with playful visuals. |
-
-| ![Consultation Options](READMEmedia/consultation2.png) | ![My Accounts Tab](READMEmedia/my%20accounts%20tab.png) | ![My Profile Page](READMEmedia/my%20profile.png) |
-|--------------------------------------------|---------------------------------------|---------------------------------------|
-| Consultation packages for small, medium, and large tattoo designs. | Navigation tab showing options for Product Management, My Profile, and Logout. | The profile page to update delivery details and view order history. |
-
-| ![Not Logged In Tab](READMEmedia/not%20logging%20in%20tab.png) | ![Product Details](READMEmedia/product_detail.png) | ![Product Management Page](READMEmedia/product%20management.png) |
-|-----------------------------------------|---------------------------------------|----------------------------------------|
-| Login options for Register and Login displayed under "My Account." | Detailed product page showing the Flower Bug tattoo design, price, and description. | Product management page for adding new items, including details like SKU, name, and description. |
-
-| ![Product Management Continued](READMEmedia/prduct%20management%202.png) | ![Products Page](READMEmedia/product.png) | ![Sign Out Page](READMEmedia/sign%20out.png) |
-|-----------------------------------------------------|-------------------------------------|-------------------------------------|
-| Continuation of the product management form, featuring fields for price, rating, and image upload. | List of available products, including Bird Flying High, Bird in Vase, Frog Noodles, and Lucky Kitty. | A confirmation dialogue for signing out. |
-
-| ![Sign In Page](READMEmedia/signin.png) | ![Success Sign In](READMEmedia/success%20signin.png) | ![Success Sign Out](READMEmedia/success%20sign%20out.png) |
-|-------------------------------------|----------------------------------------|----------------------------------------|
-| Sign-in page for returning users, with an option to retrieve forgotten passwords. | Success notification indicating a successful sign-in as "abiowner." | Success notification confirming the user has signed out. |
-
-| ![Flower Bug Product](READMEmedia/product%20details.png) |
-|-------------------------------------------|
-| The Flower Bug tattoo product featuring a detailed image, price, rating, and edit/delete options. |
-
+| **Image**                              | **Description**                                                                                             |
+|----------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| ![Footer Subscribe](READMEmedia/footer-subscribe.png) | Footer section with social media links and a newsletter subscription form.                                 |
+| ![Liked Products](READMEmedia/liked-products.png) | "Liked Items" page showing placeholder text if no items are liked.                                         |
+| ![My Accounts Tab](READMEmedia/my%20accounts%20tab.png) | Dropdown menu under "My Account" for product management, profile, and logout options.                     |
+| ![Homepage Banner](READMEmedia/home.png) | Homepage with a banner displaying "The New Designs Are Here" and a call-to-action button.                 |
+| ![Labels](READMEmedia/labels.png) | Heart and star labels for liking products and viewing ratings.                                             |
+| ![My Profile](READMEmedia/my%20profile.png) | User profile page with fields to update delivery information and view order history.                      |
+| ![Popup Basket](READMEmedia/popupbasket.png) | Popup showing items added to the shopping basket with a "Go to Secure Checkout" button.                   |
+| ![Liked Product](READMEmedia/like1.png) | Individual product with a price tag and heart label for liking.                                            |
+| ![Quick Add](READMEmedia/quickadd.png) | Product card with a quantity selector and "Quick Add" button.                                              |
+| ![Product List](READMEmedia/products.png) | Product list displaying items with names, prices, and ratings, along with edit/delete options for admin.   |
+| ![Order History](READMEmedia/previousorders.png) | Order history page with details like order number, date, items, and order total.                          |
+| ![Product Details](READMEmedia/product%20details.png) | Detailed product page with quantity selector and "Add to Bag" button.                                      |
+| ![Product Management](READMEmedia/product%20management.png) | Admin page to add products with fields for category, SKU, name, and description.                          |
+| ![Sign Out](READMEmedia/sign%20out.png) | Sign-out confirmation popup with "Cancel" and "Sign Out" buttons.                                         |
+| ![Sign In](READMEmedia/signin.png) | Sign-in form with username and password fields and a link to reset the password.                          |
+| ![Sign Up](READMEmedia/signup.png) | Sign-up form with fields for email, username, and password, along with an error message for existing users.|
+| ![Sort By](READMEmedia/sort.png) | Dropdown for sorting products by price or rating (low to high or high to low).                             |
+| ![Flower Bug](READMEmedia/userauthproduct.png) | Product display with a price, rating, and edit/delete options for admin.                                   |
+| ![Order Confirmation](READMEmedia/successorder.png) | Order confirmation page showing order details, delivery info, and total cost.                              |
+| ![Stripe Payment](READMEmedia/stripe-payment.png) | Payment form with card entry and total to be charged.                                                      |
+| ![Subscribed](READMEmedia/subscribed.png) | Newsletter subscription confirmation message.                                                              |
+| ![User Exists](READMEmedia/userexists.png) | Error message showing a user is already registered with the given email.                                   |
+| ![Sign Out Success](READMEmedia/success%20sign%20out.png) | Notification confirming successful sign-out.                                                               |
+| ![View Likes](READMEmedia/viewlikes.png) | Button to view liked products.                                                                             |
+| ![Sign In Success](READMEmedia/success%20signin.png) | Notification confirming successful sign-in with a username.                                                |
