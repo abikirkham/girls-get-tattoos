@@ -11,6 +11,9 @@ $(document).on('click', '.likeButton', function() {
             'product_id': productId,
             'csrfmiddlewaretoken': '{{ csrf_token }}'
         },
+        headers: {
+            'X-CSRFToken': csrfToken // Pass CSRF token in the headers
+        },
         success: function(response) {
             alert('Product liked successfully!');
             button.find('i').toggleClass('far fas');

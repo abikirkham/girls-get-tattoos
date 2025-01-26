@@ -138,9 +138,18 @@ def delete_product(request, product_id):
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
 
+
+@login_required
 def like_view(request):
-    if request.method == 'POST' and request.user.is_authenticated:
+    if request.method == 'POST':
         liked_product_id = request.POST.get('product_id')
         liked_product = get_object_or_404(Product, id=liked_product_id)
         like, created = Like.objects.get_or_create(user=request.user, liked_product=liked_product)
-    return JsonResponse({}, status=400)
+
+        if created:
+            return JsonResponse({'message': 'Product liked successfully!'}, status=200)
+        else:
+            like.delete()
+            return JsonResponse({'message': 'Like removed successfully!'}, status=200)
+
+    return JsonResponse({'error': 'Invalid request method or not authenticated.'}, status=400)

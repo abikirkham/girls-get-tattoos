@@ -1,23 +1,23 @@
-$(document).ready(function() {
-    $('.likeButton').click(function() {
-        var product_id = $(this).data('product-id');
-        var button = $(this);
-        $.ajax({
-            type: 'POST',
-            url: '/like/',
-            data: {
-                'product_id': product_id,
-                'csrfmiddlewaretoken': '{{ csrf_token }}'
-            },
-            dataType: 'json',
-            success: function(response) {
-                if (response.liked) {
-                    button.text('Liked');
-                }
-            },
-            error: function(response) {
-                console.log('Error:', response);
-            }
-        });
+$(document).on('click', '.likeButton', function() {
+    const button = $(this);
+    const productId = button.data('post-id');
+    const url = button.data('url');
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: {
+            'product_id': productId,
+            'csrfmiddlewaretoken': '{{ csrf_token }}'
+        },
+        success: function(response) {
+            alert('Product liked successfully!');
+            button.find('i').toggleClass('far fas');
+        },
+        error: function(response) {
+            console.log(response.responseText);
+            alert('Failed to like the product.');
+        }
     });
 });

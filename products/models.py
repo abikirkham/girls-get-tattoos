@@ -68,8 +68,7 @@ class Like(models.Model):
     Represents a "like" action by a user on a product. Stores the user,
     the liked product, and the time the like was created.
     """
-
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name="likes"
@@ -80,6 +79,9 @@ class Like(models.Model):
         related_name="likes"
     )
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'liked_product')
 
     def __str__(self):
         """

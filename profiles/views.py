@@ -50,9 +50,10 @@ def order_history(request, order_number):
 
     return render(request, template, context)
 
+from django.shortcuts import render
+
+@login_required
 def liked_items_view(request):
-    if request.user.is_authenticated:
         liked_items = Like.objects.filter(user=request.user).select_related('liked_product')
         return render(request, 'profiles/liked_items.html', {'liked_items': liked_items})
-    else:
         return redirect('login')

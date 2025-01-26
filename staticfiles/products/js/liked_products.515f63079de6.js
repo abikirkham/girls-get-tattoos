@@ -2,8 +2,7 @@ $(document).on('click', '.likeButton', function() {
     const button = $(this);
     const productId = button.data('post-id');
     const url = button.data('url');
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
+    
     $.ajax({
         url: url,
         type: 'POST',

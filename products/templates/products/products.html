@@ -95,11 +95,13 @@
                                     </div>
                                     <div class="row mt-2">
                                         {% if user.is_authenticated %}
-                                            <div class="col-md-2">
-                                                <button type="button" class="btn btn-outline-danger btn-sm btn-custom likeButton" data-post-id="{{ product.id }}">
-                                                    <i class="far fa-heart text-danger"></i>
-                                                </button>
-                                            </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-outline-danger btn-sm btn-custom likeButton" 
+                                                    data-post-id="{{ product.id }}" 
+                                                    data-url="{% url 'like_view' %}">
+                                                <i class="far fa-heart text-danger"></i>
+                                            </button>
+                                        </div>                                        
                                         {% endif %}
                                         </div>
                                         <div class="row mt-2">
@@ -175,7 +177,7 @@
             }
         })
     </script>
-    <script src="{% static 'products/js/liked_products.js' %}"></script>
+    <script src="{% static 'js/collated.js' %}"></script>
 
     <br><br><br><br><br><br><br><br><br>
 {% endblock %}
