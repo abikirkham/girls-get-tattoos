@@ -4,6 +4,11 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import ensure_csrf_cookie
+
 from .models import Product, Category, Like
 from products.models import Product
 from products.models import Like
@@ -140,6 +145,7 @@ def delete_product(request, product_id):
 
 
 @login_required
+@ensure_csrf_cookie
 def like_view(request):
     if request.method == 'POST':
         liked_product_id = request.POST.get('product_id')
