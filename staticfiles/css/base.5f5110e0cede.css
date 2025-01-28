@@ -70,6 +70,15 @@ main {
     padding: 20px;
 }
 
+/* from Bulma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
 .logo-font {
     text-transform: uppercase;
 }
@@ -228,14 +237,25 @@ h2 {
     overflow-y: auto;
 }
 
-
-.icon {
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    height: 1.5rem;
-    width: 1.5rem;
+#loading-overlay {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* Ensure it appears above other elements */
+    background: rgba(255, 255, 255, 0.8); /* Optional semi-transparent background */
+    width: 100vw;
+    height: 100vh;
 }
+
+#loading-overlay .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 
 /* -------------------------------- Media Queries */
 

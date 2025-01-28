@@ -70,15 +70,6 @@ main {
     padding: 20px;
 }
 
-/* from Bulma */
-.icon {
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    height: 1.5rem;
-    width: 1.5rem;
-}
-
 .logo-font {
     text-transform: uppercase;
 }
@@ -235,6 +226,15 @@ h2 {
     height: 100px;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
 }
 
 /* -------------------------------- Media Queries */
