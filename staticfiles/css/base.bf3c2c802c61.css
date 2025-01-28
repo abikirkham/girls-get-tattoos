@@ -69,7 +69,9 @@ main {
     border-radius: 8px;
     padding: 20px;
 }
-
+.content-box {
+    margin-top: 50px;
+}
 /* from Bulma */
 .icon {
     align-items: center;
@@ -336,9 +338,4 @@ h2 {
         width: 70%;
     }
 }
-
-@media (max-width: 992px) {
-    .content-box {
-        margin-top: 60px;
-    }
-}
+  
