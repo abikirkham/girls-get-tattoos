@@ -60,13 +60,10 @@ main {
     padding: 20px;
     color: black;
 }
-.container {
-    margin-top: -30px;
-}
 
 .body-container {
     border-radius: 8px;
-    padding: 20px;
+    padding: 30px;
 }
 /* from Bulma */
 .icon {
@@ -104,14 +101,11 @@ main {
 }
 
 .shop-now-button {
-    margin-top: 20px;
-    border-radius: 8px;
-    color: #000;
-    background-color: whitesmoke;
-    transition: background 0.3s ease, color 0.3s ease;
-    font-size: 2rem;
-    padding: 2rem 3rem;
-    border: 2px solid black;
+    margin-top: 20px; /* Space above button */
+    border-radius: 8px; /* Softer corners */
+    transition: background 0.3s ease, color 0.3s ease; /* Smooth hover transition */
+    font-size: 2rem; /* Increase text size */
+    padding: 2rem 3rem; /* Increase padding */
 }
 
 .shop-now-button:hover,

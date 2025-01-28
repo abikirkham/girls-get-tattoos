@@ -11,14 +11,16 @@
 
 {% block content %}
     <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-7 col-md-6 my-auto">
-                <h1 class="display-4 logo-font bg-white text-black  body-container">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 col-md-6 my-auto text-center text-md-start">
+                <h1 class="display-4 logo-font bg-white text-black body-container">
                     The new designs are here
                 </h1>
-                <div class="my-5">
+                <div class="my-4">
                     <h2>
-                        <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop Now</a>
+                        <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-2 px-4">
+                            Shop Now
+                        </a>
                     </h2>
                 </div>
             </div>

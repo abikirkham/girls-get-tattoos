@@ -60,10 +60,13 @@ main {
     padding: 20px;
     color: black;
 }
+.container {
+    margin-top: -30px;
+}
 
 .body-container {
     border-radius: 8px;
-    padding: 30px;
+    padding: 20px;
 }
 /* from Bulma */
 .icon {
@@ -80,12 +83,6 @@ main {
 
 .main-logo-link {
     width: fit-content;
-}
-
-.shop-now-button {
-    background: white;
-    color: black;
-    min-width: 260px;
 }
 
 .btn-black {
@@ -106,6 +103,17 @@ main {
     color: white !important;
 }
 
+.shop-now-button {
+    margin-top: 20px;
+    border-radius: 8px;
+    color: #000;
+    background-color: whitesmoke;
+    transition: background 0.3s ease, color 0.3s ease;
+    font-size: 2rem;
+    padding: 2rem 3rem;
+    border: 2px solid black;
+}
+
 .shop-now-button:hover,
 .shop-now-button:active,
 .shop-now-button:focus,
@@ -114,6 +122,7 @@ main {
 .btn-black:focus {
     background: #222;
     color: white;
+    box-shadow: 1px, #aab7c4;
 }
 
 .text-black {
@@ -144,15 +153,6 @@ h1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     padding-bottom: 20px; /* Space below heading */
 }
-
-.shop-now-button {
-    margin-top: 20px; /* Space above button */
-    border-radius: 8px; /* Softer corners */
-    transition: background 0.3s ease, color 0.3s ease; /* Smooth hover transition */
-    font-size: 2rem; /* Increase text size */
-    padding: 2rem 3rem; /* Increase padding */
-}
-
 
 h2 {
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.74);
