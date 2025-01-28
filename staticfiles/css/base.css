@@ -147,8 +147,11 @@ footer i {
 footer a {
     text-decoration: none;
 }
-  
-
+.newsletter-field {
+    position: absolute;
+    left: -5000px;
+    width: 100%;
+}
 h1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     padding-bottom: 20px; /* Space below heading */
@@ -282,6 +285,14 @@ h2 {
     border-radius: 0;
 }
 
+@media (max-width: 992px) {
+    .form-control {
+        width: 80%;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+}
+
   /* fixed top navbar only on medium and up */
   @media (min-width: 992px) {
       .fixed-top-desktop-only {
@@ -316,4 +327,11 @@ h2 {
       margin: 0 auto;
     }
   }
+  @media (max-width: 992px) {
+    .newsletter-field {
+        left: -1000px;
+        font-size: 0.8rem;
+        width: 70%;
+    }
+}
   
