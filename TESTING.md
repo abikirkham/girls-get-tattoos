@@ -1,6 +1,10 @@
 
 # Testing
 
+The testing.md file provides a comprehensive overview of the testing process conducted for the project, ensuring that all features and functionalities are thoroughly evaluated for performance, usability, and compliance with best practices.
+
+---
+
 ## HTML
 
 <details>
@@ -78,13 +82,78 @@ https://pep8ci.herokuapp.com
 
 ## Responsiveness 
 
+**Media Query Testing:**
+- Below you will see the use of CSS media queries to ensure the layout adjusts based on different screen widths. For example:
+
 <details>
 <summary>Click to expand.</summary>
 
-- .html
+```
+          /* -------------------------------- Media Queries */
 
-<img src="READMEmedia/.png">
+          /* Slightly larger container on xl screens */
+          @media (min-width: 1200px) {
+              .container {
+                max-width: 80%;
+              }
+            }
 
+          @media (max-width: 992px) {
+              .form-control {
+                  width: 80%;
+                  font-size: 0.9rem;
+                  padding: 0.5rem;
+              }
+          }
+
+            /* fixed top navbar only on medium and up */
+            @media (min-width: 992px) {
+                .fixed-top-desktop-only {
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    z-index: 1030;
+                }
+            
+                .header-container {
+                    padding-top: 164px;
+                }
+            }
+            
+            /* pad the top a bit when navbar is collapsed on mobile */
+            @media (max-width: 991px) {
+                .header-container {
+                    padding-top: 116px;
+                }
+            
+                body {
+                    height: calc(100vh - 116px);
+                }
+            }
+
+            @media (max-width: 576px) {
+              footer .row {
+                text-align: center;
+              }
+              #mc_embed_signup {
+                margin: 0 auto;
+              }
+            }
+            @media (max-width: 992px) {
+              .newsletter-field {
+                  left: -1000px;
+                  font-size: 0.8rem;
+                  width: 70%;
+              }
+          }
+
+          @media (max-width: 992px) {
+              .content-box {
+                  margin-top: 60px;
+              }
+          }
+```
 
 </details>
 
@@ -176,7 +245,7 @@ By utilising the Wave Accessibility tool for ongoing development and final testi
 | As a user, I want to create an account so that I can save my favorite tattoos and view my order history. | Yes | ![Signup Page](READMEmedia/signup.png) |
 | As a user, I want to log in using my email or social media account so that I can easily access my saved items. | Yes | ![Login Page](READMEmedia/signin.png) |
 | As a user, I want to update my profile details (name, email, password) so that my account information is accurate. | Yes | ![Profile Update](READMEmedia/my%20profile.png) |
-| As an admin, I want to view a list of registered users so that I can manage accounts and view their activities. | Yes | ![Admin User List](READMEmedia) |
+| As an admin, I want to view a list of registered users so that I can manage accounts and view their activities. | Yes | ![Admin User List](READMEmedia/admin-user.png) |
 
 ### Shopping & Filtering
 
@@ -253,7 +322,7 @@ By utilising the Wave Accessibility tool for ongoing development and final testi
 
 ## Errors
 
-### Google Calendar API Verification
+1. **Google Calendar API Verification**
 
 I have set up the Google Cloud Calendar API; however, an error occurs after logging in to Google and clicking the "Book a Consultation" link. The error states that the site has not been verified. 
 
@@ -262,6 +331,64 @@ The verification process for Google Cloud is lengthy, as outlined in [Google's H
 Despite this, I have tested the functionality by proceeding through the "unsafe" option. While I was able to successfully log in:
 <img src="READMEmedia/googlelogin.png" width="300px">
 I was ultimately unable to proceed further because the site is not verified and cannot be fully trusted by Google. This remains a known issue in the current project implementation.
+
+2. **Toast Dissmissal**
+
+**Error:**
+The toast dismissal function is not working as expected. When clicking the dismiss button inside the toast:
+```html
+<button type="button" class="ml-2 mb-1 close text-dark" data-dismiss="toast" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+```
+Nothing happens. The toast does not close as it should.
+
+**Debugging Steps Taken:**
+- Verified Bootstrap JavaScript is Loaded:
+Checked that Bootstrap JavaScript was properly included and loaded in the project.
+
+- Ensured jQuery is Loaded (for Bootstrap 4):
+Confirmed that jQuery was loaded as Bootstrap 4 requires it for components like toast to function properly.
+
+- Checked data-dismiss Attribute:
+Ensured that the dismiss button contained the correct data-dismiss="toast" attribute.
+
+- Checked JavaScript Console for Errors:
+Inspected the browser’s developer tools console for any JavaScript errors that may be causing the issue, but found no significant errors.
+
+- Manually Triggered Dismissal:
+
+Attempted to manually hide the toast using:
+
+```
+    $('.toast').toast('hide');
+```
+
+This worked, which indicates the issue lies with the button interaction.
+
+- Checked for JavaScript Conflicts:
+Disabled other scripts and libraries temporarily to check for conflicts with Bootstrap's toast functionality.
+
+- Verified Bootstrap Toast Initialization:
+Ensured that the toast was properly initialised with:
+```
+$('.toast').toast('show');
+```
+
+- Added Custom Event Listener for Dismissal:
+
+Tried adding a custom event listener to trigger the toast dismissal:
+```
+    $('.toast .close').click(function() {
+        $(this).closest('.toast').toast('hide');
+    });
+```
+
+- Tested Across Different Browsers:
+Tried the functionality on different browsers, but the issue persists.
+Despite following all of the above debugging steps, the toast dismissal function still doesn’t work as expected.
+
+Both of these issues have been thoroughly tested and debugged, but unfortunately, no changes have been achieved. I have discussed them with the community on Slack and have gone through the course walkthrough again, but the errors remain unresolved.
 
 ---
 
@@ -282,7 +409,7 @@ Below I have included the criteria needed in order to Pass this Project submissi
 - [ **X** ] **Responsive Design**: Ensure the site is fully responsive and follows UX design and accessibility guidelines.
 
 ### **2. Robust Codebase**
-- [ **X** ] **Code Quality**: Produce a robust codebase with no logic errors.
+- [ **X** ] **Code Quality**: Produce a robust codebase with no logic errors. If errors are presented then document this.
 - [ **X** ] **Data Validation**: Validate all input data effectively.
 - [ **X** ] **User Feedback**: Provide users with clear progress indicators and feedback on actions.
 - [ **X** ] **API Handling**: Handle APIs effectively with clear error handling.
