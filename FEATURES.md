@@ -3,34 +3,34 @@
 
 ## Access to pages according to the user role:
 
-| Page Name | Logged out  | Customers  | Manager | Admin |
-| --------- | ----------- | ---------- | ------- | ----- |
-| Home       | Yes         | Yes        | Yes     | Yes   |
-| Login      | Yes         | Yes        | Yes     | Yes   |
-| Register   | Yes         | Yes        | Yes     | Yes   |
-| Logout     | Yes         | Yes        | Yes     | Yes   |
-| Store Products   | Yes         | Yes        | Yes     | Yes   |
-| Store Product's Details | Yes         | Yes        | Yes     | Yes   |
-| Bag       | No         | Yes        | Yes     | Yes   |
-| Profile   | No         | Yes        | Yes     | Yes   |
-| Edit profile   | No         | Yes        | Yes     | Yes   |
-| Add address   | No         | Yes        | Yes     | Yes   |
-| Edit address   | No         | Yes        | Yes     | Yes   |
-| My Orders   | No         | Yes        | Yes     | Yes   |
-| My Order's Details   | No         | Yes        | Yes     | Yes   |
-| My Wishlist   | No         | Yes        | Yes     | Yes   |
-| Checkout   | No         | Yes        | Yes     | Yes   |
-| Create newsletter-promo Email | No         | No         | Yes     | Yes   |
-| Delete product's type | No         | No         | No     | Yes   |
-| Add product | No         | No         | Yes     | Yes   |
-| Edit product | No         | No         | Yes     | Yes   |
-| Delete product | No         | No         | Yes     | Yes   |
-| Personnel Product's full details | No         | No         | Yes     | Yes   |
-| Add new image modal | No         | No         | Yes     | Yes   |
-| Edit image modal | No         | No         | Yes     | Yes   |
-| Delete image modal | No         | No         | Yes     | Yes   |
-| Orders | No         | No         | Yes     | Yes   |
-| Order's details | No         | No         | Yes     | Yes   |
+| Page Name | Logged out  | Customers  | Admin |
+| --------- | ----------- | ---------- | ----- |
+| Home       | Yes         | Yes        | Yes   |
+| Login      | Yes         | Yes        | Yes   |
+| Register   | Yes         | Yes        | Yes   |
+| Logout     | Yes         | Yes        | Yes   |
+| Store Products   | Yes         | Yes        | Yes   |
+| Store Product's Details | Yes         | Yes        | Yes   |
+| Bag       | Yes         | Yes        | Yes   |
+| Profile   | No         | Yes        | Yes   |
+| Edit profile   | No         | Yes        | Yes   |
+| Add address   | No         | Yes        | Yes   |
+| Edit address   | No         | Yes        | Yes   |
+| My Orders   | No         | Yes        | Yes   |
+| My Order's Details   | No         | Yes        | Yes   |
+| My Wishlist   | No         | Yes        | Yes   |
+| Checkout   | Yes         | Yes        | Yes   |
+| Create newsletter-promo Email | No         | No         | Yes   |
+| Delete product's type | No         | No         | Yes   |
+| Add product | No         | No         | Yes   |
+| Edit product | No         | No         | Yes   |
+| Delete product | No         | No         | Yes   |
+| Personnel Product's full details | No         | No         | Yes   |
+| Add new image modal | No         | No         | Yes   |
+| Edit image modal | No         | No         | Yes   |
+| Delete image modal | No         | No         | Yes   |
+| Orders | No         | No         | Yes   |
+| Order's details | No         | No         | Yes   |
 
 
 ## Main Features:
@@ -38,31 +38,30 @@
 - Each page has a navbar and a footer
 
 ## My Gallery
-
-| **Image**                              | **Description**                                                                                             |
-|----------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| ![Footer Subscribe](READMEmedia/footer-subscribe.png) | Footer section with social media links and a newsletter subscription form.                                 |
-| ![Liked Products](READMEmedia/liked-products.png) | "Liked Items" page showing placeholder text if no items are liked.                                         |
-| ![My Accounts Tab](READMEmedia/my%20accounts%20tab.png) | Dropdown menu under "My Account" for product management, profile, and logout options.                     |
-| ![Homepage Banner](READMEmedia/home.png) | Homepage with a banner displaying "The New Designs Are Here" and a call-to-action button.                 |
-| ![Labels](READMEmedia/labels.png) | Heart and star labels for liking products and viewing ratings.                                             |
-| ![My Profile](READMEmedia/my%20profile.png) | User profile page with fields to update delivery information and view order history.                      |
-| ![Popup Basket](READMEmedia/popupbasket.png) | Popup showing items added to the shopping basket with a "Go to Secure Checkout" button.                   |
-| ![Liked Product](READMEmedia/like1.png) | Individual product with a price tag and heart label for liking.                                            |
-| ![Quick Add](READMEmedia/quickadd.png) | Product card with a quantity selector and "Quick Add" button.                                              |
-| ![Product List](READMEmedia/products.png) | Product list displaying items with names, prices, and ratings, along with edit/delete options for admin.   |
-| ![Order History](READMEmedia/previousorders.png) | Order history page with details like order number, date, items, and order total.                          |
-| ![Product Details](READMEmedia/product%20details.png) | Detailed product page with quantity selector and "Add to Bag" button.                                      |
-| ![Product Management](READMEmedia/product%20management.png) | Admin page to add products with fields for category, SKU, name, and description.                          |
-| ![Sign Out](READMEmedia/sign%20out.png) | Sign-out confirmation popup with "Cancel" and "Sign Out" buttons.                                         |
-| ![Sign In](READMEmedia/signin.png) | Sign-in form with username and password fields and a link to reset the password.                          |
-| ![Sign Up](READMEmedia/signup.png) | Sign-up form with fields for email, username, and password, along with an error message for existing users.|
-| ![Sort By](READMEmedia/sort.png) | Dropdown for sorting products by price or rating (low to high or high to low).                             |
-| ![Flower Bug](READMEmedia/userauthproduct.png) | Product display with a price, rating, and edit/delete options for admin.                                   |
-| ![Order Confirmation](READMEmedia/successorder.png) | Order confirmation page showing order details, delivery info, and total cost.                              |
-| ![Stripe Payment](READMEmedia/stripe-payment.png) | Payment form with card entry and total to be charged.                                                      |
-| ![Subscribed](READMEmedia/subscribed.png) | Newsletter subscription confirmation message.                                                              |
-| ![User Exists](READMEmedia/userexists.png) | Error message showing a user is already registered with the given email.                                   |
-| ![Sign Out Success](READMEmedia/success%20sign%20out.png) | Notification confirming successful sign-out.                                                               |
-| ![View Likes](READMEmedia/viewlikes.png) | Button to view liked products.                                                                             |
-| ![Sign In Success](READMEmedia/success%20signin.png) | Notification confirming successful sign-in with a username.                                                |
+| Feature | Screenshot | Description |
+|---------|-----------|-------------|
+| **Homepage** | ![Homepage](READMEmedia/home.png) | The homepage introduces users to the store with a visually appealing banner showcasing new tattoo designs, encouraging engagement and exploration. |
+| **Product Browsing** | ![Product Listing](READMEmedia/products.png) | Displays available tattoo designs with pricing, ratings, and quick add options, making shopping more efficient. |
+| **Product Details** | ![Product Detail](READMEmedia/product-detail.png) | Provides an in-depth view of the tattoo, including pricing, description, and an easy-to-use quantity selector for a seamless shopping experience. |
+| **Add to Bag** | ![Add to Bag](READMEmedia/add-to-bag.png) | Users can adjust quantities and proceed to checkout with clear call-to-action buttons. |
+| **Shopping Bag** | ![Shopping Bag](READMEmedia/bag.png) | Displays selected items with a straightforward checkout button, ensuring a smooth purchasing process. |
+| **Bag Information** | ![Bag Info](READMEmedia/bag-info.png) | Shows a detailed view of items in the bag, allowing users to review and modify their selection before proceeding. |
+| **Checkout Page** | ![Checkout](READMEmedia/checkout-info.png) | Allows users to enter shipping and payment details with a secure transaction process. |
+| **Order Confirmation** | ![Order Success](READMEmedia/successful-checkout.png) | Confirms order placement with a summary of purchased items and delivery details, giving users confidence in their transaction. |
+| **User Registration** | ![User Registration](READMEmedia/confirm-email.png) | Ensures secure account creation with email verification to prevent fraudulent sign-ups. |
+| **Email Already Registered** | ![Email Exists](READMEmedia/email-already-exists.png) | Prevents duplicate sign-ups by notifying users when an account already exists with the given email. |
+| **Sign In & Sign Out** | ![Sign In](READMEmedia/signin.png) <br> ![Sign Out](READMEmedia/sign-out.png) | Secure login and logout functionalities with success toasts providing user feedback. |
+| **Sign In Success Toast** | ![Sign In Toast](READMEmedia/signin-toast.png) | Confirmation popup for successful login, enhancing user experience. |
+| **Sign Out Success Toast** | ![Sign Out Toast](READMEmedia/toast-signedout.png) | Provides user feedback upon successful logout. |
+| **Profile Management** | ![Profile](READMEmedia/profile.png) | Users can manage personal details, delivery addresses, and view their order history in one place. |
+| **Wishlist (Liked Items)** | ![Liked Items](READMEmedia/likes.png) | Users can save their favourite tattoo designs for easy access later, improving browsing efficiency. |
+| **Product Management (Admin)** | ![Product Management](READMEmedia/product-management.png) <br> ![Edit Product](READMEmedia/edit-product.png) | Admin users can add, edit, or remove products, ensuring inventory is up to date. |
+| **Authentication for Product Management** | ![Auth Product](READMEmedia/auth-product.png) <br> ![Auth Product Detail](READMEmedia/auth-product-detail.png) | Restricts editing and managing products to authenticated users only. |
+| **Search Bar** | ![Search](READMEmedia/searchbar.png) | Users can quickly find specific tattoo designs, improving navigation and product discovery. |
+| **Newsletter Signup** | ![Newsletter](READMEmedia/newsletter-signup.png) <br> ![Subscribed Confirmation](READMEmedia/subscribed.png) | Users can subscribe for updates, promotions, and new tattoo releases, enhancing engagement. |
+| **Footer & Social Media Links** | ![Footer](READMEmedia/footer.png) <br> ![Social Media](READMEmedia/social-media.png) | Provides quick access to social media pages, allowing users to stay connected with the brand. |
+| **Contact Us Page** | ![Contact Us](READMEmedia/contact-us.png) | A simple and user-friendly form for customers to reach out with inquiries. |
+| **Response to Contact Form** | ![Contact Response](READMEmedia/contact-response.png) | Confirmation message ensuring users that their query has been received. |
+| **Verification Email Sent** | ![Verify Email](READMEmedia/verify-emailaddress.png) | Notifies users to verify their email after registration, enhancing security. |
+| **What Comes in the Bag** | ![Bag Contents](READMEmedia/what-comes-in-bag.png) | Provides clarity on what users receive with their purchase. |
+| **Stripe Payment Checkout** | ![Stripe Checkout](READMEmedia/stripe.png) | Secure payment processing using Stripe, ensuring a smooth transaction experience. |
