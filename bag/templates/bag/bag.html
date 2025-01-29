@@ -40,32 +40,32 @@
                                 <tr>
                                     <td class="p-3 w-25">
                                         {% if item.type == 'product' %}
-                                            <img class="img-fluid rounded" src="{{ item.product.image.url }}">
+                                            <img class="img-fluid rounded" src="{{ item.item.image.url }}">
                                         {% endif %}
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0"><strong>
                                             {% if item.type == 'product' %}
-                                                {{ item.product.name }}
+                                                {{ item.item.name }}
                                             {% endif %}
                                         </strong></p>
-                                        <p class="my-0 small text-muted">SKU: {% if item.type == 'product' %}{{ item.product.sku|upper }}{% else %}N/A{% endif %}</p>
+                                        <p class="my-0 small text-muted">SKU: {% if item.type == 'product' %}{{ item.item.sku|upper }}{% else %}N/A{% endif %}</p>
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">£
                                             {% if item.type == 'product' %}
-                                                {{ item.product.price }}
+                                                {{ item.item.price }}
                                             {% endif %}
                                         </p>
                                     </td>
                                     <td class="py-3 w-25">
-                                        <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
+                                        <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item.id %}">
                                             {% csrf_token %}
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <button class="decrement-qty btn btn-sm btn-black rounded-0" 
-                                                            data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                                            data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item.id }}">
                                                             <span>
                                                                 <i class="fas fa-minus fa-sm"></i>
                                                             </span>
@@ -87,12 +87,12 @@
                                             </div>
                                         </form>
                                         <a class="update-link text-info"><small>Update</small></a>
-                                        <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
+                                        <a class="remove-item text-danger float-right" id="remove_{{ item.item.id }}"><small>Remove</small></a>
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">£
                                             {% if item.type == 'product' %}
-                                                {{ item.product.price | calc_subtotal:item.quantity }}
+                                                {{ item.item.price | calc_subtotal:item.quantity }}
                                             {% endif %}
                                         </p>
                                     </td>
@@ -153,7 +153,7 @@
     })
 
     $('.remove-item').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
+        var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
         var itemId = $(this).attr('id').split('remove_')[1];
         var url = `/bag/remove/${itemId}/`;
         var data = {'csrfmiddlewaretoken': csrfToken};

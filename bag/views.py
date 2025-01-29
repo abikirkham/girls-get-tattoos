@@ -6,22 +6,23 @@ from products.models import Product
 def view_bag(request):
     """ Display the shopping bag contents """
     bag = request.session.get('bag', {})
-    items = []
+    bag_items = []  # Use 'bag_items' to match the template
 
     for item_id, item_data in bag.items():
         if item_data['type'] == 'product':
             product = get_object_or_404(Product, pk=item_id)
-            items.append({
+            bag_items.append({
                 'item': product,
                 'quantity': item_data['quantity'],
                 'type': 'product',
             })
-    
+
     context = {
-        'items': items,
+        'bag_items': bag_items,  # Ensure the correct key name
     }
 
     return render(request, 'bag/bag.html', context)
+
 
 def add_to_bag(request, item_id):
     """ Add a quantity of the specified item (product) to the shopping bag """
