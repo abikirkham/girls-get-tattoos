@@ -488,29 +488,35 @@ This feature allows users to "like" products in the e-commerce store. Below, I e
 
    **JavaScript Code:**
    ```javascript
-         $(document).ready(function() {
-            $('.likeButton').click(function() {
-               var product_id = $(this).data('product-id');
-               var button = $(this);
-               $.ajax({
-                     type: 'POST',
-                     url: '/like/',
-                     data: {
-                        'product_id': product_id,
-                        'csrfmiddlewaretoken': '{{ csrf_token }}'
-                     },
-                     dataType: 'json',
-                     success: function(response) {
-                        if (response.liked) {
-                           button.text('Liked');
-                        }
-                     },
-                     error: function(response) {
-                        console.log('Error:', response);
-                     }
-               });
+         $(document).on('click', '.likeButton', function() {
+            const button = $(this);
+            const productId = button.data('post-id');
+            const url = button.data('url');
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            console.log('Product ID:', productId);
+            console.log('URL:', url);
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                headers: {
+                    'X-CSRFToken': csrfToken
+                },
+                data: {
+                    'product_id': productId
+                },
+                success: function(response) {
+                    alert('Product liked successfully!');
+                    button.find('i').toggleClass('far fas');
+                },
+                error: function(response) {
+                    console.log(response.responseText);
+                    alert('Failed to like the product.');
+                }
             });
-         });
+        });
+
 
 #### Dynamic UI Update:
 The JavaScript updates the like button's text and the like count dynamically without a page reload. It uses AJAX to send the data to the server and update the UI based on the server's response.
@@ -575,7 +581,7 @@ Users can visit the consultations page to book a 30-minute video chat session to
      ```
 
 5. **Session Storage**:
-   - Ensure credentials are securely stored in session or database. Avoid hardcoding sensitive data.
+   - Ensure credentials are securely stored in Heroku database. Avoid hardcoding sensitive data in env.py.
 
 6. **Django Views and URLs**:
    - Users access the consultations page (`/consultations`) to:
@@ -605,6 +611,11 @@ Users can visit the consultations page to book a 30-minute video chat session to
 
 By following these steps, users can easily book video chat sessions through Google Calendar, streamlining the consultation process for tattoo design discussions.
 
+### Errors in development
+
+Please see [TESTING.md](TESTING.md) to understand the error presented when in development, explaining the inability to currently bypass.
+
+---
 
 ## Deployment and Payment setup
 
@@ -613,19 +624,6 @@ By following these steps, users can easily book video chat sessions through Goog
 
 
 Please refer to the [DEPLOYMENT.md](DEPLOYMENT.md) file for all deployment and payment-related documentation.
-
-
-## Stripe Payment Integration
-I have integrated Stripe to process payments for:
-- Pre-designed tattoos.
-- Consultation bookings.
-
-I will set up my Stripe API keys in my Django settings:
-
-```python
-STRIPE_PUBLIC_KEY = 'your_public_key_here'
-STRIPE_SECRET_KEY = 'your_secret_key_here'
-```
 
 ---
 
@@ -639,7 +637,7 @@ Please refer to the [TESTING.md](TESTING.md) file for all test-related documenta
 ## Credits
 
 ### Project Inspiration and Tutorials
-- [WireFrames](https://cacoo.com/diagrams/QXSJF7qPDCKNuzVk/B4F94?reload_rt=1718100120618_1&): Provided the initial design inspiration for my application's user interface, ensuring an intuitive and user-friendly layout.
+- [WireFrames (Canva)](https://www.canva.com/): Used Canva for designing wireframes, backgrounds, and visual assets that helped guide the user interface design of the project.
 - [Code Institute's Boutique Ado tutorial](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+EA101+4/courseware/eb05f06e62c64ac89823cc956fcd8191/0713d55c023943438d418d83caf4171b/): The base for my project. 
 
 ### Frontend Design and Styling
@@ -663,6 +661,29 @@ Please refer to the [TESTING.md](TESTING.md) file for all test-related documenta
 - [Django Admin](https://docs.djangoproject.com/en/5.1/ref/contrib/admin/): The page provides documentation for the Django Admin site, detailing its features, customisation options, and how to use it to manage application data through a web interface. 
 - [Django Contact Form](https://mailtrap.io/blog/django-contact-form/): Used to create the booking form/ contact page, for these messages to be displayed on admin for superusers.
 - [Google Calendar API](https://dev.to/karanjot_s/connect-google-calendar-to-django-application-3787)
+
+
+### Bootstrap Features
+- [Bootstrap Tables](https://getbootstrap.com/docs/4.6/content/tables/): Used Bootstrap's table component to display organized and responsive tables in the application.
+- [Bootstrap Grid System](https://getbootstrap.com/docs/4.6/layout/grid/): Implemented the Bootstrap grid system for responsive layouts, ensuring the site works well across various screen sizes.
+- [Bootstrap Cards](https://getbootstrap.com/docs/4.6/components/card/): Utilized Bootstrap cards for content boxes, making information display cleaner and more interactive.
+
+### Mailchimp Integration
+- [Mailchimp Embedded Forms Tutorial (YouTube)](https://www.youtube.com/watch?v=BXpNEyA89f0): Followed this tutorial for integrating Mailchimp's embedded forms into the application to manage user subscriptions.
+
+### Toast Notifications Implementation
+- [Bootstrap Toasts](https://getbootstrap.com/docs/4.6/components/toasts/): Used Bootstrap's toast component to provide non-intrusive feedback messages to users, improving UX by informing users of successful actions or errors.
+
+### Setting up Google Cloud Console and Calendar APIs
+- [Google Cloud Console Setup](https://cloud.google.com/docs/authentication/getting-started): Used this guide to set up a Google Cloud Console project and configure API access, enabling the use of Google services like Calendar and authentication.
+- [Google Calendar API Setup](https://developers.google.com/calendar/quickstart/python): Followed this tutorial to integrate Google Calendar API for consultation bookings and managing appointments through Google Calendar.
+
+### Additional Tools and Apps
+- [iPad Drawing App](https://www.example-drawing-app.com): Used this app to sketch all the tattoo designs and artwork for sale on the platform, allowing for creative flexibility and digital artwork processing.
+
+### Social Media Links
+- [Instagram](https://www.instagram.com/): Connect with us on Instagram for updates and promotions.
+- [Facebook](https://www.facebook.com/): Follow us on Facebook for news and community engagement.
 
 ### Acknowledgments
 - [Julia Krowkaw](https://github.com/IuliiaKonovalova/e-commerce): Provided valuable insights and understanding on the implementation of models.
