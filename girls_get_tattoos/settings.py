@@ -11,8 +11,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security settings
 SECRET_KEY = os.environ.get('SECRET_KEY', '(16++&w=5l#9eyoqj(_yawuwgdxpn6g#f9q3apg-r^po$65yw&')
-DEBUG = False
-ALLOWED_HOSTS = ['.codeinstitute-ide.net', '.herokuapp.com', 'https://girls-get-tattoos-6ad59281377a.herokuapp.com/', 'localhost']
+DEBUG = True
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.codeinstitute-ide.net', '.herokuapp.com', 'girls-get-tattoos-6ad59281377a.herokuapp.com']
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-abikirkham-girlsgettatt-mmnx4jw091u.ws.codeinstitute-ide.net',
     'https://8000-abikirkham-girlsgettatt-u836t2aelhc.ws.codeinstitute-ide.net',
@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -95,13 +96,13 @@ AUTHENTICATION_BACKENDS = (
 SITE_ID = 1
 
 # Allauth settings
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_LOGIN_METHODS = {'email', 'username'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'email2*', 'username*', 'password1*', 'password2*']
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
+
 
 # WSGI application
 WSGI_APPLICATION = 'girls_get_tattoos.wsgi.application'
