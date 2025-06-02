@@ -28,7 +28,7 @@ def google_calendar_init(request):
     flow = Flow.from_client_secrets_file(
         settings.GOOGLE_CLIENT_SECRETS_FILE,
         scopes=settings.GOOGLE_API_SCOPES,
-        redirect_uri=settings.REDIRECT_URI,
+        redirect_uri=settings.GOOGLE_REDIRECT_URI,
     )
     authorization_url, state = flow.authorization_url(
         access_type="offline", include_granted_scopes="true"
@@ -46,7 +46,7 @@ def google_calendar_redirect(request):
             settings.GOOGLE_CLIENT_SECRETS_FILE,
             scopes=settings.GOOGLE_API_SCOPES,
             state=state,
-            redirect_uri=settings.REDIRECT_URI,
+            redirect_uri=settings.GOOGLE_REDIRECT_URI,
         )
 
         flow.fetch_token(authorization_response=request.build_absolute_uri())
@@ -70,19 +70,16 @@ def credentials_to_dict(credentials):
 
 
 def google_login(request):
-    # Create the OAuth flow object from the client secret file
     flow = Flow.from_client_secrets_file(
         settings.GOOGLE_CLIENT_CONFIG_FILE,
         scopes=["https://www.googleapis.com/auth/calendar.events"],
     )
     flow.redirect_uri = settings.GOOGLE_REDIRECT_URI
 
-    # Generate the authorization URL
     authorization_url, state = flow.authorization_url(
         access_type="offline", include_granted_scopes="true"
     )
 
-    # Save the state in session to prevent CSRF attacks
     request.session["state"] = state
 
     return redirect(authorization_url)

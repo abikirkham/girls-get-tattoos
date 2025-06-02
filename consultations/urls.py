@@ -11,7 +11,7 @@ urlpatterns = [
         name="google_calendar_init",
     ),
     path(
-        "oauth2callback/",
+        "consultations/oauth2callback/",
         views.google_calendar_redirect,
         name="google_calendar_redirect",
     ),
