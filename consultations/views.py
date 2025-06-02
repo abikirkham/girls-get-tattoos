@@ -8,6 +8,8 @@ from google.auth.transport.requests import Request
 from django.shortcuts import redirect
 from django.conf import settings
 from googleapiclient.discovery import build
+from django.http import HttpResponse
+from google_auth_oauthlib.flow import Flow
 
 
 def list_events(request):
@@ -94,4 +96,23 @@ def consultations(request):
 
 
 def oauth2callback(request):
-    return HttpResponse("OAuth callback received")
+    try:
+        state = request.session.get("state")
+        if not state:
+            return HttpResponse("Missing state. Please restart login.")
+
+        flow = Flow.from_client_secrets_file(
+            settings.GOOGLE_CLIENT_SECRETS_FILE,
+            scopes=settings.GOOGLE_API_SCOPES,
+            state=state,
+            redirect_uri=settings.REDIRECT_URI,
+        )
+
+        flow.fetch_token(authorization_response=request.build_absolute_uri())
+        credentials = flow.credentials
+
+        request.session["credentials"] = credentials_to_dict(credentials)
+
+        return HttpResponse("✅ Calendar access granted.")
+    except Exception as e:
+        return HttpResponse(f"❌ Error during callback: {e}")
