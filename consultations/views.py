@@ -96,3 +96,7 @@ def google_logout(request):
     request.session.pop("credentials", None)
     request.session.pop("state", None)
     return HttpResponse("✅ Google session cleared. Try logging in again.")
+
+def reset_google_session(request):
+    request.session.flush()
+    return HttpResponse("✅ Google session reset. Now try logging in again.")
