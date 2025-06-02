@@ -3,17 +3,20 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import handler404
+from consultations.views import oauth2callback
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
-    path('', include('home.urls')),
-    path('products/', include('products.urls')),
-    path('consultations/', include('consultations.urls')),
-    path('bag/', include('bag.urls')),
-    path('checkout/', include('checkout.urls')),
-    path('profile/', include('profiles.urls')),
-    path('contact/', include('contact.urls')),
+    path("admin/", admin.site.urls),
+    path("accounts/", include("allauth.urls")),
+    path("", include("home.urls")),
+    path("products/", include("products.urls")),
+    path("consultations/", include("consultations.urls")),
+    path("bag/", include("bag.urls")),
+    path("checkout/", include("checkout.urls")),
+    path("profile/", include("profiles.urls")),
+    path("contact/", include("contact.urls")),
+    path("oauth2callback", oauth2callback, name="oauth2callback"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-handler404 = 'girls_get_tattoos.views.handler404'
+handler404 = "girls_get_tattoos.views.handler404"
