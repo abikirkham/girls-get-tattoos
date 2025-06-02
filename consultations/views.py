@@ -47,6 +47,29 @@ def list_events(request):
     return JsonResponse(formatted_events, safe=False)
 
 
+def list_calendars(request):
+    credentials = Credentials(**request.session["credentials"])
+    service = build("calendar", "v3", credentials=credentials)
+
+    calendar_list = service.calendarList().list().execute()
+    return JsonResponse(calendar_list["items"], safe=False)
+
+    formatted_events = [
+        {
+            "summary": event.get("summary"),
+            "start": event.get("start", {}).get(
+                "dateTime", event.get("start", {}).get("date")
+            ),
+            "end": event.get("end", {}).get(
+                "dateTime", event.get("end", {}).get("date")
+            ),
+        }
+        for event in events
+    ]
+
+    return JsonResponse(formatted_events, safe=False)
+
+
 def google_calendar_init(request):
     flow = Flow.from_client_secrets_file(
         settings.GOOGLE_CLIENT_SECRETS_FILE,

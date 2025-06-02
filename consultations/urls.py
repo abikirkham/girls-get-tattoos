@@ -16,6 +16,11 @@ urlpatterns = [
         name="google_calendar_redirect",
     ),
     path("google-calendar/events/", views.list_events, name="list_events"),
+    path(
+        "google-calendar/calendars/",
+        views.list_calendars,
+        name="list_calendars",
+    ),
     path("google_logout/", google_logout, name="google_logout"),
     path("reset/", views.reset_google_session, name="reset_google_session"),
 ]
