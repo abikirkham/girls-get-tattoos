@@ -16,7 +16,6 @@ urlpatterns = [
     path("checkout/", include("checkout.urls")),
     path("profile/", include("profiles.urls")),
     path("contact/", include("contact.urls")),
-    path("oauth2callback", oauth2callback, name="oauth2callback"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = "girls_get_tattoos.views.handler404"
