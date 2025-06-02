@@ -8,7 +8,7 @@ from google.auth.transport.requests import Request
 from django.shortcuts import redirect
 from django.conf import settings
 from googleapiclient.discovery import build
-from django.http import HttpResponse, HttpResponseServerError
+from django.http import HttpResponse, HttpResponseServerError, JsonResponse
 from google_auth_oauthlib.flow import Flow
 
 
@@ -21,7 +21,7 @@ def list_events(request):
     )
     events = events_result.get("items", [])
 
-    return HttpResponse(events)
+    return JsonResponse(events, safe=False)
 
 
 def google_calendar_init(request):
@@ -96,6 +96,7 @@ def google_logout(request):
     request.session.pop("credentials", None)
     request.session.pop("state", None)
     return HttpResponse("✅ Google session cleared. Try logging in again.")
+
 
 def reset_google_session(request):
     request.session.flush()
