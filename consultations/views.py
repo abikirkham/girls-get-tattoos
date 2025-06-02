@@ -95,24 +95,7 @@ def consultations(request):
     return redirect(settings.GOOGLE_REDIRECT_URI)
 
 
-def oauth2callback(request):
-    try:
-        state = request.session.get("state")
-        if not state:
-            return HttpResponse("Missing state. Please restart login.")
-
-        flow = Flow.from_client_secrets_file(
-            settings.GOOGLE_CLIENT_SECRETS_FILE,
-            scopes=settings.GOOGLE_API_SCOPES,
-            state=state,
-            redirect_uri=settings.REDIRECT_URI,
-        )
-
-        flow.fetch_token(authorization_response=request.build_absolute_uri())
-        credentials = flow.credentials
-
-        request.session["credentials"] = credentials_to_dict(credentials)
-
-        return HttpResponse("✅ Calendar access granted.")
-    except Exception as e:
-        return HttpResponse(f"❌ Error during callback: {e}")
+def google_logout(request):
+    request.session.pop("credentials", None)
+    request.session.pop("state", None)
+    return HttpResponse("✅ Google session cleared. Try logging in again.")
