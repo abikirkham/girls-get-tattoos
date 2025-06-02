@@ -522,6 +522,64 @@ This feature allows users to "like" products in the e-commerce store. Below, I e
 The JavaScript updates the like button's text and the like count dynamically without a page reload. It uses AJAX to send the data to the server and update the UI based on the server's response.
 
 ---
+## CRUD 
+
+Below is a demonstration of the full CRUD functionality for products on the site, including **Create**, **Read**, **Update**, **Delete**, and a simulated **Like/Favourite** feature.
+
+
+### 1. Create – Adding a New Product
+
+Users with appropriate permissions can add a new product through the admin panel or a product form.
+
+**Screenshot: Add Product Form**  
+<img src="READMEmedia/product-added.png">
+
+
+### 2. Read – Viewing a Product
+
+All users can browse products from the store. Clicking on a product displays detailed information such as price, image, and description.
+
+**Screenshot: Product Detail Page**  
+<img src="READMEmedia/adding-1.png">
+<img src="READMEmedia/adding-2.png">
+
+### 3. Update – Editing a Product
+
+Admins or store managers can update a product’s details such as name, price, category, or image.
+
+**Screenshot: Edit Product**  
+<img src="READMEmedia/editing.png">
+<img src="READMEmedia/edited.png">
+
+
+### 4. Delete – Removing a Product
+
+Admins can delete a product. Once removed, it no longer appears on the storefront.
+
+**Screenshot: Delete Confirmation**  
+<img src="READMEmedia/product-deleted.png">
+
+
+### 5. Like / Favourite a Product *(Optional)*
+
+Logged-in users can favourite products to save them for later viewing.
+
+**Screenshot: Favourite Button & Favourites Page**  
+<img src="READMEmedia/likedproduct.png">
+
+
+## CRUD Summary Table
+
+| Action   | Who Can Perform  | Method         | Result                         |
+|----------|------------------|----------------|--------------------------------|
+| Create   | Admin / Manager  | Form or Admin  | New product added              |
+| Read     | All users        | Product page   | View product details           |
+| Update   | Admin / Manager  | Edit form      | Product details updated        |
+| Delete   | Admin / Manager  | Delete button  | Product removed from catalog   |
+| Like     | Logged-in users  | Button toggle  | Product added to favourites    |
+
+
+---
 
 ## Custom 404 Page
 A custom 404 error page has been implemented to improve user experience. The template is located in the `templates` directory as `404.html`.
