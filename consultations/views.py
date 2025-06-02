@@ -95,4 +95,41 @@ def consultations(request):
 
 
 def oauth2callback(request):
-    return HttpResponse("OAuth callback received")
+    state = request.session["state"]
+
+    flow = Flow.from_client_secrets_file(
+        settings.GOOGLE_CLIENT_SECRETS_FILE,
+        scopes=settings.GOOGLE_API_SCOPES,
+        state=state,
+        redirect_uri=settings.REDIRECT_URI,
+    )
+
+    flow.fetch_token(authorization_response=request.build_absolute_uri())
+
+    credentials = flow.credentials
+    request.session["credentials"] = credentials_to_dict(credentials)
+
+    return HttpResponse(
+        "Calendar integration complete. You can now use Google Calendar with your Django app."
+    )
+
+
+def create_event(request):
+    credentials = Credentials(**request.session["credentials"])
+    service = build("calendar", "v3", credentials=credentials)
+
+    event = {
+        "summary": "Tattoo Consultation",
+        "start": {
+            "dateTime": "2025-06-02T15:00:00",
+            "timeZone": "Europe/London",
+        },
+        "end": {
+            "dateTime": "2025-06-02T15:30:00",
+            "timeZone": "Europe/London",
+        },
+    }
+
+    event = service.events().insert(calendarId="primary", body=event).execute()
+
+    return HttpResponse(f"Event created: {event.get('htmlLink')}")
