@@ -10,18 +10,41 @@ from django.conf import settings
 from googleapiclient.discovery import build
 from django.http import HttpResponse, HttpResponseServerError, JsonResponse
 from google_auth_oauthlib.flow import Flow
+from datetime import datetime, timezone
 
 
 def list_events(request):
     credentials = Credentials(**request.session["credentials"])
     service = build("calendar", "v3", credentials=credentials)
 
+    now = datetime.utcnow().isoformat() + "Z"
     events_result = (
-        service.events().list(calendarId="primary", maxResults=10).execute()
+        service.events()
+        .list(
+            calendarId="primary",
+            timeMin=now,
+            maxResults=10,
+            singleEvents=True,
+            orderBy="startTime",
+        )
+        .execute()
     )
     events = events_result.get("items", [])
 
-    return JsonResponse(events, safe=False)
+    formatted_events = [
+        {
+            "summary": event.get("summary"),
+            "start": event.get("start", {}).get(
+                "dateTime", event.get("start", {}).get("date")
+            ),
+            "end": event.get("end", {}).get(
+                "dateTime", event.get("end", {}).get("date")
+            ),
+        }
+        for event in events
+    ]
+
+    return JsonResponse(formatted_events, safe=False)
 
 
 def google_calendar_init(request):
