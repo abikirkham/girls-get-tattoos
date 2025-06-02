@@ -8,7 +8,7 @@ from google.auth.transport.requests import Request
 from django.shortcuts import redirect
 from django.conf import settings
 from googleapiclient.discovery import build
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseServerError
 from google_auth_oauthlib.flow import Flow
 
 
@@ -39,23 +39,23 @@ def google_calendar_init(request):
 
 
 def google_calendar_redirect(request):
-    state = request.session["state"]
+    try:
+        state = request.session["state"]
 
-    flow = Flow.from_client_secrets_file(
-        settings.GOOGLE_CLIENT_SECRETS_FILE,
-        scopes=settings.GOOGLE_API_SCOPES,
-        state=state,
-        redirect_uri=settings.REDIRECT_URI,
-    )
+        flow = Flow.from_client_secrets_file(
+            settings.GOOGLE_CLIENT_SECRETS_FILE,
+            scopes=settings.GOOGLE_API_SCOPES,
+            state=state,
+            redirect_uri=settings.REDIRECT_URI,
+        )
 
-    flow.fetch_token(authorization_response=request.build_absolute_uri())
+        flow.fetch_token(authorization_response=request.build_absolute_uri())
+        credentials = flow.credentials
+        request.session["credentials"] = credentials_to_dict(credentials)
 
-    credentials = flow.credentials
-    request.session["credentials"] = credentials_to_dict(credentials)
-
-    return HttpResponse(
-        "Calendar integration complete. You can now use Google Calendar with your Django app."
-    )
+        return HttpResponse("Calendar integration complete.")
+    except Exception as e:
+        return HttpResponseServerError(f"OAuth callback failed: {str(e)}")
 
 
 def credentials_to_dict(credentials):
