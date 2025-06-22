@@ -11,6 +11,30 @@ from datetime import datetime, timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import ConsultationInterestForm
+from django.contrib.admin.views.decorators import staff_member_required
+from .models import ConsultationInterest
+
+
+@staff_member_required
+def consultation_admin_view(request):
+    if request.method == "POST":
+        entry_id = request.POST.get("entry_id")
+        try:
+            entry = ConsultationInterest.objects.get(id=entry_id)
+            entry.read = True
+            entry.save()
+            messages.success(
+                request, f"Marked consultation from {entry.user} as read."
+            )
+        except ConsultationInterest.DoesNotExist:
+            messages.error(request, "Consultation entry not found.")
+
+        return redirect("consultation_admin")
+
+    entries = ConsultationInterest.objects.all().order_by("-submitted_at")
+    return render(
+        request, "consultations/consultation_admin.html", {"entries": entries}
+    )
 
 
 @login_required

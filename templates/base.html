@@ -97,6 +97,9 @@
                             </div>
                         </a>
                         <div class="dropdown-menu border-0" aria-labelledby="links-options">
+                          {% if request.user.is_staff %}
+                            <a href="{% url 'consultation_admin' %}" class="dropdown-item">Queries</a>
+                            {% endif %}
                             <a href="{% url 'products' %}" class="dropdown-item">Shop</a>
                             <a href="{% url 'consultations'  %}" class="dropdown-item">Book a Consultation</a>
                             <a href="{% url 'consultation_interest'  %}" class="dropdown-item">Consultation Query</a>

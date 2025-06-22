@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5 p-4" style="background-color: white; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
+    <h2 class="mb-4">Consultation Submissions</h2>
+
+
+    {% for entry in entries %}
+        <div class="p-3 my-3" style="background-color: {% if entry.read %}#f2f2f2{% else %}white{% endif %}; border-radius: 8px; box-shadow: 0 0 6px rgba(0,0,0,0.05);">
+            <p><strong>User:</strong> {{ entry.user }}</p>
+            <p><strong>Topic:</strong> {{ entry.topic }}</p>
+            <p><strong>Date:</strong> {{ entry.preferred_date }} {{ entry.preferred_time }}</p>
+            <p><strong>Message:</strong> {{ entry.message }}</p>
+            <p><strong>Status:</strong> {{ entry.read|yesno:"Read,Unread" }}</p>
+
+            {% if not entry.read %}
+            <form method="post" class="mt-2">
+                {% csrf_token %}
+                <input type="hidden" name="entry_id" value="{{ entry.id }}">
+                <button type="submit" class="btn btn-sm btn-outline-success">Mark as Read</button>
+            </form>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+</div>
+<br> <br>
+{% endblock %}

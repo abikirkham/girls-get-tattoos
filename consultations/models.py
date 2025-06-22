@@ -13,3 +13,5 @@ class ConsultationInterest(models.Model):
 
     def __str__(self):
         return f"Consultation interest by {self.user.username} on {self.preferred_date}"
+    
+    read = models.BooleanField(default=False)

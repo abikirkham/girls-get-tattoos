@@ -10,7 +10,6 @@ urlpatterns = [
         views.google_calendar_init,
         name="google_calendar_init",
     ),
-    path("interest/", views.express_interest, name="consultation_interest"),
     path(
         "oauth2callback/",
         views.google_calendar_redirect,
@@ -24,4 +23,10 @@ urlpatterns = [
     ),
     path("google_logout/", google_logout, name="google_logout"),
     path("reset/", views.reset_google_session, name="reset_google_session"),
+    path("interest/", views.express_interest, name="consultation_interest"),
+    path(
+        "admin-submissions/",
+        views.consultation_admin_view,
+        name="consultation_admin",
+    ),
 ]
