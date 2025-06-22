@@ -10,6 +10,7 @@ urlpatterns = [
         views.google_calendar_init,
         name="google_calendar_init",
     ),
+    path("interest/", views.express_interest, name="consultation_interest"),
     path(
         "oauth2callback/",
         views.google_calendar_redirect,

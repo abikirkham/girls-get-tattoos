@@ -1,16 +1,35 @@
 from django.shortcuts import redirect
 from django.conf import settings
 from google_auth_oauthlib.flow import Flow
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
 from django.conf import settings
 from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
-from django.shortcuts import redirect
-from django.conf import settings
 from googleapiclient.discovery import build
 from django.http import HttpResponse, HttpResponseServerError, JsonResponse
-from google_auth_oauthlib.flow import Flow
 from datetime import datetime, timezone
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from .forms import ConsultationInterestForm
+
+
+@login_required
+def express_interest(request):
+    if request.method == "POST":
+        form = ConsultationInterestForm(request.POST)
+        if form.is_valid():
+            interest = form.save(commit=False)
+            interest.user = request.user
+            interest.save()
+            messages.success(
+                request, "Your consultation interest was submitted."
+            )
+            return redirect("home")
+    else:
+        form = ConsultationInterestForm()
+    return render(
+        request, "consultations/consultation_interest.html", {"form": form}
+    )
 
 
 def list_events(request):

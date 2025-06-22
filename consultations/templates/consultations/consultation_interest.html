@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid d-flex justify-content-center my-5">
+    <div class="p-4" style="background-color: white; max-width: 600px; width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <h2 class="mb-4" style="text-align: left;">Express Your Interest in a Consultation</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-black mt-3">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
