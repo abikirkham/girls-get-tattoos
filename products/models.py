@@ -1,7 +1,3 @@
-"""
-This module defines models for categories, products, and user product likes.
-"""
-
 from django.db import models
 from django.contrib.auth.models import User
 

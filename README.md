@@ -377,10 +377,11 @@ To understand some concepts, I created a couple flowchart diagrams.
 <img src="READMEmedia/consulting-flowchart.png">
 
 ---
-
 ## Data Models
 
 This document outlines the core data models used in the application. Each model is designed to handle specific functionality and relationships, ensuring a scalable and efficient database structure.
+
+---
 
 ### Order Model
 
@@ -399,103 +400,106 @@ The `Order` model handles user orders, including bookings and pricing. It ensure
 | Street Address 1  | street_address1   | CharField       | `max_length=80, null=False, blank=False`        |
 | Street Address 2  | street_address2   | CharField       | `max_length=80, null=True, blank=True`          |
 | County            | county            | CharField       | `max_length=80, null=True, blank=True`          |
-| Date              | date              | DateTimeField   | `auto_now_add=True`                              |
+| Date              | date              | DateTimeField   | `auto_now_add=True`                             |
 | Order Total       | order_total       | DecimalField    | `max_digits=10, decimal_places=2, default=0`    |
 | Grand Total       | grand_total       | DecimalField    | `max_digits=10, decimal_places=2, default=0`    |
 
+---
+
 ### Order Line Item Model
 
-The `OrderLineItem` model tracks individual items in an order, including product details and line item totals.
+Tracks individual items in an order, including product details and line item totals.
 
-| Name              | Database Key    | Field Type     | Validation                                      |
-|-------------------|-----------------|----------------|-------------------------------------------------|
-| Order             | order           | ForeignKey     | `Order, on_delete=models.CASCADE, related_name='lineitems'` |
-| Product           | product         | ForeignKey     | `Product, on_delete=models.CASCADE`             |
-| Quantity          | quantity        | IntegerField   | `default=0`                                      |
-| Line Item Total   | lineitem_total  | DecimalField   | `max_digits=6, decimal_places=2, editable=False` |
+| Name            | Database Key    | Field Type     | Validation                                      |
+|-----------------|-----------------|----------------|-------------------------------------------------|
+| Order           | order           | ForeignKey     | `Order, on_delete=models.CASCADE, related_name='lineitems'` |
+| Product         | product         | ForeignKey     | `Product, on_delete=models.CASCADE`             |
+| Quantity        | quantity        | IntegerField   | `default=0`                                     |
+| Line Item Total | lineitem_total  | DecimalField   | `max_digits=6, decimal_places=2, editable=False` |
+
+---
 
 ### Contact Message Model
 
-The `ContactMessage` model stores messages submitted by users through the contact form. It includes a flag to mark whether the message has been read.
+Stores messages submitted by users through the contact form.
 
-| Name     | Database Key    | Field Type   | Validation                        |
-|----------|-----------------|--------------|-----------------------------------|
-| Name     | name            | CharField    | `max_length=100, null=False, blank=False` |
-| Email    | email           | EmailField   | `null=False, blank=False`         |
-| Message  | message         | TextField    | `null=False, blank=False`         |
-| Read     | read            | BooleanField | `default=False`                   |
+| Name    | Database Key | Field Type   | Validation                              |
+|---------|--------------|--------------|-----------------------------------------|
+| Name    | name         | CharField    | `max_length=100, null=False, blank=False` |
+| Email   | email        | EmailField   | `null=False, blank=False`               |
+| Message | message      | TextField    | `null=False, blank=False`               |
+| Read    | read         | BooleanField | `default=False`                         |
+
+---
 
 ### Category Model
 
-The `Category` model organizes products into categories, making it easier to filter and browse.
+Organizes products into categories for easier browsing and filtering.
 
 | Name           | Database Key  | Field Type   | Validation                                      |
 |----------------|---------------|--------------|-------------------------------------------------|
 | Name           | name          | CharField    | `max_length=254, null=False, blank=False`       |
 | Friendly Name  | friendly_name | CharField    | `max_length=254, null=True, blank=True`         |
 
+---
+
 ### Product Model
 
-The `Product` model stores details about items available for purchase, including links to their categories, brands, and tags.
+Stores product information available for purchase.
 
-| Name           | Database Key  | Field Type   | Validation                                      |
-|----------------|---------------|--------------|-------------------------------------------------|
-| Category       | category      | ForeignKey   | `Category, on_delete=models.SET_NULL, null=True, blank=True` |
-| SKU            | sku           | CharField    | `max_length=254, null=True, blank=True`         |
-| Name           | name          | CharField    | `max_length=254, null=False, blank=False`       |
-| Description    | description   | TextField    | `null=False, blank=False`                       |
-| Price          | price         | DecimalField | `max_digits=6, decimal_places=2`                |
-| Rating         | rating        | DecimalField | `max_digits=6, decimal_places=2, null=True, blank=True` |
-| Image URL      | image_url     | URLField     | `max_length=1024, null=True, blank=True`        |
-| Image          | image         | ImageField   | `null=True, blank=True`                         |
-
-
----
-
-##### Custom Widgets
-
-- **CustomClearableFileInput**:
-   - A custom widget to handle file inputs for consultation images with user-friendly labels for removing or displaying the current image.
+| Name        | Database Key | Field Type   | Validation                                               |
+|-------------|--------------|--------------|----------------------------------------------------------|
+| Category    | category     | ForeignKey   | `Category, on_delete=models.SET_NULL, null=True, blank=True` |
+| SKU         | sku          | CharField    | `max_length=254, null=True, blank=True`                  |
+| Name        | name         | CharField    | `max_length=254, null=False, blank=False`                |
+| Description | description  | TextField    | `null=False, blank=False`                                |
+| Price       | price        | DecimalField | `max_digits=6, decimal_places=2`                         |
+| Rating      | rating       | DecimalField | `max_digits=6, decimal_places=2, null=True, blank=True`  |
+| Image URL   | image_url    | URLField     | `max_length=1024, null=True, blank=True`                 |
+| Image       | image        | ImageField   | `null=True, blank=True`                                  |
 
 ---
 
-### Likes model
+### Like Feature
 
-This feature allows users to "like" products in the e-commerce store. Below, I explain how the components work together to implement the like functionality, display liked items, and update the UI dynamically.
+Allows users to like/unlike products. Liked products are shown on a dedicated page.
 
-#### Models
+#### How It Works
 
-1. **Like Model**:
-   - This model links users to the products they like. It stores the user and the liked product as foreign keys, along with the timestamp of when the like occurred. The `__str__` method provides a human-readable format like "User likes Product Name."
+- `Like` model links a user to a liked product.
+- AJAX requests (secured with CSRF) toggle likes.
+- Liked items are dynamically updated on the frontend.
+- A list of liked items is shown via `liked_items_view`.
 
-#### Views
+#### Model
 
-1. **`like_view`**:
-   - Handles the AJAX request to like or unlike a product. It checks if the user is authenticated, gets the product using the `product_id` from the POST request, and creates or updates a `Like` record for the user and product. It returns a JSON response indicating the success or failure of the operation.
+```python
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    liked_on = models.DateTimeField(auto_now_add=True)
 
-2. **`liked_items_view`**:
-   - Displays a list of all liked products for the authenticated user. It fetches liked items from the `Like` model, displaying the products that the user has liked.
+    def __str__(self):
+        return f"{self.user} likes {self.product.name}"
 
-#### Templates
+```
 
-1. **`liked_items.html`**:
-   - This template shows the list of products a user has liked. It loops through the liked items and provides a link to the product detail page for each liked product. The template also handles cases where the user has no liked items.
+Views
 
-#### JavaScript
+like_view: Toggles like/unlike via AJAX.
+liked_items_view: Displays liked products for the user.
+Template: liked_items.html
 
-1. **AJAX for Like Button**:
-   - This JavaScript code enables the functionality of liking a product without refreshing the page. When a user clicks the like button, an AJAX request is sent to the server with the `product_id` and CSRF token. Based on the response, the button text changes to "Liked" or "Like," and the like count is updated dynamically.
+Loops through liked items and links to product detail pages.
 
-   **JavaScript Code:**
-   ```javascript
-         $(document).on('click', '.likeButton', function() {
+### JavaScript (AJAX Example)
+
+```javascript
+        $(document).on('click', '.likeButton', function() {
             const button = $(this);
             const productId = button.data('post-id');
             const url = button.data('url');
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-            console.log('Product ID:', productId);
-            console.log('URL:', url);
 
             $.ajax({
                 url: url,
@@ -511,15 +515,103 @@ This feature allows users to "like" products in the e-commerce store. Below, I e
                     button.find('i').toggleClass('far fas');
                 },
                 error: function(response) {
-                    console.log(response.responseText);
                     alert('Failed to like the product.');
                 }
             });
         });
+```
+
+### Contact Form Feature
+
+Allows users to contact the business. Messages are saved and marked read/unread by admins.
+
+Model
+
+```python
+    class ContactMessage(models.Model):
+        name = models.CharField(max_length=100)
+        email = models.EmailField()
+        message = models.TextField()
+        read = models.BooleanField(default=False)
+
+```
+
+Views:
+
+contact_view
+Templates:
+
+contact.html
 
 
-#### Dynamic UI Update:
-The JavaScript updates the like button's text and the like count dynamically without a page reload. It uses AJAX to send the data to the server and update the UI based on the server's response.
+### Consultation Interest Feature
+Users can express interest in tattoo consultations.
+
+How It Works
+
+ConsultationInterest model stores topic, time, message, and user.
+express_interest view saves data.
+Admins view submissions via consultation_admin_view at /admin-submissions.
+Templates:
+
+consultation_interest.html
+consultation_admin.html
+Product CRUD Feature
+Admins can add, edit, or delete products. All users can view listings.
+
+#### Model
+```python
+      class Product(models.Model):
+          category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+          sku = models.CharField(max_length=254, null=True, blank=True)
+          name = models.CharField(max_length=254)
+          description = models.TextField()
+          price = models.DecimalField(max_digits=6, decimal_places=2)
+          rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
+          image_url = models.URLField(max_length=1024, null=True, blank=True)
+          image = models.ImageField(null=True, blank=True)
+
+```
+
+Views:
+
+add_product, edit_product, delete_product, all_products
+Templates:
+
+add_product.html, edit_product.html, products.html
+
+
+### User Profile Feature
+
+Manages user info for streamlined checkout.
+
+Model
+
+```python
+        class UserProfile(models.Model):
+            user = models.OneToOneField(User, on_delete=models.CASCADE)
+            default_phone_number = models.CharField(max_length=20, null=True, blank=True)
+            default_country = CountryField(blank_label='Country *', null=True, blank=True)
+            default_postcode = models.CharField(max_length=20, null=True, blank=True)
+            default_town_or_city = models.CharField(max_length=40, null=True, blank=True)
+            default_street_address1 = models.CharField(max_length=80, null=True, blank=True)
+            default_street_address2 = models.CharField(max_length=80, null=True, blank=True)
+            default_county = models.CharField(max_length=80, null=True, blank=True)
+
+```
+
+Views:
+
+profile_view
+Template:
+
+profile.html
+
+
+### Custom Widgets
+CustomClearableFileInput:
+A user-friendly file input widget that supports image uploads, current image display, and removal options for consultation images.
+
 
 ---
 ## CRUD 
