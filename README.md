@@ -784,6 +784,17 @@ Please refer to the [TESTING.md](TESTING.md) file for all test-related documenta
 
 ---
 
+### AWS Billing Disclaimer
+
+I have recently received email notifications from AWS indicating a bill of several hundred pounds. As I was under the impression that AWS usage during this course would fall within free tier limits or educational allowances, I did not expect to incur charges. 
+
+As such, I have not identified any errors at the time of submitting this project. However, if errors occur when accessing the deployed site or database, it may be due to unpaid AWS services being paused or restricted. Unfortunately, I am unable to cover these charges personally, as this project is part of a course submission and I assumed AWS resources would remain accessible throughout.
+
+Thank you for your understanding.
+
+
+---
+
 ## Credits
 
 ### Project Inspiration and Tutorials
