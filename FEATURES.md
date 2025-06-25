@@ -65,3 +65,47 @@
 | **Verification Email Sent** | ![Verify Email](READMEmedia/verify-emailaddress.png) | Notifies users to verify their email after registration, enhancing security. |
 | **What Comes in the Bag** | ![Bag Contents](READMEmedia/what-comes-in-bag.png) | Provides clarity on what users receive with their purchase. |
 | **Stripe Payment Checkout** | ![Stripe Checkout](READMEmedia/stripe.png) | Secure payment processing using Stripe, ensuring a smooth transaction experience. |
+
+## ✒️ New Feature: Consultation Interest Submission System
+
+A new feature has been added to enhance user interaction and simulate a realistic client communication flow for booking tattoo consultations. This functionality allows users to express their interest in a consultation by submitting a short form that includes:
+
+- **Topic** (e.g. tattoo idea or body area)
+- **Preferred Date**
+- **Preferred Time**
+- **Message/Details**
+
+### Feature Functionality
+
+- Inline form validation prevents incomplete or invalid submissions.
+- Successful submissions display a confirmation message:  
+  _**"Success! Your consultation interest was submitted."**_
+- Submissions are stored in the database and only visible to staff users.
+- Staff users can view all submitted queries and mark them as read/unread for administrative tracking.
+
+### Access Control
+
+- The consultation interest form is available to **authenticated users** only.
+- Only **staff users** can view the consultation submissions dashboard.
+
+### 🧭 Navigation
+
+- Users can access the consultation form via the "Book a Consultation" menu.
+- Admin/staff can access submissions from the "Consultation Queries" link (visible only when logged in as staff).
+
+### Screenshots
+
+#### User Consultation Form  
+![User Consultation Form](READMEmedia/testconsultation.png)
+
+#### Success Message on Submission  
+![Confirmation Toast](READMEmedia/consultationdone.png)
+
+#### Consultation Queries List  
+![Consultation Queries](READMEmedia/consultationqueries.png)
+
+#### Navigation Menu Item  
+![Consultation Menu](READMEmedia/consulationmenu.png)
+
+#### Staff Review Panel  
+![Consultation Messages Admin](READMEmedia/consultationmessages.png)
