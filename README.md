@@ -221,7 +221,7 @@ Understanding the exact operational procedures of a real business is crucial. Fo
 ## Technologies Used
 
 ### Languages
-- **Python 3.8.5**: The primary language used to develop the server-side of the website.  
+- **Python 3.11.9**: The primary language used to develop the server-side of the website.  
   [Official Python Website](https://www.python.org/downloads/release/python-385/)
 - **JavaScript (JS)**: The primary language used to develop interactive components of the website.  
   [MDN JavaScript Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
